@@ -2,10 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>Player Profile</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "playerprofilebackground.jpg" %}');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 10% 20%;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        p {
+            color: #333;
+            font-size: 16px;
+        }
+        a {
+            display: block;
+            width: max-content;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #003d82;
+        }
+    </style>
 </head>
 <body>
-    <h1>Player Profile</h1>
+    <div class="container">
+        <h1>Player Profile</h1>
         {% if player_information %}
             <p>Nickname: {{ player_information.nickname }}</p>
             <p>Email: {{ player_information.email }}</p>
@@ -17,5 +58,6 @@
         {% else %}
             <p>Player profile does not exist.</p>
         {% endif %}
+    </div>
 </body>
 </html>
