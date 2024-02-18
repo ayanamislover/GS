@@ -1,0 +1,40 @@
+<!-- leaderboard.html -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    
+    <h2>Score Leaderboard</h2>
+    <ol>
+        {% for user in score_leaderboard %}
+        <li>{{ user.username }} - Score: {{ user.score }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>Achievements Leaderboard</h2>
+    <ol>
+        {% for user in achievements_leaderboard %}
+        <li>{{ user.username }} - Achievements: {{ user.achievements }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>Login Days Leaderboard</h2>
+    <ol>
+        {% for user in login_days_leaderboard %}
+        <li>{{ user.username }} - Login Days: {{ user.login_days }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>Carbon Footprint Leaderboard</h2>
+    <ol>
+        {% for user in carbon_footprint_leaderboard %}
+        <li>{{ user.username }} - Carbon Footprint: {{ user.carbon_footprint }}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>
