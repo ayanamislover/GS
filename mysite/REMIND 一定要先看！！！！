@@ -8,3 +8,4 @@ mysite/settings.py 文件里的时区设置是“Europe London”，同时注意
     "usersinformation.apps.UsersinformationConfig",
     ...
     ] 里面，注册app点路径
+    我的html模板或者静态文件，都是Django官网文档里面建议的路径
