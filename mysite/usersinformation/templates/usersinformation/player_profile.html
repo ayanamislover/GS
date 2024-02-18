@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Player Profile</h1>
+        {% if player_information %}
+            <p>Nickname: {{ player_information.nickname }}</p>
+            <p>Email: {{ player_information.email }}</p>
+            <p>Achievement Count: {{ player_information.achievement_count }}</p>
+            <p>Bio: {{ player_information.bio }}</p>
+            <p>Login Days: {{ player_information.login_days }}</p>
+            <!--增加跳转连接，跳转到编辑界面，并传递id信息-->
+            <a href="{% url 'edit_player_profile' player_information.id %}">Edit Profile</a>
+        {% else %}
+            <p>Player profile does not exist.</p>
+        {% endif %}
+</body>
+</html>
