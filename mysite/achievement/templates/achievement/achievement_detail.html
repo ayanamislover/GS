@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--这段HTML代码是一个meta标签，专门用于设置网页的视口（viewport）配置，以确保网页在不同设备上正确地适应屏幕大小。
+        这对于构建响应式网站来说非常重要，因为它能够提供更好的用户体验，无论用户是在桌面浏览器、平板电脑还是手机上查看网站。下面是这个meta标签每个部分的详细解释：
+        name="viewport": 声明这个meta标签的名称为viewport，指明该标签用于控制视口的设置。
+        content="width=device-width": 这部分设置视口的宽度等于设备的宽度。这意味着网页的布局将会根据设备的屏幕宽度来调整，为不同尺寸的设备提供适宜的视图。
+        content="initial-scale=1.0": 这部分设置网页初始缩放比例为1.0，即网页以其原始大小显示，不进行任何缩放。这保证了用户首次加载网页时，网页内容不会被缩放，提供了一致的视觉体验。
+     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements</title>
+</head>
+<body>
+    <h1>Achievements</h1>
+<ul>
+    {% for achievement in achievement_detail %}  <!-- 注意这里改为 achievements -->
+        <li>
+            <strong>{{ achievement.name }}</strong>: {{ achievement.description }} <!-- 使用正确的属性 -->
+        </li>
+    {% empty %}
+        <li>No achievements found.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
