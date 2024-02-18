@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
+    #用户信息界面url
     path("usersinformaiton/", include("usersinformation.urls")),
+    #成就系统界面url
+    path("achievement/", include("achievement.urls")),
     path("admin/", admin.site.urls),
 ]
