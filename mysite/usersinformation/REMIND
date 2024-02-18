@@ -1,6 +1,0 @@
-已经存在用户：用户名：妈宝男
-           id（系统数据库主键）：1
-
-           模拟用户信息修改时请在用户名Seth Yang 和妈宝男之间切换。
-
-mysite/settings.py 文件里的时区设置是“Europe London”
