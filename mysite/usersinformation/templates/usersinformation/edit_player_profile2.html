@@ -66,13 +66,12 @@
         <!-- 用实际图片路径替换 'path_to_exeter_logo.png' -->
         <img src="path_to_exeter_logo.png" alt="University of Exeter">
     </div>
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            {{ form.as_p }}
-        </div>
-        <button type="submit">Save Changes</button>
-    </form>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+
 </body>
 </html>
 

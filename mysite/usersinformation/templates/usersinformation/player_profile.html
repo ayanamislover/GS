@@ -9,17 +9,27 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('{% static "playerprofilebackground.jpg" %}');
+            background-image: url('{% static "usersinformaiton/playerprofilebackground.jpg" %}');
             background-size: cover;
             background-attachment: fixed;
         }
+        .avatar {
+            max-width: 150px; /* 或者你希望的任何尺寸 */
+
+        }
         .container {
+            display: flex; /* 启用Flexbox布局 */
+            flex-direction: column; /* 子元素竖直排列 */
+            align-items: center; /* 子元素在交叉轴上居中对齐 */
             background-color: rgba(255, 255, 255, 0.8);
-            margin: 10% 20%;
+            margin: 5% auto; /* 上下保留一些空间，左右自动调整以居中 */
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%; /* 根据需要调整宽度 */
+            max-width: 600px; /* 最大宽度，确保在大屏幕上也不会过宽 */
         }
+
         h1 {
             color: #0056b3;
             text-align: center;
@@ -48,6 +58,12 @@
     <div class="container">
         <h1>Player Profile</h1>
         {% if player_information %}
+            {% if player_information.avatar %}
+                <img src="{{ player_information.avatar.url }}" alt="Avatar" class="avatar">
+            {% else %}
+                <!-- 如果没有上传头像，可以显示默认图片或者不显示图片 -->
+                <img src="{% static 'path_to_default_avatar.jpg' %}" alt="Default Avatar" class="avatar">
+            {% endif %}
             <p>Nickname: {{ player_information.nickname }}</p>
             <p>Email: {{ player_information.email }}</p>
             <p>Achievement Count: {{ player_information.achievement_count }}</p>

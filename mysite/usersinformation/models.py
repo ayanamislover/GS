@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 # Create your models here.
 class PlayerProfile(models.Model):
     #关联到Django内置User模型，实现每一个用户注册一个用户信息对象
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    #头像
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     # 用户昵称
     nickname = models.CharField(max_length=255, blank=True)
 

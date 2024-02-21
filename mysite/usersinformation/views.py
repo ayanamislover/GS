@@ -39,7 +39,7 @@ def detailid(request, pk):
 def edit_player_profile(request, pk):
     player_profile = get_object_or_404(PlayerProfile, pk=pk)
     if request.method == 'POST':
-        form = PlayerProfileForm(request.POST, instance=player_profile)
+        form = PlayerProfileForm(request.POST, request.FILES, instance=player_profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully!')  # 添加成功消息

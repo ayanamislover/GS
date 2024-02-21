@@ -7,4 +7,4 @@ from .models import PlayerProfile
 class PlayerProfileForm(forms.ModelForm):
     class Meta:
         model = PlayerProfile
-        fields = ['nickname', 'email', 'bio']
+        fields = ['avatar','nickname', 'email', 'bio']

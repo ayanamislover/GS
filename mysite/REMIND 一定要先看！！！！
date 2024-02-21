@@ -9,3 +9,8 @@ mysite/settings.py 文件里的时区设置是“Europe London”，同时注意
     ...
     ] 里面，注册app点路径
     我的html模板或者静态文件，都是Django官网文档里面建议的路径
+为服务静态文件上传，在setting里面加入以下代码
+import os
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 文件将存储在项目根目录下的media文件夹
+MEDIA_URL = '/media/'  # URL配置来访问media文件夹中的文件
