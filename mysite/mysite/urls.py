@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path("answerquestion/", include("answerquestion.urls")),
     #用户信息界面url
     path("usersinformaiton/", include("usersinformation.urls")),
     #成就系统界面url

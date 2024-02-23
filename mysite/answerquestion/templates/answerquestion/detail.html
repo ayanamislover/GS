@@ -1,0 +1,60 @@
+<!-- templates/app/detail.html -->
+{% extends 'answerquestion/base.html' %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<h2>{{ question.text }}</h2>
+
+<form id="question_form">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+</form>
+
+<button id="submitAnswer">提交答案</button>
+
+<div id="timer">30</div>
+
+<div id="scoreDisplay">当前得分: 0</div>
+
+<script>
+// 计时器和提交逻辑
+let timeLeft = 30; // 30秒计时
+const timerElement = document.getElementById('timer');
+const updateTimer = function() {
+    if (timeLeft <= 0) {
+        clearInterval(timer);
+        alert('时间到！');
+        // 可以在这里添加自动提交或跳转到下一题的逻辑
+    } else {
+        timeLeft--;
+        timerElement.innerHTML = timeLeft;
+    }
+};
+setInterval(updateTimer, 1000);
+
+$('#submitAnswer').click(function(e) {
+    e.preventDefault();
+    const selectedChoice = $('input[name="choice"]:checked').val();
+    if (!selectedChoice) {
+        alert('请选择一个选项！');
+        return;
+    }
+    $.ajax({
+        url: '{% url "submit_answer" question.id %}', // 确保这个URL与你的路由匹配
+        data: {
+            'choice': selectedChoice,
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        type: 'post',
+        success: function(response) {
+            alert(response.is_correct ? "正确! 得分: " + response.score_update : "错误!");
+            updateScoreDisplay(response.score_update);
+        }
+    });
+});
+</script>
+{% endblock %}

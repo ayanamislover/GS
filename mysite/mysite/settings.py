@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "answerquestion.apps.AnswerquestionConfig",
     "achievement.apps.AchievementConfig",
     "usersinformation.apps.UsersinformationConfig",
     "django.contrib.admin",
