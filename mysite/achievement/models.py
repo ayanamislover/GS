@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Achievement(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField()
 
+class Achievement(models.Model):
+    name = models.CharField(max_length=255, unique=True)  # 成就名称
+    description = models.TextField()  # 成就描述
+    icon = models.ImageField(upload_to='images/', null=True, blank=True)  # 成就图标
+    unlock_score = models.IntegerField(default=0)  # 解锁成就所需的积分
     def __str__(self):
         return self.name
 

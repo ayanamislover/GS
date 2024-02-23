@@ -68,7 +68,12 @@
     </div>
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    <!-- 渲染PlayerProfile表单 -->
+    <h3>Profile Information</h3>
+    {{ profile_form.as_p }}
+    <!-- 渲染DisplayedAchievements表单 -->
+    <h3>Displayed Achievements</h3>
+    {{ achievements_form.as_p }}
     <button type="submit">Save Changes</button>
 </form>
 

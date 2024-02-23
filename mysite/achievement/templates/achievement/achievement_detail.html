@@ -10,18 +10,39 @@
      -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievements</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% load static %}
 </head>
 <body>
-    <h1>Achievements</h1>
-<ul>
-    {% for achievement in achievement_detail %}  <!-- 注意这里改为 achievements -->
-        <li>
-            <strong>{{ achievement.name }}</strong>: {{ achievement.description }} <!-- 使用正确的属性 -->
-        </li>
-    {% empty %}
-        <li>No achievements found.</li>
-    {% endfor %}
-</ul>
-
+    <h1 class="text-center mb-4">Achievements</h1>
+    <div class="container">
+        <div class="row">
+            {% for achievement in achievement_detail %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        {% if achievement.icon %}
+                            <img src="{{ achievement.icon.url }}" class="card-img-top" alt="{{ achievement.name }}">
+                        {% else %}
+                            <img src="{% static 'achievement/images/default.jpg' %}" class="card-img-top" alt="Default Icon">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ achievement.name }}</h5>
+                            <p class="card-text">{{ achievement.description }}</p>
+                            <p class="card-text"><small class="text-muted">Unlock Score: {{ achievement.unlock_score }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <p>No achievements found.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- 可选：引入Bootstrap JS 和 Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>

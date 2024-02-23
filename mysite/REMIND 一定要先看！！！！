@@ -14,3 +14,9 @@ import os
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 文件将存储在项目根目录下的media文件夹
 MEDIA_URL = '/media/'  # URL配置来访问media文件夹中的文件
+
+在用户积分更新的地方调用这个方法。例如，每当用户的积分更新时
+def update_score(user_profile, points):
+    user_profile.score += points
+    user_profile.save()
+    user_profile.unlock_achievements()

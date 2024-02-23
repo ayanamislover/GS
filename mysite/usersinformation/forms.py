@@ -8,3 +8,12 @@ class PlayerProfileForm(forms.ModelForm):
     class Meta:
         model = PlayerProfile
         fields = ['avatar','nickname', 'email', 'bio']
+
+#创建一个表单来允许用户选择他们要展示的成就。这个表单可以是一个ModelForm，它将包含displayed_achievements字段。
+class DisplayedAchievementsForm(forms.ModelForm):
+    class Meta:
+        model = PlayerProfile
+        fields = ['displayed_achievements']
+        widgets = {
+            'displayed_achievements': forms.CheckboxSelectMultiple()
+        }
