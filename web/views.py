@@ -2,13 +2,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django import forms
+
+from .forms import UserForm
 from .models import User  # 修改导入路径
 
 # 定义用户表单
-class UserForm(forms.Form):#继承表单
-    username = forms.CharField( max_length=50)
-    password = forms.CharField( widget=forms.PasswordInput())
-    email = forms.EmailField()
+
 
 # 注册视图
 def regist(request):

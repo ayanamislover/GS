@@ -18,5 +18,4 @@ class UserAdmin(admin.ModelAdmin):
     def __str__(self):
         return self.username
 
-# 在admin中注册User模型，同时指定UserAdmin类来配置展示方式
-admin.site.register(User, UserAdmin)
+
