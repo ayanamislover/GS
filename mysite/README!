@@ -22,3 +22,8 @@ def update_score(user_profile, points):
     user_profile.unlock_achievements()
 
 目前使用主键来区分用户
+
+local/usersinformation/到用户信息界面
+local/achievement/到成就界面
+local/answerquesiton/到答题界面
+
