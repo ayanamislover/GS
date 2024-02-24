@@ -9,10 +9,9 @@
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script>
 function onScanSuccess(decodedText, decodedResult) {
-    // 使用fetch或者XMLHttpRequest将decodedText发送到后端
+
     console.log(`Code matched = ${decodedText}`, decodedResult);
 
-    // 这里添加代码来跳转到另一个页面或显示扫描结果
     window.location.href = '/path/' + decodedText; // ！！！修改为跳转的目标页面URL
 }
 

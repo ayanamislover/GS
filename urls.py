@@ -14,3 +14,5 @@ urlpatterns = [
 urlpatterns = [
     path('check-in/', check_in, name='check-in'),
 ]
+
+

@@ -12,16 +12,15 @@ def compare_location(request):
     data = json.loads(request.body)
     user_latitude = data.get('latitude')
     user_longitude = data.get('longitude')
-    user_id = data.get('user_id')  # 假设请求中包含用户ID
+    user_id = data.get('user_id')
 
-    threshold_distance = 1  # km 阈值设为1公里
+    threshold_distance = 1
 
     # 检索所有活动
     user = User.objects.get(pk=user_id)
     activities = Activity.objects.all()
     for activity in activities:
         if is_within_distance(user_latitude, user_longitude, activity.latitude, activity.longitude, threshold_distance):
-            # 找到一个距离用户足够近的活动，更新打卡状态
             ActivityCheckin.objects.update_or_create(
                 user=user,
                 activity=activity,
