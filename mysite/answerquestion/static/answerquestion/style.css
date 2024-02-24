@@ -1,15 +1,29 @@
 /* style.css */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+
     margin-top: 20px;
+    background-color: #f8f9fa; /* 轻微的背景色 */
 }
+
+.card {
+    /* 卡片阴影和圆角 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.card-title {
+    color: #007bff; /* 标题颜色 */
+}
+
 
 .navbar {
     margin-bottom: 20px;
 }
 
 .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;

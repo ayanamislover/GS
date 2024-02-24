@@ -20,3 +20,4 @@ def update_score(user_profile, points):
     user_profile.score += points
     user_profile.save()
     user_profile.unlock_achievements()
+

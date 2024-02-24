@@ -1,13 +1,23 @@
-<!-- templates/app/index.html -->
 {% extends 'answerquestion/base.html' %}
 
 {% block content %}
-<h2>题目列表</h2>
-<ul>
-    {% for question in latest_question_list %}
-    <li>
-        <a href="{% url 'detail' question.id %}">{{ question.text }}</a>
-    </li>
-    {% endfor %}
-</ul>
+<!-- 使用Bootstrap的容器来对内容进行布局 -->
+<div class="container mt-4">
+    <h2 class="mb-4">Available Series</h2>
+    <div class="row">
+        {% for series in series_list %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ series.name }}</h5>
+                        <p class="card-text">{{ series.description }}</p>
+                        <a href="{% url 'series_detail' series.id user.pk %}" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock %}

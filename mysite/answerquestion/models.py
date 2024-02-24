@@ -1,10 +1,26 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class Series(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    def __str__(self):
+        return self.name
 
 class Question(models.Model):
-    text = models.CharField(max_length=200)  # 题目文本
-    pub_date = models.DateTimeField('date published')  # 发布日期
+    series = models.ForeignKey(Series, on_delete=models.CASCADE, related_name='questions', null=True)
+    text = models.CharField(max_length=200)
+    score = models.IntegerField(default=1)  # 假设每个问题默认得分为1
+    def __str__(self):
+        return self.text
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)  # 关联题目
-    choice_text = models.CharField(max_length=200)  # 选项文本
-    is_correct = models.BooleanField(default=False)  # 是否为正确答案
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='choices')
+    choice_text = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)
+
+class UserAnswer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    is_correct = models.BooleanField(default=False)  # 设置为True如果选择的choice是正确的
