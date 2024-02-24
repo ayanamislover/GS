@@ -5,19 +5,22 @@
 <div class="container mt-4">
     <h2 class="mb-4">Available Series</h2>
     <div class="row">
-        {% for series in series_list %}
+        {% for item in series_with_status %}
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ series.name }}</h5>
-                        <p class="card-text">{{ series.description }}</p>
-                        <a href="{% url 'series_detail' series.id user.pk %}" class="btn btn-primary">Explore</a>
+                        <h5 class="card-title">{{ item.series.name }}</h5>
+                        <p class="card-text">{{ item.series.description }}</p>
+                        {% if item.is_completed %}
+                            <a href="#" class="btn btn-success">Completed</a>
+                        {% else %}
+                            <a href="{% url 'series_detail' item.series.id user_pk %}" class="btn btn-primary">Explore</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}
+

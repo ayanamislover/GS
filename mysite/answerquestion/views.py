@@ -7,16 +7,30 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 
+def index_none(request):
+    # 使用render函数渲染响应，指定模板文件和上下文数据（如果有）
+    return render(request, 'usersinformation/player_profile_none.html')
+
 
 def index(request, pk):
     series_list = Series.objects.all()
     user_profile = get_object_or_404(PlayerProfile, pk=pk)
-    user_nickname = user_profile.nickname  # 假设 PlayerProfile 模型有一个 nickname 字段
+
+    # 假设 PlayerProfile 有一个方法或属性来获取已完成的系列
+    completed_series_ids = user_profile.completed_series.values_list('id', flat=True)
+
+    # 为系列列表添加完成状态
+    series_with_status = []
+    for series in series_list:
+        series_with_status.append({
+            'series': series,
+            'is_completed': series.id in completed_series_ids,
+        })
 
     return render(request, 'answerquestion/index.html', {
-        'series_list': series_list,
-        'user_nickname': user_nickname,  # 将昵称传递到模板
-        'user_pk': pk  # 将用户pk也传递到模板，以便在URL标签中使用
+        'series_with_status': series_with_status,
+        'user_nickname': user_profile.nickname,
+        'user_pk': pk,
     })
 
 

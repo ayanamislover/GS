@@ -11,5 +11,5 @@ urlpatterns = [
     # /usersinformation/昵称/，靠昵称信息跳转到用户信息界面
     path("<str:nickname>/", views.detailnickname, name="detailnickname"),
     #主视图，/usesinformaiton/留着说不定和主界面模块连接
-    path("", views.player_profile, name="player_profile"),
+    path("", views.player_profile_none, name="player_profile_none"),
 ]

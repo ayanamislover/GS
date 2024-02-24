@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 from achievement.models import Achievement
+from answerquestion.models import Series
 
 
 # Create your models here.
@@ -34,6 +35,9 @@ class PlayerProfile(models.Model):
 
     # 用户登录天数
     login_days = models.IntegerField(default=0)
+
+    #完成答题系列信息
+    completed_series = models.ManyToManyField(Series, related_name='completed_by', blank=True)
 
     def unlock_achievements(self):
         # 获取所有未解锁的成就，其解锁积分低于或等于用户当前积分

@@ -6,9 +6,14 @@ from django.contrib import messages  # 引入 messages 模块
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+def player_profile_none(request):
+    # 使用render函数渲染响应，指定模板文件和上下文数据（如果有）
+    return render(request, 'usersinformation/player_profile_none.html')
 
+    # 或者重定向到登录页面，假设登录页面的URL名称为'login'
+    # return redirect('login')
 #返回用户界面视图
-#@login_required
+@login_required
 #使用了 @login_required 装饰器，确保只有登录的用户才能访问这个页面。如果未登录的用户尝试访问，他们将被重定向到登录页面。
 def player_profile(request):
     try:

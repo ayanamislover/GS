@@ -21,3 +21,4 @@ def update_score(user_profile, points):
     user_profile.save()
     user_profile.unlock_achievements()
 
+目前使用主键来区分用户
