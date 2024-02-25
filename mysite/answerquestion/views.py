@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404, render,redirect,reverse
 from .models import Choice, UserAnswer, Question,Series
 from .forms import QuizForm
 from usersinformation.models import PlayerProfile
+from urllib.parse import urlencode
+from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
@@ -34,9 +36,7 @@ def index(request, pk):
         'user_pk': pk,
     })
 
-
-
-
+#本地
 def series_detail(request, series_id, pk):
     series = get_object_or_404(Series, pk=series_id)
     questions = series.questions.all()
@@ -71,16 +71,106 @@ def results_page(request, pk):
     additional_score = int(request.GET.get('score', 0))
     # 获取PlayerProfile实例
     player_profile = get_object_or_404(PlayerProfile, pk=pk)
+    # 假设通过查询字符串传递系列的ID
+    series_id = request.GET.get('series_id')
 
+    series_completed = False  # 用于标记系列是否完成
+
+    if series_id:
+        series = get_object_or_404(Series, pk=series_id)
+        # 添加系列到completed_series，如果它还不在那里
+        if series not in player_profile.completed_series.all():
+            player_profile.completed_series.add(series)
+            series_completed = True  # 系列完成标记为True
     # 准备传递给模板的上下文数据
+
     context = {
-        'nickname': player_profile.nickname,  # 假设有昵称字段
-        'total_score': player_profile.score,  # 最新的总积分信息
-        'additional_score': additional_score,  # 本次增加的积分
-        'pk': pk  # 用户的pk
-    }
+           'nickname': player_profile.nickname,
+          'total_score': player_profile.score,
+         'additional_score': additional_score,
+        'pk': pk,
+       'series_completed': series_completed,  # 标记系列是否完成
+
+     }
     return render(request, 'answerquestion/results_page.html', context)
 
+
+
+
+#梓涵
+def series_detail1(request, series_id, pk):
+    series = get_object_or_404(Series, pk=series_id)
+    questions = series.questions.all()
+    player_profile = get_object_or_404(PlayerProfile, pk=pk)  # 根据传入的用户pk获取用户实例
+    # 获取用户昵称
+    user_nickname = player_profile.nickname  # 假设PlayerProfile模型有一个nickname字段
+
+    if request.method == 'POST':
+        form = QuizForm(request.POST, questions=questions)
+        if form.is_valid():
+            total_score = calculate_score(form.cleaned_data, questions)
+             #更新用户的PlayerProfile中的score
+            try:
+               player_profile = PlayerProfile.objects.get(id=pk)
+               player_profile.score += total_score  # 增加得分
+               player_profile.save()
+            except PlayerProfile.DoesNotExist:
+            #处理用户没有PlayerProfile的情况
+             pass
+
+            # 构建带有查询字符串的URL
+            results_url = reverse('results_page', kwargs={'pk': pk}) + f'?score={total_score}'
+            return redirect(results_url)
+    else:
+        form = QuizForm(questions=questions)
+
+    return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
+
+#梓涵
+def results_page1(request, pk):
+    # 从查询字符串中获取得分
+    additional_score = int(request.GET.get('score', 0))
+    # 获取PlayerProfile实例
+    player_profile = get_object_or_404(PlayerProfile, pk=pk)
+    # 假设通过查询字符串传递系列的ID
+    series_id = request.GET.get('series_id')
+
+    series_completed = False  # 用于标记系列是否完成
+
+    if series_id:
+        series = get_object_or_404(Series, pk=series_id)
+        # 添加系列到completed_series，如果它还不在那里
+        if series not in player_profile.completed_series.all():
+            player_profile.completed_series.add(series)
+            series_completed = True  # 系列完成标记为True
+
+
+    # 创建查询字典
+    query_dict = {
+        'nickname': player_profile.nickname,
+        'additional_score':additional_score,
+        'series_id': series_id,  # 添加series_id到字典中
+    }
+
+    # 将查询字典转换为查询字符串
+    query_string = urlencode(query_dict)
+
+    # 生成重定向URL，附加查询字符串
+    return_url = reverse('你的视图函数名字', args=[player_profile.pk]) + '?' + query_string
+
+    # 重定向到目标URL
+    return redirect(return_url)
+
+    # 准备传递给模板的上下文数据
+#    context = {
+ #       'nickname': player_profile.nickname,
+  #      'total_score': player_profile.score,
+   #     'additional_score': additional_score,
+    #    'pk': pk,
+     #   'series_completed': series_completed,  # 标记系列是否完成
+        #'return_url': return_url  # 返回到其他模块的URL
+    #}
+    #return render(request, 'answerquestion/results_page.html', context)
 
 def calculate_score(cleaned_data, questions):
     # 根据cleaned_data和正确的答案计算总分
@@ -119,3 +209,67 @@ def submit_answers(request):
     else:
         # 如果不是POST请求，则重定向回首页或其他页面
         return redirect('index')
+
+#lcy
+def series_detail2(request, series_id, pk):
+        series2 = get_object_or_404(Series, pk=series_id)
+        questions2 = series2.questions.all()
+        player_profile2 = get_object_or_404(PlayerProfile, pk=pk)  # 根据传入的用户pk获取用户实例
+        # 获取用户昵称
+        user_nickname2 = player_profile2.nickname  # 假设PlayerProfile模型有一个nickname字段
+
+        if request.method == 'POST':
+            form = QuizForm(request.POST, questions=questions2)
+            if form.is_valid():
+                total_score = calculate_score(form.cleaned_data, questions2)
+                # 更新用户的PlayerProfile中的score
+                try:
+                    player_profile2 = PlayerProfile.objects.get(id=pk)
+                    player_profile2.score += total_score  # 增加得分
+                    player_profile2.save()
+                except PlayerProfile.DoesNotExist:
+                    # 处理用户没有PlayerProfile的情况
+                    pass
+
+                # 构建带有查询字符串的URL
+                results_url = reverse('results_page', kwargs={'pk': pk}) + f'?score={total_score}'
+                return redirect(results_url)
+        else:
+            form = QuizForm(questions=questions2)
+
+        return render(request, 'answerquestion/detail.html',
+                      {'form': form, 'series': series2, 'user_nickname': user_nickname2})
+
+#lcy
+def results_page2(request, pk):
+        # 从查询字符串中获取得分
+        additional_score = int(request.GET.get('score', 0))
+        # 获取PlayerProfile实例
+        player_profile = get_object_or_404(PlayerProfile, pk=pk)
+        # 假设通过查询字符串传递系列的ID
+        series_id = request.GET.get('series_id')
+
+        series_completed = False  # 用于标记系列是否完成
+
+        if series_id:
+            series = get_object_or_404(Series, pk=series_id)
+            # 添加系列到completed_series，如果它还不在那里
+            if series not in player_profile.completed_series.all():
+                player_profile.completed_series.add(series)
+                series_completed = True  # 系列完成标记为True
+
+        # 创建查询字典
+        query_dict = {
+            #'nickname': player_profile.nickname,
+            'additional_score': additional_score,
+            #'series_id': series_id,  # 添加series_id到字典中
+        }
+
+        # 将查询字典转换为查询字符串
+        query_string = urlencode(query_dict)
+
+        # 生成重定向URL，附加查询字符串
+        return_url = reverse('你的视图函数名字', args=[player_profile.pk]) + '?' + query_string
+
+        # 重定向到目标URL
+        return redirect(return_url)

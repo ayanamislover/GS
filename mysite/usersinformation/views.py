@@ -38,6 +38,8 @@ def detailid(request, pk):
     player_information = get_object_or_404(PlayerProfile, pk=pk)
     # 获取所有成就
     all_achievements = player_information.achievements.all()
+    # 从PlayerProfile关联的User实例获取邮箱信息
+    #user_email = player_information.user.email  # 这里假设PlayerProfile有一个名为user的字段关联到User模型
 
     # 直接从实例调用方法获取解锁成就的数量
     unlocked_achievement_count = player_information.unlocked_achievement_count()
@@ -49,6 +51,7 @@ def detailid(request, pk):
         "all_achievements": all_achievements,
         "displayed_achievements": displayed_achievements,
         "unlocked_achievement_count":unlocked_achievement_count,
+        #"user_email": user_
     })
 
 

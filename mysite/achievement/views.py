@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from django.http import HttpResponse
+from django.urls import path
 from .models import Achievement
+
 
 
 from django.contrib import messages  # 引入 messages 模块
@@ -19,3 +21,4 @@ def achievement_detail(request):
     achievement_detail = Achievement.objects.all()
     #传递信息给模板
     return render(request, "achievement/achievement_detail.html", {'achievement_detail': achievement_detail})
+

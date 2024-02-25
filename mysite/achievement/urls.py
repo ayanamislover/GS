@@ -12,4 +12,5 @@ urlpatterns = [
     #path("<str:nickname>/", views.detailnickname, name="detailnickname"),
     #主视图，/achievement/留着说不定和主界面模块连接
     path("", views.achievement_detail, name="ahchievement_detail"),
+
 ]

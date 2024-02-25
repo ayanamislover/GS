@@ -1,23 +1,25 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 
 from django.conf import settings
 
 from achievement.models import Achievement
 from answerquestion.models import Series
-
+#from web.models import User
 
 # Create your models here.
 class PlayerProfile(models.Model):
     #关联到Django内置User模型，实现每一个用户注册一个用户信息对象
     #user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    # 关联到不同应用中的Web.User模型
+    #user = models.OneToOneField('accounts.User', on_delete=models.CASCADE, null=True)
     #头像
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     # 用户昵称
     nickname = models.CharField(max_length=255, blank=True)
 
-    # 用户邮箱
+    # 用户邮箱,后面删掉
     email = models.EmailField(unique=True)
 
     score = models.IntegerField(default=0)  # 用户积分
