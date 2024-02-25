@@ -24,7 +24,7 @@ class PlayerProfile(models.Model):
 
     # 用户成就数量
     achievement_count = models.IntegerField(default=0)
-
+    #用户的成就
     achievements = models.ManyToManyField(Achievement, blank=True, related_name='user')  # 添加多对多关系
 
     # 可选：用于选择展示的成就

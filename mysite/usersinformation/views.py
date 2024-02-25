@@ -54,7 +54,8 @@ def edit_player_profile(request, pk):
     # 如果请求是POST，处理表单数据
     if request.method == 'POST':
         profile_form = PlayerProfileForm(request.POST, request.FILES, instance=player_profile)
-        achievements_form = DisplayedAchievementsForm(request.POST, instance=player_profile)  # 新增成就表单
+        #achievements_form = DisplayedAchievementsForm(request.POST, instance=player_profile)  # 新增成就表单
+        achievements_form = DisplayedAchievementsForm(request.POST, instance=player_profile, user_pk=pk)#增加只显示已经解锁成就
         # 检查两个表单是否都有效
         if profile_form.is_valid() and achievements_form.is_valid():
             profile_form.save()
@@ -66,7 +67,8 @@ def edit_player_profile(request, pk):
     else:
         # 如果不是POST请求，初始化表单
         profile_form = PlayerProfileForm(instance=player_profile)
-        achievements_form = DisplayedAchievementsForm(instance=player_profile)  # 初始化成就表单
+        #achievements_form = DisplayedAchievementsForm(instance=player_profile)  # 初始化成就表单
+        achievements_form = DisplayedAchievementsForm(instance=player_profile, user_pk=pk)#增加用户主键
 
     # 传递两个表单到模板
     return render(request, 'usersinformation/edit_player_profile2.html', {

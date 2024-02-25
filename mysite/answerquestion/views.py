@@ -7,11 +7,12 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 
+#定义未有主键的未登录界面
 def index_none(request):
     # 使用render函数渲染响应，指定模板文件和上下文数据（如果有）
     return render(request, 'usersinformation/player_profile_none.html')
 
-
+#答题主页面
 def index(request, pk):
     series_list = Series.objects.all()
     user_profile = get_object_or_404(PlayerProfile, pk=pk)
