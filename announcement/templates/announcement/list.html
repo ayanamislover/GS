@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcement List</title>
+</head>
+<body>
+    <h1>Announcement List</h1>
+    <div>
+        {% if announcements %}
+            <ul>
+                {% for announcement in announcements %}
+                    <li>
+                        <h2><a href="{% url 'detail' announcement.id %}">{{ announcement.title }}</a></h2>
+                        <p>Start Time: {{ announcement.start_time|date:"Y-m-d H:i" }}</p>
+                        <p>End Time: {{ announcement.end_time|date:"Y-m-d H:i" }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No announcements.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
