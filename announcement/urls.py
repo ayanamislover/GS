@@ -18,6 +18,7 @@ from django.urls import path
 from announcement import views
 
 urlpatterns = [
-    path('title', views.title, name='title')
+    path('list/', views.list, name='list'),
+    path('<int:announcement_id>/', views.detail, name='detail'),
 ]
 

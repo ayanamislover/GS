@@ -2,11 +2,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django import forms
+from django.shortcuts import render
 
-from .forms import UserForm
+
 from .models import User  # 修改导入路径
 
 # 定义用户表单
+class UserForm(forms.Form):
+    username = forms.CharField(label='用户名', max_length=50)
+    password = forms.CharField(label='密码', widget=forms.PasswordInput())
+    email = forms.EmailField(label='邮箱')
+
 
 
 # 注册视图
@@ -17,14 +23,15 @@ def regist(request):
             username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
             email = userform.cleaned_data['email']
-
-            # 创建并保存用户信息
-            User.objects.create(username=username, password=password, email=email)
-
-            return HttpResponse('register success!!!')
+            # 创建新用户
+            user = User.objects.create(username=username, password=password, email=email)
+            # 对于create方法，不需要再调用save()，因为create()已经保存了实例
+            return HttpResponse('regist success!!!')
     else:
         userform = UserForm()
     return render(request, 'regist.html', {'userform': userform})
+
+
 
 # 登录视图
 def login(request):

@@ -14,8 +14,6 @@ class User(models.Model):
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'password', 'email')
 
-    # 定义对象的字符串表示方法，返回用户名
-    def __str__(self):
-        return self.username
+admin.site.register(User, UserAdmin)
 
 
