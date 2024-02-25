@@ -1,7 +1,9 @@
 import math
-
 from model import Activity
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+import json
 
 def calculate_distance(lat1, lon1, lat2, lon2):
     R = 6371  # 地球平均半径，单位公里
@@ -14,10 +16,6 @@ def calculate_distance(lat1, lon1, lat2, lon2):
     return distance
 
 
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
-import json
 
 
 @csrf_exempt

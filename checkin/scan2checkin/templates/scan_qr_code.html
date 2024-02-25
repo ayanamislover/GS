@@ -11,7 +11,7 @@
 function onScanSuccess(decodedText, decodedResult) {
     console.log(`Code matched = ${decodedText}`, decodedResult);
     // 修改为发送到Django后端的URL
-    window.location.href = '/scanner/' + encodeURIComponent(decodedText);
+    window.location.href = '/scan2checkin/' + encodeURIComponent(decodedText);
 }
 
 

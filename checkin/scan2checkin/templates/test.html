@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Your Location</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0Gem4tNlFS1mpCCLr2LrTe5i0GtKKM8U"></script>
+    <script>
+        var activityCode = "{{ activity_code }}"; // Django模板语言插入活动代码
+        var map, userMarker; // 声明一个map变量用于谷歌地图，userMarker用于标记位置
+
+        function initMap(lat, lon) {
+            var userLocation = {lat: lat, lng: lon};
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: userLocation
+            });
+            userMarker = new google.maps.Marker({
+                position: userLocation,
+                map: map,
+                title: 'Your Location'
+            });
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            console.log("Latitude: " + lat + ", Longitude: " + lon);
+            initMap(lat, lon);
+            // 将位置数据和活动代码发送到Django后端
+            fetch('/scan2checkin/check_location/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: JSON.stringify({
+                    latitude: lat,
+                    longitude: lon,
+                    activity_code: activityCode,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // 弹窗显示结果
+                if (data.status === 'success') {
+                    // 可以重定向到其他页面或进行其他操作
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    console.log("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log("An unknown error occurred.");
+                    break;
+            }
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // 页面加载完成后自动获取位置
+        window.onload = function() {
+            getLocation();
+        };
+    </script>
+    <style>
+        /* 添加一些样式来美化页面 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #map {
+            height: 400px; /* 设置地图的高度 */
+            width: 100%; /* 地图宽度为全屏 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Check Your Location</h1>
+     <div id="map"></div>
+</body>
+</html>
