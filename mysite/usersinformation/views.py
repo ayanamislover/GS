@@ -38,13 +38,17 @@ def detailid(request, pk):
     player_information = get_object_or_404(PlayerProfile, pk=pk)
     # 获取所有成就
     all_achievements = player_information.achievements.all()
+
+    # 直接从实例调用方法获取解锁成就的数量
+    unlocked_achievement_count = player_information.unlocked_achievement_count()
     # 获取用户选择展示的成就，如果没有，则默认展示所有成就中的前三个
     displayed_achievements = player_information.displayed_achievements.all()[:3] if player_information.displayed_achievements.exists() else all_achievements[:3]
     # 将获取到的用户信息和成就传递给模板
     return render(request, "usersinformation/player_profile.html", {
         "player_information": player_information,
         "all_achievements": all_achievements,
-        "displayed_achievements": displayed_achievements
+        "displayed_achievements": displayed_achievements,
+        "unlocked_achievement_count":unlocked_achievement_count,
     })
 
 

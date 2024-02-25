@@ -115,7 +115,7 @@
             <p>Nickname: {{ player_information.nickname }}</p>
             <p>Email: {{ player_information.email }}</p>
             <p>Score: {{ player_information.score }}</p>
-            <p>Achievement Count: {{ player_information.achievement_count }}</p>
+            <p>Achievement Count: {{unlocked_achievement_count}}</p>
             <h2>Achievements</h2>
             <div class="achievements-container">
                 {% for achievement in displayed_achievements %}

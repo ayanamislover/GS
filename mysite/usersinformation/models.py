@@ -45,6 +45,13 @@ class PlayerProfile(models.Model):
         for achievement in unlockable_achievements:
             self.achievements.add(achievement)
 
+    # 新增方法来动态计算用户解锁的成就数量
+    def unlocked_achievement_count(self):
+        """
+        计算并返回已解锁的成就数量
+        """
+        return Achievement.objects.filter(unlock_score__lte=self.score).count()
+
     #加入str方法，每次使用PlayerProfile对象时，返回有意义字符串。返回人类可读模型表示
     def __str__(self):
         return f"{self.avatar} {self.nickname} {self.email} {self.achievement_count} {self.bio} {self.login_days}"
