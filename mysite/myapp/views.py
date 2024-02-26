@@ -7,7 +7,12 @@ from usersinformation.views import player_profile
 from django.shortcuts import render, redirect
 
 def home(request, nickname):
-    return render(request, 'home.html')
+    # 创建上下文字典，将变量传递给模板
+    context = {
+        'nickname': nickname
+    }
+    # 传递上下文到模板
+    return render(request, 'home.html', context)
 
 def user_dashboard(request):
     return render(request, 'user_dashboard.html')
@@ -32,3 +37,8 @@ def developer_profile(request):
 
 def user_management(request):
     return render(request, 'user_management.html')
+
+#去achievement的视图
+def to_achievement(request):
+    # 假设 achievement_detail 视图不需要任何参数
+    return redirect('achievement:achievement_detail')
