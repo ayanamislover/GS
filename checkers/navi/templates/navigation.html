@@ -3,6 +3,40 @@
 <head>
     <title>navigate</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0Gem4tNlFS1mpCCLr2LrTe5i0GtKKM8U&callback=initMap&libraries=&v=weekly" async></script>
+<style>
+        body {
+            text-align: center; /* 使得body内的所有元素居中 */
+            margin: 0;
+            padding-top: 20px; /* 给顶部一些空间 */
+        }
+        #map {
+            height: 80%; /* 调整地图的高度 */
+            width: 100%; /* 地图宽度为全屏 */
+            margin-bottom: 20px; /* 地图下方留出一些空间 */
+        }
+        #next-location-btn {
+            display: inline-block; /* 将按钮显示为行内块 */
+            padding: 10px 20px; /* 按钮内填充 */
+            font-size: 1.2em; /* 文字大小 */
+            cursor: pointer; /* 鼠标悬停时显示指针 */
+            background-color: #4285f4; /* 背景颜色 */
+            color: white; /* 文字颜色 */
+            border: none; /* 无边框 */
+            border-radius: 5px; /* 圆角边框 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* 简单的阴影效果 */
+            transition: background-color 0.3s ease; /* 鼠标点击时颜色变化的过渡效果 */
+        }
+        #next-location-btn:hover {
+            background-color: #3367d6; /* 鼠标悬停时的背景颜色 */
+        }
+        #next-location-btn:active {
+            background-color: #2850ae; /* 鼠标点击时的背景颜色 */
+        }
+    </style>
+</head>
+<body>
+    <div id="map" style="height: 1000px; width: 100%;"></div>
+    <button id="next-location-btn">Check for Next Location</button>
     <script>
         function initMap() {
             if (navigator.geolocation) {
@@ -62,9 +96,62 @@
                 handleLocationError(false, infoWindow, map.getCenter());
             }
         }
+    document.getElementById('next-location-btn').addEventListener('click', function() {
+        console.log('Button clicked');
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log('Position obtained:', position);
+        // 获取用户当前的位置
+        var userLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+
+        // 将用户位置和目标位置发送到后端
+        fetch('/navi/check_location/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'), // 确保您有这个函数来获取CSRF token
+            },
+            body: JSON.stringify({
+                user_latitude: userLocation.lat,
+                user_longitude: userLocation.lng,
+                // 假设您已经有了目标位置的数据
+                target_latitude: parseFloat('{{ target_latitude }}'),
+                target_longitude: parseFloat('{{ target_longitude }}')
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // 如果检查成功，重新调用map_view来获取新的位置
+                window.location.reload(); // 或者可以调用其他逻辑来更新页面而不是完全重载
+            } else {
+                alert('You have not reached the target location yet.');
+
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }, function(error) {
+        console.error('Error getting location', error);
+    });
+});
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // 判断这个cookie的名称是否和我们传入的名称一致
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
     </script>
-</head>
-<body>
-    <div id="map" style="height: 1000px; width: 100%;"></div>
 </body>
 </html>
