@@ -9,6 +9,7 @@ from django.contrib import messages  # 引入 messages 模块
 
 # Create your views here.
 #成就系统详情界面视图
+#这个视图应该是没有啥用的
 def detail(request, pk):
     # 通过昵称来获取 Achievement 实例
     achievement_detail = get_object_or_404(Achievement, pk=pk)

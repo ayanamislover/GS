@@ -15,9 +15,9 @@ def index_none(request):
     return render(request, 'usersinformation/player_profile_none.html')
 
 #答题主页面
-def index(request, pk):
+def index(request, nickname):
     series_list = Series.objects.all()
-    user_profile = get_object_or_404(PlayerProfile, pk=pk)
+    user_profile = get_object_or_404(PlayerProfile, nickname=nickname)
 
     # 假设 PlayerProfile 有一个方法或属性来获取已完成的系列
     completed_series_ids = user_profile.completed_series.values_list('id', flat=True)
@@ -33,14 +33,14 @@ def index(request, pk):
     return render(request, 'answerquestion/index.html', {
         'series_with_status': series_with_status,
         'user_nickname': user_profile.nickname,
-        'user_pk': pk,
+
     })
 
 #本地
-def series_detail(request, series_id, pk):
+def series_detail(request, series_id, nickname):
     series = get_object_or_404(Series, pk=series_id)
     questions = series.questions.all()
-    player_profile = get_object_or_404(PlayerProfile, pk=pk)  # 根据传入的用户pk获取用户实例
+    player_profile = get_object_or_404(PlayerProfile, nickname=nickname)  # 根据传入的用户pk获取用户实例
     # 获取用户昵称
     user_nickname = player_profile.nickname  # 假设PlayerProfile模型有一个nickname字段
 
@@ -50,7 +50,7 @@ def series_detail(request, series_id, pk):
             total_score = calculate_score(form.cleaned_data, questions)
              #更新用户的PlayerProfile中的score
             try:
-               player_profile = PlayerProfile.objects.get(id=pk)
+               player_profile = PlayerProfile.objects.get(nickname=nickname)
                player_profile.score += total_score  # 增加得分
                player_profile.save()
             except PlayerProfile.DoesNotExist:
@@ -58,7 +58,7 @@ def series_detail(request, series_id, pk):
              pass
 
             # 构建带有查询字符串的URL
-            results_url = reverse('results_page', kwargs={'pk': pk}) + f'?score={total_score}'
+            results_url = reverse('results_page', kwargs={'nickname': nickname}) + f'?score={total_score}'
             return redirect(results_url)
     else:
         form = QuizForm(questions=questions)
@@ -66,11 +66,11 @@ def series_detail(request, series_id, pk):
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
 
 
-def results_page(request, pk):
+def results_page(request, nickname):
     # 从查询字符串中获取得分
     additional_score = int(request.GET.get('score', 0))
     # 获取PlayerProfile实例
-    player_profile = get_object_or_404(PlayerProfile, pk=pk)
+    player_profile = get_object_or_404(PlayerProfile, nickname=nickname)
     # 假设通过查询字符串传递系列的ID
     series_id = request.GET.get('series_id')
 
@@ -88,7 +88,6 @@ def results_page(request, pk):
            'nickname': player_profile.nickname,
           'total_score': player_profile.score,
          'additional_score': additional_score,
-        'pk': pk,
        'series_completed': series_completed,  # 标记系列是否完成
 
      }
@@ -98,10 +97,10 @@ def results_page(request, pk):
 
 
 #梓涵
-def series_detail1(request, series_id, pk):
+def series_detail1(request, series_id, nickname):
     series = get_object_or_404(Series, pk=series_id)
     questions = series.questions.all()
-    player_profile = get_object_or_404(PlayerProfile, pk=pk)  # 根据传入的用户pk获取用户实例
+    player_profile = get_object_or_404(PlayerProfile, nickname=nickname)  # 根据传入的用户pk获取用户实例
     # 获取用户昵称
     user_nickname = player_profile.nickname  # 假设PlayerProfile模型有一个nickname字段
 
@@ -111,7 +110,7 @@ def series_detail1(request, series_id, pk):
             total_score = calculate_score(form.cleaned_data, questions)
              #更新用户的PlayerProfile中的score
             try:
-               player_profile = PlayerProfile.objects.get(id=pk)
+               player_profile = PlayerProfile.objects.get(nickname=nickname)
                player_profile.score += total_score  # 增加得分
                player_profile.save()
             except PlayerProfile.DoesNotExist:
@@ -119,7 +118,7 @@ def series_detail1(request, series_id, pk):
              pass
 
             # 构建带有查询字符串的URL
-            results_url = reverse('results_page', kwargs={'pk': pk}) + f'?score={total_score}'
+            results_url = reverse('results_page', kwargs={'nickname': nickname}) + f'?score={total_score}'
             return redirect(results_url)
     else:
         form = QuizForm(questions=questions)
@@ -127,11 +126,11 @@ def series_detail1(request, series_id, pk):
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
 
 #梓涵
-def results_page1(request, pk):
+def results_page1(request, nickname):
     # 从查询字符串中获取得分
     additional_score = int(request.GET.get('score', 0))
     # 获取PlayerProfile实例
-    player_profile = get_object_or_404(PlayerProfile, pk=pk)
+    player_profile = get_object_or_404(PlayerProfile, nickname=nickname)
     # 假设通过查询字符串传递系列的ID
     series_id = request.GET.get('series_id')
 
@@ -156,7 +155,7 @@ def results_page1(request, pk):
     query_string = urlencode(query_dict)
 
     # 生成重定向URL，附加查询字符串
-    return_url = reverse('你的视图函数名字', args=[player_profile.pk]) + '?' + query_string
+    return_url = reverse('你的视图函数名字', args=[player_profile.nickname]) + '?' + query_string
 
     # 重定向到目标URL
     return redirect(return_url)
@@ -211,10 +210,10 @@ def submit_answers(request):
         return redirect('index')
 
 #lcy
-def series_detail2(request, series_id, pk):
+def series_detail2(request, series_id, nickname):
         series2 = get_object_or_404(Series, pk=series_id)
         questions2 = series2.questions.all()
-        player_profile2 = get_object_or_404(PlayerProfile, pk=pk)  # 根据传入的用户pk获取用户实例
+        player_profile2 = get_object_or_404(PlayerProfile, nickname=nickname)  # 根据传入的用户pk获取用户实例
         # 获取用户昵称
         user_nickname2 = player_profile2.nickname  # 假设PlayerProfile模型有一个nickname字段
 
@@ -224,7 +223,7 @@ def series_detail2(request, series_id, pk):
                 total_score = calculate_score(form.cleaned_data, questions2)
                 # 更新用户的PlayerProfile中的score
                 try:
-                    player_profile2 = PlayerProfile.objects.get(id=pk)
+                    player_profile2 = PlayerProfile.objects.get(nickname=nickname)
                     player_profile2.score += total_score  # 增加得分
                     player_profile2.save()
                 except PlayerProfile.DoesNotExist:
@@ -232,7 +231,7 @@ def series_detail2(request, series_id, pk):
                     pass
 
                 # 构建带有查询字符串的URL
-                results_url = reverse('results_page', kwargs={'pk': pk}) + f'?score={total_score}'
+                results_url = reverse('results_page', kwargs={'nickname': nickname}) + f'?score={total_score}'
                 return redirect(results_url)
         else:
             form = QuizForm(questions=questions2)
@@ -241,11 +240,11 @@ def series_detail2(request, series_id, pk):
                       {'form': form, 'series': series2, 'user_nickname': user_nickname2})
 
 #lcy
-def results_page2(request, pk):
+def results_page2(request, nickname):
         # 从查询字符串中获取得分
         additional_score = int(request.GET.get('score', 0))
         # 获取PlayerProfile实例
-        player_profile = get_object_or_404(PlayerProfile, pk=pk)
+        player_profile = get_object_or_404(PlayerProfile, nickname=nickname)
         # 假设通过查询字符串传递系列的ID
         series_id = request.GET.get('series_id')
 
@@ -269,7 +268,7 @@ def results_page2(request, pk):
         query_string = urlencode(query_dict)
 
         # 生成重定向URL，附加查询字符串
-        return_url = reverse('你的视图函数名字', args=[player_profile.pk]) + '?' + query_string
+        return_url = reverse('你的视图函数名字', args=[player_profile.nickname]) + '?' + query_string
 
         # 重定向到目标URL
         return redirect(return_url)

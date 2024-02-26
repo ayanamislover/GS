@@ -10,6 +10,7 @@ class Achievement(models.Model):
     def __str__(self):
         return self.name
 
+#这个实例基本也没啥用
 # UserAchievement模型使用ForeignKey字段与User和Achievement模型建立了关联
 class UserAchievement(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
