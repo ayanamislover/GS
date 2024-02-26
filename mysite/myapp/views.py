@@ -6,7 +6,7 @@ from usersinformation.views import player_profile
 
 from django.shortcuts import render, redirect
 
-def home(request):
+def home(request, nickname):
     return render(request, 'home.html')
 
 def user_dashboard(request):

@@ -66,8 +66,8 @@ def login(request):
                 # 用户验证成功
                 # 在会话中设置用户ID来跟踪登录状态
                 request.session['user_username'] = user.username
-                # 重定向到用户信息页面
-                return redirect(reverse('usersinformation:player_profile', kwargs={'nickname': user.username}))
+                # 重定向到用户信息页面,已经成功定向。
+                return redirect(reverse('myapp:home', kwargs={'nickname': user.username}))
             else:
                 # 密码不匹配
                 return HttpResponse("密码Invalid login")
