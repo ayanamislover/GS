@@ -10,17 +10,19 @@ from answerquestion.models import Series
 
 # Create your models here.
 class PlayerProfile(models.Model):
-    #关联到Django内置User模型，实现每一个用户注册一个用户信息对象
-    #user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+
     # 关联到不同应用中的Web.User模型
-    #user = models.OneToOneField('accounts.User', on_delete=models.CASCADE, null=True)
+    #user = models.OneToOneField('web.User', on_delete=models.CASCADE, null=True)
+
+    # 在PlayerProfile模型中添加user字段来关联User模型
+    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     #头像
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     # 用户昵称
     nickname = models.CharField(max_length=255, blank=True)
 
-    # 用户邮箱,后面删掉
-    email = models.EmailField(unique=True)
+    #
+    email = models.EmailField(blank=True)
 
     score = models.IntegerField(default=0)  # 用户积分
 
@@ -37,6 +39,10 @@ class PlayerProfile(models.Model):
 
     # 用户登录天数
     login_days = models.IntegerField(default=0)
+
+    #lcy
+    last_game_start = models.DateTimeField(null=True, blank=True)
+    verified_locations_count = models.IntegerField(default=0)
 
     #完成答题系列信息
     completed_series = models.ManyToManyField(Series, related_name='completed_by', blank=True)

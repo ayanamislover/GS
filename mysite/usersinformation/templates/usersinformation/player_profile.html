@@ -133,7 +133,7 @@
             <p>Bio: {{ player_information.bio }}</p>
             <!--<p>Login Days: {{ player_information.login_days }}</p>-->
             <!--增加跳转连接，跳转到编辑界面，并传递id信息-->
-            <a href="{% url 'edit_player_profile' player_information.id %}">Edit Profile</a>
+            <a href="{% url 'usersinformation:edit_player_profile' player_information.nickname %}">Edit Profile</a>
         {% else %}
             <p>Player profile does not exist.</p>
         {% endif %}

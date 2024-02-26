@@ -21,10 +21,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("answerquestion/", include("answerquestion.urls")),
-    #用户信息界面url
-    path("usersinformaiton/", include("usersinformation.urls")),
-    #成就系统界面url
+    # 用户信息界面url，注意这里拼写需要和app名称一致
+    path("usersinformation/", include(("usersinformation.urls", "usersinformation"), namespace="usersinformation")),
+    # 成就系统界面url
     path("achievement/", include("achievement.urls")),
+    path("web/", include("web.urls")),
     path("admin/", admin.site.urls),
 ]
 if settings.DEBUG:

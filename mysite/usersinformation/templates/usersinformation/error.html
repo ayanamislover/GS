@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Oops! Something went wrong.</h1>
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% else %}
+        <p>An unknown error has occurred.</p>
+    {% endif %}
+    <a href="{% url 'login' %}">Return to the homepage</a>
+</body>
+</html>

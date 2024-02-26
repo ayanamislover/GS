@@ -23,10 +23,10 @@ class PlayerProfileForm(forms.ModelForm):
 
 class DisplayedAchievementsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        user_pk = kwargs.pop('user_pk', None)  # 从kwargs中获取user_pk，并在之后删除这个键值对
+        user_nickname = kwargs.pop('user_nickname', None)  # 从kwargs中获取user_pk，并在之后删除这个键值对
         super(DisplayedAchievementsForm, self).__init__(*args, **kwargs)
-        if user_pk:
-            player_profile = PlayerProfile.objects.get(pk=user_pk)
+        if user_nickname:
+            player_profile = PlayerProfile.objects.get(nickname=user_nickname)
             # 过滤成就：只显示玩家已经解锁的成就
             self.fields['displayed_achievements'].queryset = Achievement.objects.filter(
                 unlock_score__lte=player_profile.score)
