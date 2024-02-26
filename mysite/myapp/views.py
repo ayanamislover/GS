@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse
+from usersinformation.views import player_profile
 # Create your views here.
 # views.py
 
@@ -21,7 +22,7 @@ def developer_dashboard(request):
     return render(request, 'developer_dashboard.html')
 
 def user_profile(request):
-    return render(request, 'user_profile.html')
+    return redirect(reverse('usersinformation:player_profile', kwargs={"nickname":player_profile.nickname}))
 
 def developer_leaderboard(request):
     return render(request, 'developer_leaderboard.html')

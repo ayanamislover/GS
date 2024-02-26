@@ -26,7 +26,10 @@ urlpatterns = [
     # 成就系统界面url
     path("achievement/", include("achievement.urls")),
     path("web/", include("web.urls")),
+
+    path("leaderboard/", include("leaderboard.urls")),
     path("admin/", admin.site.urls),
+    path("", include("myapp.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

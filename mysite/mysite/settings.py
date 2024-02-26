@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-
+    "leaderboard.apps.LeaderboardConfig",
+    "myapp.apps.MyappConfig",
     "web.apps.WebConfig",
     "answerquestion.apps.AnswerquestionConfig",
     "achievement.apps.AchievementConfig",
