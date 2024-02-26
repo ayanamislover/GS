@@ -10,7 +10,7 @@ from usersinformation.models import PlayerProfile
 from django.contrib.auth.hashers import make_password
 
 class User(models.Model):
-    username = models.CharField(max_length=50)
+    username = models.CharField(max_length=50,unique=True)
     password = models.CharField(max_length=50)
     email = models.EmailField(blank=True, null=True)
     # OneToOneField关联到PlayerProfile

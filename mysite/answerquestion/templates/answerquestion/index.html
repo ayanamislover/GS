@@ -14,7 +14,7 @@
                         {% if item.is_completed %}
                             <a href="#" class="btn btn-success">Completed</a>
                         {% else %}
-                            <a href="{% url 'series_detail' item.series.id user_pk %}" class="btn btn-primary">Explore</a>
+                            <a href="{% url 'series_detail' item.series.id user_nickname %}" class="btn btn-primary">Explore</a>
                         {% endif %}
                     </div>
                 </div>
