@@ -231,7 +231,7 @@ def series_detail2(request, series_id, nickname):
                     pass
 
                 # 构建带有查询字符串的URL
-                results_url = reverse('results_page', kwargs={'nickname': nickname}) + f'?score={total_score}'
+                results_url = reverse('results_page2', kwargs={'nickname': nickname}) + f'?score={total_score}'
                 return redirect(results_url)
         else:
             form = QuizForm(questions=questions2)

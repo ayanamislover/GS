@@ -10,5 +10,6 @@ urlpatterns = [
     path('<str:nickname>/', views.index, name='index'),  # 假设你希望URL路径包含用户ID
     path('submit_answers/<int:question_id>/', views.submit_answers, name='submit_answers'),  # 提交答案的处理
     path('series/<int:series_id>/<str:nickname>/', views.series_detail, name='series_detail'),
-    path('results_page/<str:nickname>/', views.results_page, name='results_page'),  # 假设你有一个结果视图
+    path('results_page/<str:nickname>/', views.results_page, name='results_page'),
+    path('results_page2/<str:nickname>/', views.results_page2, name='results_page2'),# 假设你有一个结果视图
 ]

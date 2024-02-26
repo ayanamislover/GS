@@ -7,7 +7,7 @@
     <p>You earned: {{ additional_score }} points!</p> <!-- 显示此次获得的分数 -->
     <p>Your total score is now: {{ total_score }}</p> <!-- 显示更新后的总分数 -->
     <!-- 假设 'index' 需要传递用户pk参数 -->
-    <a href="{% url 'index' pk=pk %}">Back to series list</a>
+    <a href="{% url 'index' nickname=nickname %}">Back to series list</a>
 {% endblock %}
 
 
