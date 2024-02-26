@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcement List</title>
+</head>
+<body>
+    <h1>Announcement List</h1>
+    <ul>
+        {% for announcement in announcements %}
+            <li>
+                <h2>{{ announcement.title }}</h2>
+                <p>Start Date: {{ announcement.date_start|date:"Y-m-d H:i" }}</p>
+                <p>End Date: {{ announcement.end_data|date:"Y-m-d H:i" }}</p>
+            </li>
+        {% empty %}
+            <li>No announcements available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
