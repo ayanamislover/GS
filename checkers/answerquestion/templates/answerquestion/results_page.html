@@ -1,0 +1,13 @@
+{% extends 'answerquestion/base.html' %}
+
+{% block title %}Quiz Results{% endblock %}
+
+{% block content %}
+    <h1>Quiz Results for {{ nickname }}</h1> <!-- 显示用户昵称 -->
+    <p>You earned: {{ additional_score }} points!</p> <!-- 显示此次获得的分数 -->
+    <p>Your total score is now: {{ total_score }}</p> <!-- 显示更新后的总分数 -->
+    <!-- 假设 'index' 需要传递用户pk参数 -->
+    <a href="{% url 'ans:index' nickname=nickname %}">Back to series list</a>
+{% endblock %}
+
+
