@@ -1,0 +1,12 @@
+<!-- rewards/templates/rewards/gift_detail.html -->
+{% extends 'rewards/base.html' %}
+{% block title %}{{ gift.name }} Details{% endblock %}
+{% block content %}
+    
+    <h1>{{ gift.name }}</h1>
+    <p>NEED POINT: {{ gift.points }}</p>
+    <p>DESCRIPTION: {{ gift.description }}</p>
+    <a href="{% url 'gift_list' %}">Return to gift LIST</a>
+
+{% endblock %}
+
