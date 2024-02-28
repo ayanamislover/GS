@@ -3,85 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan QR Code</title>
+    <title>Attend the Competition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #EDE574, #E1F5C4); /* 水平方向渐变背景色 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* 设置容器背景色为半透明白色 */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* 居中容器中的文本内容 */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Scan QR Code</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="file" accept="image/*">
-        <button type="submit">Scan QR Code from Image</button>
-    </form>
-
-    <hr>
-
-    <h2>Scan QR Code from Camera</h2>
-    <video id="video" width="100%" height="auto"></video>
-    <canvas id="canvas" style="display: none;"></canvas>
-    <button id="startScanCamera">Start Scan</button>
-
-    <script>
-        var video = document.getElementById('video');
-        var canvas = document.getElementById('canvas');
-        var startScanButton = document.getElementById('startScanCamera');
-
-        startScanButton.onclick = function() {
-            // 显示视频元素
-            video.style.display = 'block';
-            // 隐藏按钮
-            startScanButton.style.display = 'none';
-
-            // 获取摄像头权限
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function(stream) {
-                    video.srcObject = stream;
-                    video.play();
-                })
-                .catch(function(err) {
-                    console.error('Failed to access camera:', err);
-                    alert('Failed to access camera.');
-                });
-        };
-
-        video.addEventListener('play', function() {
-            // 在视频播放后开始扫描
-            var context = canvas.getContext('2d');
-            var frameInterval = setInterval(function() {
-                if (video.paused || video.ended) {
-                    clearInterval(frameInterval);
-                    return;
-                }
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                // 将图像数据转换为 base64 编码的字符串
-                var dataUrl = canvas.toDataURL('image/png');
-                // 将图像数据发送到后端进行处理
-                fetch('{% url "scan_qr_code" %}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    body: 'file=' + encodeURIComponent(dataUrl)
-                })
-                .then(function(response) {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Failed to scan QR code from camera.');
-                    }
-                })
-                .then(function(data) {
-                    if (data.qr_code_url) {
-                        clearInterval(frameInterval);
-                        window.location.href = data.qr_code_url; // 重定向到解析出的 URL
-                    }
-                })
-                .catch(function(error) {
-                    console.error('Error:', error);
-                });
-            }, 500);  // 降低扫描间隔，提高灵敏度
-        });
-    </script>
+    <div class="container">
+        <h1>Attend the Competition</h1>
+        <a href="{% url 'scan_qr' %}" class="btn">Start the Game</a>
+    </div>
 </body>
 </html>
