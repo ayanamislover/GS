@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render,redirect, reverse
 from django.http import HttpResponse
 from .models import PlayerProfile
 from .forms import PlayerProfileForm, DisplayedAchievementsForm
-from django.contrib import messages  # 引入 messages 模块
+from django.contrib import messages  # import messages modlule
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
