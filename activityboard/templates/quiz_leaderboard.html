@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Leaderboard</title>
+</head>
+<body>
+    <h1>Quiz Leaderboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Nickname</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ player.player }}</td>
+                <td>{{ player.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'home' nickname=nickname%}" >back to the homepage</a>
+</body>
+</html>
