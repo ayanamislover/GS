@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Profile</title>
+
+    <style>
+        .achievements-container {
+            display: flex;
+            flex-wrap: wrap; /* 允许子项换行 */
+            justify-content: center; /* 子项水平居中 */
+            gap: 15px; /* 子项之间的间隔 */
+        }
+
+        .achievement {
+            position: relative; /* 设置相对定位，以便内部元素可以绝对定位 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 130px; /* 控制成就方块的宽度，根据需要调整 */
+            max-width: 130px; /* 控制成就方块的最大宽度 */
+            max-height: 250px; /* 控制成就方块的最大高度，根据需要调整 */
+            padding: 1px; /* 根据实际情况调整内边距 */
+            margin: 10px;
+            background-color: #f9f9f9; /* 轻灰色背景 */
+            border: 1px solid #ddd; /* 边框 */
+            border-radius: 10px; /* 圆角边框 */
+            overflow: hidden; /* 隐藏超出部分 */
+            }
+
+        .achievement-icon {
+            width: 100%; /* 确保图片铺满容器宽度 */
+            height: 100%; /* 确保图片铺满容器高度 */
+            object-fit: cover; /* 图片覆盖整个容器 */
+            border-radius: 10px 10px 0 0; /* 上面的圆角 */
+            aspect-ratio: auto; /* 设定宽高比，根据需要调整 */
+            }
+
+        .achievement h3 {
+            position: absolute; /* 绝对定位，相对于父容器 */
+            bottom: 0; /* 放在容器底部 */
+            left: 0;
+            width: 100%; /* 宽度占满容器 */
+            font-size: 0.9em; /* 减小字体大小，根据需要调整 */
+            color: white; /* 文字颜色 */
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明背景色 */
+            margin: 0; /* 移除外边距 */
+            padding: 1px 0; /* 上下内边距，根据需要调整 */
+            box-sizing: border-box; /* 确保内边距不会影响总宽度 */
+            border-radius: 0 0 10px 10px; /* 下面的圆角 */
+            }
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('{% static "usersinformaiton/playerprofilebackground.jpg" %}');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .avatar {
+            max-width: 150px; /* 或者你希望的任何尺寸 */
+
+        }
+        .container {
+            display: flex; /* 启用Flexbox布局 */
+            flex-direction: column; /* 子元素竖直排列 */
+            align-items: center; /* 子元素在交叉轴上居中对齐 */
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 5% auto; /* 上下保留一些空间，左右自动调整以居中 */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%; /* 根据需要调整宽度 */
+            max-width: 600px; /* 最大宽度，确保在大屏幕上也不会过宽 */
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        p {
+            color: #333;
+            font-size: 16px;
+        }
+        a {
+            display: block;
+            width: max-content;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #003d82;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Player Profile</h1>
+        {% if player_information %}
+            {% if player_information.avatar %}
+                <img src="{{ player_information.avatar.url }}" alt="Avatar" class="avatar">
+            {% else %}
+                <!-- 如果没有上传头像，可以显示默认图片或者不显示图片 -->
+                <img src="/static/images/主页背景2.jpg" alt="Default Avatar" class="avatar">
+            {% endif %}
+            <p>Nickname: {{ player_information.nickname }}</p>
+            <p>Email: {{ player_information.email }}</p>
+            <p>Score: {{ player_information.score }}</p>
+            <p>Achievement Count: {{unlocked_achievement_count}}</p>
+            <h2>Achievements</h2>
+            <div class="achievements-container">
+                {% for achievement in displayed_achievements %}
+                <div class="achievement">
+                    {% if achievement.icon %}
+                    <img src="{{ achievement.icon.url }}" alt="{{ achievement.name }}" class="achievement-icon">
+                    {% endif %}
+                    <h3>{{ achievement.name }}</h3>
+                </div>
+                {% empty %}
+                <p>No achievements to display.</p>
+                {% endfor %}
+            </div>
+
+            <p>Bio: {{ player_information.bio }}</p>
+            <!--<p>Login Days: {{ player_information.login_days }}</p>-->
+            <!--增加跳转连接，跳转到编辑界面，并传递id信息-->
+            <a href="{% url 'usersinformation:edit_player_profile' player_information.nickname %}">Edit Profile</a>
+        {% else %}
+            <p>Player profile does not exist.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

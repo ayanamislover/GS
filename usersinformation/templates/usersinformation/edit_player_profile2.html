@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* 主要内容区域为白色 */
+        }
+        .header {
+            background-color: #004d40; /* 顶部深绿色条 */
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header img {
+            height: 50px; /* 根据实际图片大小调整 */
+        }
+        form {
+            background-color: #e8f5e9; /* 编辑表单使用浅绿色背景 */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cfd8dc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type=submit] {
+            background-color: #004d40; /* 按钮采用顶部条相同的深绿色 */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button[type=submit]:hover {
+            background-color: #003d33; /* 按钮悬停时颜色稍微变深 */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- 用实际图片路径替换 'path_to_exeter_logo.png' -->
+        <img src="path_to_exeter_logo.png" alt="University of Exeter">
+    </div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- 渲染PlayerProfile表单 -->
+    <h3>Profile Information</h3>
+    {{ profile_form.as_p }}
+    <!-- 渲染DisplayedAchievements表单 -->
+    <h3>Displayed Achievements</h3>
+    {{ achievements_form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+
+</body>
+</html>
+
