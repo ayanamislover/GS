@@ -1,29 +1,30 @@
 from __future__ import unicode_literals
-# 导入Django的模型模块
+
+# Import Django's model module
 from django.db import models
 from django.db import models, transaction
 from django.contrib import admin
 from usersinformation.models import PlayerProfile
 
 
-# 定义User模型类
-from django.contrib.auth.hashers import make_password
 
+from django.contrib.auth.hashers import make_password
+# Define the User model class
 class User(models.Model):
     username = models.CharField(max_length=50,unique=True)
     password = models.CharField(max_length=50)
-    # OneToOneField关联到PlayerProfile
+    # OneToOneField is associated with PlayerProfile
     player_profile = models.OneToOneField(PlayerProfile, on_delete=models.CASCADE, null=True, related_name='user')
 
     def save(self, *args, **kwargs):
-        # 首先保存User对象
+        # First save the User object
         super(User, self).save(*args, **kwargs)
-        # 然后获取或创建PlayerProfile实例
+        # Then get or create a PlayerProfile instance
         player_profile, created = PlayerProfile.objects.get_or_create(user=self)
-        # 如果是新创建的PlayerProfile，设置其额外的字段
+        # If it is a newly created PlayerProfile, set its additional fields
         if created:
             player_profile.nickname = self.username
-            player_profile.email = self.email  # 假设PlayerProfile模型有email字段
+            player_profile.email = self.email  # Assume that the PlayerProfile model has an email field
             player_profile.save()
 
 
