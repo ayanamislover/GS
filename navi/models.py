@@ -1,13 +1,13 @@
 from django.db import models
 
 class Checker(models.Model):
-    # 编号，使用Django的自动增长主键字段
+    # create a primary key for the model
     id = models.AutoField(primary_key=True)
-    # 纬度，同样使用DecimalField
+    # latitude, using DecimalField to store precise decimal and specify the maximum number of digits and decimal places
     latitude = models.DecimalField(max_digits=10, decimal_places=7)
-    # 经度，使用DecimalField以存储精确的小数，并指定最大位数和小数位
+    # longitude, using DecimalField to store precise decimal and specify the maximum number of digits and decimal places
     longitude = models.DecimalField(max_digits=10, decimal_places=7)
-    # 地点名称，使用CharField并指定最大长度
+    # location name, using CharField to store a string with a maximum length of 255 characters
     location_name = models.CharField(max_length=255)
 
 class player_profile(models.Model):
