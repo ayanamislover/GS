@@ -5,35 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnswerQuestion</title>
-    <!-- 引入Bootstrap CSS -->
+    <!--  Use Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- 自定义CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'answerquestion/style.css' %}">
     <style>
-        /* 自定义样式 */
+
         .user-nickname {
-            font-size: larger; /* 昵称文字更大 */
-            border: 2px solid #aaa; /* 边框 */
-            border-radius: 50%; /* 圆形 */
-            padding: 5px 10px; /* 内边距 */
-            margin-right: 10px; /* 右外边距 */
+            font-size: larger; /* size large */
+            border: 2px solid #aaa; /* border */
+            border-radius: 50%; /* cycle */
+            padding: 5px 10px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <!-- 删除了首页链接 -->
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <!-- 应用自定义样式 -->
+
                         <span class="nav-link user-nickname">{{ user_nickname }}</span>
                     </li>
-                    <!-- 其他导航链接 -->
+
                 </ul>
             </div>
         </div>
@@ -41,7 +41,7 @@
 
     <div class="container">
         {% block content %}
-        <!-- 页面特定内容将在这里渲染 -->
+
         {% endblock %}
     </div>
 
@@ -51,7 +51,7 @@
         </div>
     </footer>
 
-    <!-- 引入Bootstrap JS和jQuery -->
+    <!-- USE Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

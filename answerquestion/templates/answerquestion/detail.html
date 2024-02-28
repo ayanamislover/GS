@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>{{ series.name }}</h1>
-<form action="" method="post">  <!-- 确保action属性正确指向处理表单提交的视图 -->
+<form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
