@@ -8,48 +8,48 @@
     <style>
         .achievements-container {
             display: flex;
-            flex-wrap: wrap; /* 允许子项换行 */
-            justify-content: center; /* 子项水平居中 */
-            gap: 15px; /* 子项之间的间隔 */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
 
         .achievement {
-            position: relative; /* 设置相对定位，以便内部元素可以绝对定位 */
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 130px; /* 控制成就方块的宽度，根据需要调整 */
-            max-width: 130px; /* 控制成就方块的最大宽度 */
-            max-height: 250px; /* 控制成就方块的最大高度，根据需要调整 */
-            padding: 1px; /* 根据实际情况调整内边距 */
+            width: 130px;
+            max-width: 130px;
+            max-height: 250px;
+            padding: 1px;
             margin: 10px;
-            background-color: #f9f9f9; /* 轻灰色背景 */
-            border: 1px solid #ddd; /* 边框 */
-            border-radius: 10px; /* 圆角边框 */
-            overflow: hidden; /* 隐藏超出部分 */
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
             }
 
         .achievement-icon {
-            width: 100%; /* 确保图片铺满容器宽度 */
-            height: 100%; /* 确保图片铺满容器高度 */
-            object-fit: cover; /* 图片覆盖整个容器 */
-            border-radius: 10px 10px 0 0; /* 上面的圆角 */
-            aspect-ratio: auto; /* 设定宽高比，根据需要调整 */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            aspect-ratio: auto;
             }
 
         .achievement h3 {
-            position: absolute; /* 绝对定位，相对于父容器 */
-            bottom: 0; /* 放在容器底部 */
+            position: absolute;
+            bottom: 0;
             left: 0;
-            width: 100%; /* 宽度占满容器 */
-            font-size: 0.9em; /* 减小字体大小，根据需要调整 */
-            color: white; /* 文字颜色 */
-            background-color: rgba(0, 0, 0, 0.3); /* 半透明背景色 */
-            margin: 0; /* 移除外边距 */
-            padding: 1px 0; /* 上下内边距，根据需要调整 */
-            box-sizing: border-box; /* 确保内边距不会影响总宽度 */
-            border-radius: 0 0 10px 10px; /* 下面的圆角 */
+            width: 100%;
+            font-size: 0.9em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.3);
+            margin: 0;
+            padding: 1px 0;
+            box-sizing: border-box;
+            border-radius: 0 0 10px 10px;
             }
 
 
@@ -62,20 +62,20 @@
             background-attachment: fixed;
         }
         .avatar {
-            max-width: 150px; /* 或者你希望的任何尺寸 */
+            max-width: 150px;
 
         }
         .container {
-            display: flex; /* 启用Flexbox布局 */
-            flex-direction: column; /* 子元素竖直排列 */
-            align-items: center; /* 子元素在交叉轴上居中对齐 */
+            display: flex; /* Use Flexbox */
+            flex-direction: column;
+            align-items: center;
             background-color: rgba(255, 255, 255, 0.8);
-            margin: 5% auto; /* 上下保留一些空间，左右自动调整以居中 */
+            margin: 5% auto;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%; /* 根据需要调整宽度 */
-            max-width: 600px; /* 最大宽度，确保在大屏幕上也不会过宽 */
+            width: 80%;
+            max-width: 600px;
         }
 
         h1 {
@@ -109,8 +109,8 @@
             {% if player_information.avatar %}
                 <img src="{{ player_information.avatar.url }}" alt="Avatar" class="avatar">
             {% else %}
-                <!-- 如果没有上传头像，可以显示默认图片或者不显示图片 -->
-                <img src="{% static 'path_to_default_avatar.jpg' %}" alt="Default Avatar" class="avatar">
+
+                <img src="/static/images/主页背景2.jpg" alt="Default Avatar" class="avatar">
             {% endif %}
             <p>Nickname: {{ player_information.nickname }}</p>
             <p>Email: {{ player_information.email }}</p>
@@ -131,8 +131,8 @@
             </div>
 
             <p>Bio: {{ player_information.bio }}</p>
-            <!--<p>Login Days: {{ player_information.login_days }}</p>-->
-            <!--增加跳转连接，跳转到编辑界面，并传递id信息-->
+
+            <!--Add jump link to jump to edit screen and pass nickname information-->
             <a href="{% url 'usersinformation:edit_player_profile' player_information.nickname %}">Edit Profile</a>
         {% else %}
             <p>Player profile does not exist.</p>

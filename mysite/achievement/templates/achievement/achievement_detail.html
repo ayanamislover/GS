@@ -2,44 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--这段HTML代码是一个meta标签，专门用于设置网页的视口（viewport）配置，以确保网页在不同设备上正确地适应屏幕大小。
-        这对于构建响应式网站来说非常重要，因为它能够提供更好的用户体验，无论用户是在桌面浏览器、平板电脑还是手机上查看网站。下面是这个meta标签每个部分的详细解释：
-        name="viewport": 声明这个meta标签的名称为viewport，指明该标签用于控制视口的设置。
-        content="width=device-width": 这部分设置视口的宽度等于设备的宽度。这意味着网页的布局将会根据设备的屏幕宽度来调整，为不同尺寸的设备提供适宜的视图。
-        content="initial-scale=1.0": 这部分设置网页初始缩放比例为1.0，即网页以其原始大小显示，不进行任何缩放。这保证了用户首次加载网页时，网页内容不会被缩放，提供了一致的视觉体验。
-     -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievements</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     {% load static %}
 </head>
+<style>
+    .custom-header {
+        background-color: #ffbb54; /* Bootstrap primary color */
+        color: white;
+        border-radius: 20px;
+    }
+    .custom-row {
+        background-color: #f8f9fa; /* Bootstrap light color */
+        border-radius: 20px;
+    }
+    body {
+        background: linear-gradient(to right,#D1913C,#FFD194);
+    }
+    .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the container */
+            border-radius: 10px; /* Rounded corners for the container */
+            padding: 20px; /* Some padding inside the container */
+            margin-top: 20px; /* Some margin at the top */
+        }
+</style>
+
 <body>
+   <div class="container mt-4">
     <h1 class="text-center mb-4">Achievements</h1>
-    <div class="container">
-        <div class="row">
+    <table class="table">
+        <thead class="custom-header">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Icon</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Unlock Score</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for achievement in achievement_detail %}
-                <div class="col-md-4 mb-3">
-                    <div class="card">
+                <tr class="{{ forloop.counter|divisibleby:2|yesno:"custom-row," }}">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
                         {% if achievement.icon %}
-                            <img src="{{ achievement.icon.url }}" class="card-img-top" alt="{{ achievement.name }}">
+                            <img src="{{ achievement.icon.url }}" alt="{{ achievement.name }}" style="width: 60px; height: auto;">
                         {% else %}
-                            <img src="{% static 'achievement/images/default.jpg' %}" class="card-img-top" alt="Default Icon">
+                            <img src="{% static 'achievement/images/default.jpg' %}" alt="Default Icon" style="width: 60px; height: auto;">
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ achievement.name }}</h5>
-                            <p class="card-text">{{ achievement.description }}</p>
-                            <p class="card-text"><small class="text-muted">Unlock Score: {{ achievement.unlock_score }}</small></p>
-                        </div>
-                    </div>
-                </div>
+                    </td>
+                    <td>{{ achievement.name }}</td>
+                    <td>{{ achievement.description }}</td>
+                    <td>{{ achievement.unlock_score }}</td>
+                </tr>
             {% empty %}
-                <div class="col-12">
-                    <p>No achievements found.</p>
-                </div>
+                <tr>
+                    <td colspan="5">No achievements found.</td>
+                </tr>
             {% endfor %}
-        </div>
-    </div>
-    <!-- 可选：引入Bootstrap JS 和 Popper.js -->
+        </tbody>
+    </table>
+</div>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

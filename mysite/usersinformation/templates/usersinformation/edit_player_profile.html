@@ -14,26 +14,25 @@
 </ul>
 {% endif %}
 <h1>Edit Player Profile</h1>
-<!--使用POST方法-->
-<!--action属性没有显示声明，当前表单默认返回给当前URL-->
+
 <form method="post">
     {% csrf_token %}
-    <!--用户昵称-->
+    <!--Nickname-->
     <div>
         <label for="nickname">Nickname:</label>
         <input type="text" id="nickname" name="nickname" value="{{ player_information.nickname }}">
     </div>
-    <!--用户邮箱-->
+    <!--Email-->
     <div>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="{{ player_information.email }}">
     </div>
-    <!--用户个性签名-->
+    <!--Bio-->
     <div>
         <label for="bio">Bio:</label>
         <textarea id="bio" name="bio">{{ player_information.bio }}</textarea>
     </div>
-    <!-- 总的保存按钮 -->
+    <!-- Save button -->
     <button type="submit">Save Changes</button>
 </form>
 

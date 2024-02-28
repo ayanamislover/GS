@@ -1,7 +1,7 @@
 {% extends 'answerquestion/base.html' %}
 
 {% block content %}
-<!-- 使用Bootstrap的容器来对内容进行布局 -->
+<!--  Use Bootstrap -->
 <div class="container mt-4">
     <h2 class="mb-4">Available Series</h2>
     <div class="row">
@@ -14,7 +14,7 @@
                         {% if item.is_completed %}
                             <a href="#" class="btn btn-success">Completed</a>
                         {% else %}
-                            <a href="{% url 'series_detail' item.series.id user_nickname %}" class="btn btn-primary">Explore</a>
+                            <a href="{% url 'ans:series_detail' item.series.id user_nickname %}" class="btn btn-primary">Explore</a>
                         {% endif %}
                     </div>
                 </div>
