@@ -1,0 +1,30 @@
+/* 导航栏样式 */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://use.fontawesome.com/releases/v5.0.13/css/all.css');
+.navbar {
+    background-color: #1a946f; /* 蓝色背景 */
+    overflow: hidden; /* 清除浮动 */
+    position: fixed; /* 固定在页面顶部 */
+    top: 0; /* 顶部对齐 */
+    width: 100%; /* 宽度为100% */
+    height: 50px; /* 设置导航栏高度 */
+    line-height: 50px; /* 设置文本行高与导航栏高度一致 */
+    z-index: 1000; /* 确保导航栏在其他内容之上 */
+}
+
+/* 返回按钮样式 */
+.back-button {
+    display: block; /* 显示为块元素 */
+    color: white; /* 文本颜色为白色 */
+    text-align: center; /* 文本居中 */
+    padding: 0 20px; /* 内边距 */
+    text-decoration: none; /* 去除下划线 */
+    font-size: 16px; /* 字体大小 */
+    float: left; /* 左浮动 */
+}
+
+/* 导航栏中的链接在鼠标悬停时的样式 */
+.back-button:hover {
+    background-color: #0056b3; /* 悬停时的背景颜色 */
+    color: #ffffff; /* 悬停时的文本颜色 */
+}
