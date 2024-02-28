@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% load static %}
+</head>
+<style>
+    .custom-header {
+        background-color: #ffbb54; /* Bootstrap primary color */
+        color: white;
+        border-radius: 20px;
+    }
+    .custom-row {
+        background-color: #f8f9fa; /* Bootstrap light color */
+        border-radius: 20px;
+    }
+    body {
+        background: linear-gradient(to right,#D1913C,#FFD194);
+    }
+    .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the container */
+            border-radius: 10px; /* Rounded corners for the container */
+            padding: 20px; /* Some padding inside the container */
+            margin-top: 20px; /* Some margin at the top */
+        }
+</style>
+
+<body>
+   <div class="container mt-4">
+    <h1 class="text-center mb-4">Achievements</h1>
+    <table class="table">
+        <thead class="custom-header">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Icon</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Unlock Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for achievement in achievement_detail %}
+                <tr class="{{ forloop.counter|divisibleby:2|yesno:"custom-row," }}">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
+                        {% if achievement.icon %}
+                            <img src="{{ achievement.icon.url }}" alt="{{ achievement.name }}" style="width: 60px; height: auto;">
+                        {% else %}
+                            <img src="{% static 'achievement/images/default.jpg' %}" alt="Default Icon" style="width: 60px; height: auto;">
+                        {% endif %}
+                    </td>
+                    <td>{{ achievement.name }}</td>
+                    <td>{{ achievement.description }}</td>
+                    <td>{{ achievement.unlock_score }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No achievements found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
