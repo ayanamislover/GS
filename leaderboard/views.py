@@ -4,13 +4,13 @@ from django.http import HttpResponse
 from usersinformation.models import PlayerProfile
 
 def user_leaderboard(request):
-    # 获取按积分降序排列的 PlayerProfile 对象列表
-    score_leaderboard = PlayerProfile.objects.order_by('-score')[:10]  # 获取前10名
+    # Gets a list of PlayerProfile objects in descending order of credits
+    score_leaderboard = PlayerProfile.objects.order_by('-score')[:10]  # Get the top 10
 
-    # 获取按成就数量降序排列的 PlayerProfile 对象列表
-    achievement_leaderboard = PlayerProfile.objects.order_by('-achievement_count')[:10]  # 获取前10名
+    # Gets a list of PlayerProfile objects in descending order by number of achievements
+    achievement_leaderboard = PlayerProfile.objects.order_by('-achievement_count')[:10]  # Get the top 10
 
-    # 将排行榜数据传递给模板
+    # Pass leaderboard data to the template
     context = {
         'score_leaderboard': score_leaderboard,
         'achievement_leaderboard': achievement_leaderboard,
