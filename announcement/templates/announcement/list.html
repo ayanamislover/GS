@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcement List</title>
+    <!-- 引入Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+            /* Background gradient */
+            background: linear-gradient(to right,#00467F,#A5CC82);
+            color: #fff; /* Change text color to white */
+        }
+
+        .announcement-img {
+            width: 100%; /* 使图片宽度自适应卡片 */
+            height: auto; /* 高度自适应 */
+        }
+        .announcement-title {
+            color: #C2D7D8;
+        }
+        .announcement-date {
+            color: #006400;
+            font-size: 0.8em;
+        }
+        .announcement-card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* 添加轻微的阴影以增强立体感 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4 announcement-title">Announcement Wall</h1>
+        <div class="row">
+            {% for announcement in announcements %}
+                <div class="col-md-4 mb-4">
+                    <div class="card announcement-card">
+                        <img src="{{ announcement.image.url }}" class="card-img-top announcement-img" alt="{{ announcement.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'detail' announcement.title %}" class="stretched-link text-dark text-decoration-none">{{ announcement.title }}</a></h5>
+                            <p class="card-text"><small class="text-muted">Start Date: {{ announcement.date_start|date:"Y-m-d H:i" }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <p>No announcements available.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- 引入Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
