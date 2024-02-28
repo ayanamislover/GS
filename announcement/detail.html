@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcement Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .title {
+            color: #000000; /* 黑色 */
+            font-weight: bold; /* 加粗 */
+            font-size: 24px; /* 字号加大一号 */
+            margin-bottom: 20px; /* 标题和内容之间的间距 */
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .date {
+            color: #666666; /* 浅黑色 */
+            font-size: 14px;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px; /* 图片和内容之间的间距 */
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-detail">
+        <h1 class="title">{{ announcement.title }}</h1>
+        <img src="{{ announcement.image.url }}" alt="{{ announcement.title }}">
+        <div class="content">{{ announcement.content }}</div>
+        <p class="date">Start Date: {{ announcement.date_start|date:"Y-m-d H:i" }}</p>
+        <p>End Date: {{ announcement.end_data|date:"Y-m-d H:i" }}</p>
+
+    </div>
+</body>
+</html>
