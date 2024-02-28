@@ -8,18 +8,18 @@ from .forms import UserForm
 from django.urls import reverse
 
 
-# 确保你已经从你的模型文件中导入了User和PlayerProfile模型
+# Make sure you have imported the User and PlayerProfile models from your model files
 from .models import User
 from usersinformation.models import PlayerProfile
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth import authenticate, login  # 导入authenticate和login函数
+from django.contrib.auth import authenticate, login  # Import authenticate and login functions
 
-# 定义用户表单
-
-
+# Define user forms
 
 
-# 注册视图
+
+
+# Register view
 
 from django.contrib.auth.hashers import make_password
 
@@ -27,33 +27,33 @@ def regist(request):
     if request.method == 'POST':
         userform = UserForm(request.POST)
         if userform.is_valid():
-            # 获取表单数据
+            # Get form data
             username = userform.cleaned_data['username']
-            password = make_password(userform.cleaned_data['password'])  # 哈希密码
+            password = make_password(userform.cleaned_data['password'])  # Hash password
             email = userform.cleaned_data['email']
 
-            # 创建新用户
+            # Create a new user
             user = User.objects.create(username=username, password=password, email=email)
 
-            # 创建与新用户关联的PlayerProfile实例
+            # Create a PlayerProfile instance associated with the new user
             #PlayerProfile.objects.create(user=user, email= email, nickname=username)
 
-            # 注册成功后跳转到登录界面
+            # After successful registration, go to the login interface
             return redirect(reverse('login'))
         else:
-            # 如果表单无效，重新渲染注册页面，并带上已经填写的表单信息
+           # If the form is invalid, re-render the registration page with the information of the form already filled out
             return render(request, 'regist.html', {'userform': userform})
     else:
-        # GET 请求或其他非POST请求，显示空的注册表单
+       # GET request or other non-POST request, showing an empty registration form
         userform = UserForm()
         return render(request, 'regist.html', {'userform': userform})
 
 
 
-# 登录视图
+# Login view
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login
-#from .forms import UserForm  # 确保你已经正确地导入了UserForm
+# from.forms import UserForm # Make sure you have imported UserForm correctly
 
 
 def login(request):
@@ -63,22 +63,22 @@ def login(request):
         try:
             user = User.objects.get(username=username)
             if check_password(password, user.password):
-                # 用户验证成功
-                # 在会话中设置用户ID来跟踪登录状态
+             # User authentication successful
+# Set the user ID in the session to track the login status
                 request.session['user_username'] = user.username
-                # 重定向到用户信息页面,已经成功定向。
+               # Redirects to user information page, has been successfully directed.
                 return redirect(reverse('home', kwargs={'nickname': user.username}))
             else:
-                # 密码不匹配
-                return HttpResponse("密码Invalid login")
+               # Password does not match
+                return HttpResponse("password Invalid login")
         except User.DoesNotExist:
-            # 用户名不存在
-            return HttpResponse("用户名Invalid login")
+            # Username does not exist
+            return HttpResponse("username Invalid login")
     else:
-        # 显示登录表单
+       # Display the login form
         userform = UserForm()
-        return render(request, 'login.html',{'userform': userform})  # 假设你有一个名为'login.html'的模板
+        return render(request, 'login.html',{'userform': userform})  # Suppose you have a template called 'login.html'
 
 def index(request):
-    # 返回 index.html 模板，或者您希望显示的任何内容
+   # Return the index.html template, or whatever you want to display
     return render(request, 'index.html')
