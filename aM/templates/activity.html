@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- 引入Bootstrap的CSS文件 -->
+    <!-- Include Bootstrap CSS file -->
     <link rel="stylesheet" href="/static/css/bootstrap.css">
 
     <!-- Loading third party fonts -->
@@ -12,51 +12,46 @@
     <link href="http://fonts.googleapis.com/css?family=Bitter:400,400italic,700|" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 <style>
-
-
-
-
     body {
-    background-image: linear-gradient(to right, #88b697, #DBD5A4);
-}
+        background-image: linear-gradient(to right, #88b697, #DBD5A4);
+    }
 
     .custom-table {
-        background-image: linear-gradient(to right, #88b697, #DBD5A4); /* 设置渐变背景 */
-        color: #004e44; /* 自定义表格文字颜色 */
+        background-image: linear-gradient(to right, #88b697, #DBD5A4); /* Set gradient background */
+        color: #004e44; /* Customize table text color */
     }
 
     .custom-table th {
-        background-color: #004e44; /* 自定义表头背景色 */
-        color: #fff; /* 自定义表头文字颜色 */
+        background-color: #004e44; /* Customize header background color */
+        color: #fff; /* Customize header text color */
     }
 
      .custom-table-container {
-        border-radius: 20px; /* 调整表格容器的圆角 */
-        overflow: hidden; /* 隐藏边角溢出部分 */
+        border-radius: 20px; /* Adjust table container border radius */
+        overflow: hidden;
     }
 
     .custom-table {
         border-collapse: separate;
-        border-spacing: 0; /* 移除单元格间的间距 */
-        border-radius: 20px; /* 调整表格的圆角 */
-        overflow: hidden; /* 隐藏边角溢出部分 */
+        border-spacing: 0; /* Remove cell spacing */
+        border-radius: 20px; /* Adjust table border radius */
+        overflow: hidden;
     }
 
     .custom-table th,
     .custom-table td {
-        padding: 10px; /* 调整单元格的填充 */
+        padding: 10px; /* Adjust cell padding */
     }
 
    .navbar-nav .nav-link {
-        color: #004e44; /* 设置链接颜色 */
+        color: #004e44; /* Set link color */
     }
 
     .navbar-nav .nav-link:hover {
-        color: #FFFFFF; /* 可选：鼠标悬停时的颜色 */
+        color: #FFFFFF; /* Optional: color on hover */
     }
 
     .navbar {
@@ -65,15 +60,12 @@
     }
 
     .table-responsive {
-    position: relative; /* 或者 'absolute' 根据你的布局需求 */
-    z-index: 1000; /* 一个较高的值以确保它在最上层 */
-}
+        position: relative;
+        z-index: 1000; /* A higher value to ensure it is on top */
+    }
 </style>
 
-
-
-
-    <!-- 导航栏 -->
+    <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-image: linear-gradient(to right, #88b697, #DBD5A4);">
     <div class="container">
         <a class="navbar-brand" href="#" style="font-family: 'Nunito', sans-serif; font-size: 28px;">Activity List</a>
@@ -106,7 +98,6 @@
 
 <div style="position: fixed; top: 0; right:0; width: 45%; height: 45%; background-image: url('/static/images/aloe vera-rafiki.png'); background-size: contain; background-repeat: no-repeat; background-position: calc(100% - 10px) 0; z-index: 5; pointer-events: none; opacity: 1;">
 </div>
-
 
  <!-- Activity List -->
 <div class="container">
@@ -151,10 +142,6 @@
     </div>
 </div>
 
-
-
-
 </body>
 </html>
-
 
