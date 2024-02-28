@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Checker  # 用你的模型名替换MyModel
+from .models import Checker
 
 admin.site.register(Checker)
