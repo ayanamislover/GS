@@ -20,23 +20,23 @@ def activity_join(request):
 
 def generate_qrcode(request):
     series_id=1
-    # 创建一个 QR Code 对象
+    # Create a QR Code object
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=10,
         border=4,
     )
-    # 设置要编码的数据（这里可以是任何你想要在 QR Code 中包含的信息）
+    # Set the data to be encoded (this can be any information you want to include in the QR Code)
     targeturl=reverse('enternickname',kwargs={'series_id':1})
-    qr.add_data(targeturl)  # 这里替换成你的答题页面 URL
+    qr.add_data(targeturl)  # Replace this with your answer page URL
     qr.make(fit=True)
-    # 创建一个图像对象并将 QR Code 渲染到图像中
+    # Create an image object and render the QR Code into the image
     img = qr.make_image(fill_color="black", back_color="white")
-    # 将图像保存到 BytesIO 对象中
+    # Save the image to a BytesIO object
     buffer = BytesIO()
     img.save(buffer)
-    # 将图像返回给客户端
+    # Return the image to the client
     return HttpResponse(buffer.getvalue(), content_type="image/png")
 
 def enternickname(request,series_id):
@@ -44,14 +44,14 @@ def enternickname(request,series_id):
     if request.method == "POST":
         nickname = request.POST.get("nickname")
         if PlayerProfile.objects.filter(nickname=nickname).exists():
-            # 如果nickname存在，重定向到目标URL
+            # If the nickname exists, redirect to the target URL
             target_url_name=reverse('ans:series_detail',kwargs={'series_id': 1, 'nickname': nickname})
-            return redirect(target_url_name)  # 确保替换 "target_url_name" 为你的目标URL的name
+            return redirect(target_url_name)  # Be sure to replace "target_url_name" with the name of your target URL
         else:
-            # 如果nickname不存在，可以选择显示错误消息或者其他操作
+            # If the nickname does not exist, you can display an error message or perform another operation
             return render(request, "enternickname.html", {"error": "Nickname not found."})
     else:
-        # 如果是GET请求，显示输入表单
+        # If it is a GET request, the input form is displayed
         return render(request,'enternickname.html')
 
 def scan_qr(request):
@@ -63,23 +63,23 @@ def quiz_leaderboard(request,nickname,additional_score,series_id):
     #series_id = request.GET.get('series_id')
     #points = request.GET.get('additional_score')
     points=additional_score
-    QuizSession.objects.create(
-    series_id=series_id,
-    player=nickname,
-    score=points
-    )
-    # 检查是否达到max_player
-    max_player = Activity.objects.first().max_participants
+    if not QuizSession.objects.filter(player=nickname, series_id=series_id).exists():
+        # If it does not exist, a new record is created
+        points = additional_score
+        QuizSession.objects.create(
+            series_id=series_id,
+            player=nickname,
+            score=points
+        )
     if Activity.objects.get(pk=series_id).status=='ended':
        #QuizSession.objects.filter(series_id=series_id).count() >= max_player:
         players = QuizSession.objects.filter(series_id=series_id).order_by('-score')
         players_list = list(players.values('player', 'score'))
-        # 排名和加分
+        # Ranking and bonus points
         top_players = players[:3]
         for i,session in enumerate(top_players):
-            PlayerProfile.objects.filter(nickname=nickname).update(score=F('score') + (3 - i))  # 假设加分逻辑
-        # 清空QuizSession
-            
+            PlayerProfile.objects.filter(nickname=nickname).update(score=F('score') + (3 - i))  # Hypothetical bonus logic
+        # Clearing QuizSession
         QuizSession.objects.filter(series_id=series_id).delete()
         return render(request, 'quiz_leaderboard.html', {'players_list': players_list,'nickname':nickname})
     else:

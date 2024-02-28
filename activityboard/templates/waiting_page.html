@@ -2,14 +2,43 @@
 <html>
 <head>
     <title>Waiting for Players</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Waiting for all players to finish...</h1>
-   
+    <div class="container">
+        <h1>Waiting for all players to finish...</h1>
+        <p>Please wait while we prepare the results.</p>
+    </div>
     <script>
         setTimeout(function() {
             location.reload();
-        }, 5000);  // 每5秒刷新一次页面，检查是否可以跳转到排行榜
+        }, 5000);  // Refresh the page every 5 seconds to check whether you can jump to the leaderboard
     </script>
 </body>
 </html>
+
