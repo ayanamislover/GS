@@ -20,10 +20,10 @@ from django.urls import path,include
 urlpatterns = [
     path("aM/",include("aM.urls")),
     path("myapp",include("myapp.urls")),
-    path("answerquestion/",include("answerquestion.urls")),
+    path("answerquestion/", include("answerquestion.urls")),
     path("leaderboard/",include("leaderboard.urls")),
     path("activityboard/",include("activityboard.urls")),
-    path("profile/",include("usersinformation.urls")),
+    path("profile/", include("usersinformation.urls")),
     path("usersinformation/", include(("usersinformation.urls", "usersinformation"), namespace="usersinformation")),
     path("admin/", admin.site.urls),
     path("achievement/", include("achievement.urls")),
