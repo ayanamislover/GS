@@ -36,12 +36,12 @@ const imageCanvas = imageCanvasElement.getContext('2d');
 const targetLocation = {
     latitude: 50.7184, // The latitude of Exeter
     longitude: -3.5339, // the longitude of exeter
-    radius: 5000 // 用户需要在这个半径范围内（单位：米）
+    radius: 5000 // The user needs to be within this radius (unit: meters)
 };
 
-// 检查用户位置是否在目标位置的指定半径内
+// Checks that the user location is within the specified radius of the target location
 function isInTargetLocation(userLat, userLong, targetLat, targetLong, radius) {
-    const earthRadius = 6371e3; // 地球半径，单位：米
+    const earthRadius = 6371e3; // The radius of the earth, in meters
     const lat1 = userLat * Math.PI / 180;
     const lat2 = targetLat * Math.PI / 180;
     const deltaLat = (targetLat - userLat) * Math.PI / 180;
@@ -52,7 +52,7 @@ function isInTargetLocation(userLat, userLong, targetLat, targetLong, radius) {
               Math.sin(deltaLong / 2) * Math.sin(deltaLong / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-    const distance = earthRadius * c; // 最终结果，单位：米
+    const distance = earthRadius * c; // Final result, in meters
 
     return distance <= radius;
 }
@@ -83,24 +83,24 @@ function tick() {
             inversionAttempts: "dontInvert",
         });
         if (code) {
-            // 获取用户当前位置
+            // Gets the user's current location
             navigator.geolocation.getCurrentPosition(position => {
                 const userLat = position.coords.latitude;
                 const userLong = position.coords.longitude;
 
-                // 检查用户是否在目标位置周围
+                // Check that the user is around the target location
                 if (isInTargetLocation(userLat, userLong, targetLocation.latitude, targetLocation.longitude, targetLocation.radius)) {
-                    // 用户在目标位置周围，允许跳转
+                    // The user is around the target position and is allowed to jump
                     window.location.href = code.data;
                 } else {
-                    // 用户不在目标位置周围，显示警告
+                    // A warning is displayed when the user is not near the target location
                     alert("You are not in the required location to access this URL.");
                     video.srcObject.getTracks().forEach(track => track.stop());
                     canvasElement.style.display = 'none';
                     btnScanQR.style.display = 'block';
                 }
             }, () => {
-                // 无法获取位置信息
+                // Unable to get location information
                 alert("Unable to retrieve your location.");
             });
         } else {
@@ -126,7 +126,7 @@ imageInput.addEventListener('change', (e) => {
             const imageData = imageCanvas.getImageData(0, 0, img.width, img.height);
             const code = jsQR(imageData.data, imageData.width, imageData.height);
             if (code) {
-                // 类似地，添加位置检查逻辑
+                // Similarly, add location check logic
                 navigator.geolocation.getCurrentPosition(position => {
                     const userLat = position.coords.latitude;
                     const userLong = position.coords.longitude;
