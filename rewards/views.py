@@ -35,12 +35,12 @@ def gift_detail(request, id):
     gift = get_object_or_404(Gift, pk=id)
     return render(request, 'rewards/gift_detail.html', {'gift': gift})
 
-@csrf_exempt  # 临时禁用CSRF保护，实际项目中请谨慎使用
+@csrf_exempt  # Disable CSRF protection temporarily. Use it with caution in actual projects
 def buy_gift(request, gift_id):
     if request.method == 'POST':
-        # 在这里执行购买逻辑，比如扣除用户积分等
+        # This is where purchase logic is performed, such as deducting user credits
 
-        # 假设购买成功
+        # Assuming successful purchase
         return JsonResponse({'message': 'Purchase successful!'})
     else:
         return JsonResponse({'message': 'Invalid request'}, status=400)
