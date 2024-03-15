@@ -17,30 +17,7 @@ from django.http import HttpResponseRedirect
 
 # from answerquestion.views import series_detail2,results_page2
 
-# def can_start_new_game(nickname):
-#     player = PlayerProfile.nickname
-#     now = timezone.now()
-#     if not PlayerProfile.last_game_start:
-#         return True
-#
-#     if (datetime.now().date() - PlayerProfile.last_game_start) >= datetime.timedelta(days=7):
-#         return True
-#     elif (datetime.now().date() - PlayerProfile.last_game_start) < datetime.timedelta(
-#             days=7) and PlayerProfile.verified_locations_count == 3:
-#         print('You have already verified 3 locations this week. You can start a new game next week.')
-#         return False
-#     else:
-#         print('You have already finished a game this week. You can start a new game next week.')
-#     return False
-
-
 def checkersgame(request, nickname):
-    # user = PlayerProfile.nickname
-    # if can_start_new_game(user):
-    #     user.last_game_start = timezone.now()
-    #     user.verified_locations_count = 0
-    # else:
-    #     print('You are not allowed to start a new game yet.')
     if 'target_id' not in request.session:
         # if not request.session.get('target_id'):
         count = Checker.objects.count()
@@ -60,10 +37,18 @@ def checkersgame(request, nickname):
     target_latitude = target.latitude
     target_longitude = target.longitude
     nickname = nickname
+    tag = target.tag
+    picture = target.picture
+    overview = target.overview
+    location_name = target.location_name
     context = {
         'nickname': nickname,
         'target_latitude': target_latitude,
         'target_longitude': target_longitude,
+        'tag': tag,
+        'picture': picture,
+        'overview': overview,
+        'loc': location_name
     }
     # return the navigation page with the target location and the user's nickname.
     return render(request, 'navigation.html', context)

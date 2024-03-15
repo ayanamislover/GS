@@ -28,7 +28,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("achievement/", include("achievement.urls")),
     path("", include("web.urls")),
-    path("checkers/", include("navi.urls")),
+    path("navi/", include("navi.urls")),
     path("announce/", include("announcement.urls")),
     path("store/", include("rewards.urls")),
 ]
