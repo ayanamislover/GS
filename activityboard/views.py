@@ -18,8 +18,11 @@ from answerquestion.models import Series
 def activity_join(request):
     return render(request, 'activity_join.html')
 
-def generate_qrcode(request):
-    series_id=1
+
+def generate_qrcode(request,series_id):
+    if series_id is None:
+        # Handle situations where there is no series_id 
+        return HttpResponse("No series_id provided", status=400)
     # Create a QR Code object
     qr = qrcode.QRCode(
         version=1,
@@ -28,7 +31,7 @@ def generate_qrcode(request):
         border=4,
     )
     # Set the data to be encoded (this can be any information you want to include in the QR Code)
-    targeturl=reverse('enternickname',kwargs={'series_id':1})
+    targeturl=reverse('enternickname',kwargs={'series_id':series_id})
     qr.add_data(targeturl)  # Replace this with your answer page URL
     qr.make(fit=True)
     # Create an image object and render the QR Code into the image
