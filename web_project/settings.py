@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'aM',
     "navi",
     "announcement",
-    "rewards"
+    "rewards",
+    "gamekeeper",
 ]
 
 MIDDLEWARE = [

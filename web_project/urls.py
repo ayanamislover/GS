@@ -31,4 +31,5 @@ urlpatterns = [
     path("checkers/", include("navi.urls")),
     path("announce/", include("announcement.urls")),
     path("store/", include("rewards.urls")),
+    path("gamekeeper/",include("gamekeeper.urls")),
 ]
