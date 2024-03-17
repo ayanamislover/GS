@@ -1,13 +1,26 @@
-<!-- templates/app/detail.html -->
 {% extends 'answerquestion/base.html' %}
 
 {% block content %}
+<style>
+  .form-container {
+    height: 80vh; /* 设置高度为视口高度的80% */
+    overflow-y: auto; /* 内容超出时显示滚动条 */
+    padding: 10px; /* 添加一些内边距 */
+  }
+  form {
+    width: 100%; /* 表单宽度设置为100% */
+  }
+</style>
+
 <h1>{{ series.name }}</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+<div class="form-container">
+  <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" style="width: 100%;">Submit</button>
+  </form>
+</div>
 {% endblock %}
+
 
 

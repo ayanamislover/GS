@@ -7,7 +7,7 @@ class Achievement(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     #Image
-    icon = models.ImageField(upload_to='images/', null=True, blank=True)
+    icon = models.ImageField(upload_to='achievement/images/', null=True, blank=True)
     #Unlock the achievement
     unlock_score = models.IntegerField(default=0)
     def __str__(self):

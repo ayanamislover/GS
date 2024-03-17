@@ -6,7 +6,7 @@ class Announcement(models.Model):
     content = models.TextField()
     date_start = models.DateTimeField(default=timezone.now)
     end_data = models.DateTimeField()
-    image = models.ImageField(upload_to='announcement_images/',default='path/to/default/image.jpg')
+    image = models.ImageField(upload_to='announcement/images/',default='path/to/default/image.jpg')
 
 
 
