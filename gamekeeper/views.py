@@ -6,6 +6,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from activityboard.views import generate_qrcode
 from gamekeeper.forms import LoginForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def user_login(request):
@@ -19,16 +21,18 @@ def user_login(request):
                     login(request, user)  # 确保这里传入了user
                     return redirect('gamekeeper')  # 假设你有一个名为'gamekeeper'的URL
                 else:
-                    return render(request, 'gamekeeperlogin.html', {'form': form, 'error': '账户不可用'})
+                    return render(request, 'gamekeeperlogin.html', {'form': form, 'error': 'Account unavailable'})
             else:
-                return render(request, 'gamekeeperlogin.html', {'form': form, 'error': '用户名或密码错误'})
+                return render(request, 'gamekeeperlogin.html', {'form': form, 'error': 'The user name or password is incorrect'})
     else:
         form = LoginForm()
     return render(request, 'gamekeeperlogin.html', {'form': form})
 
+@login_required
 def gamekeeper(request):
     return render(request, 'gamekeeper.html')
 
+@login_required
 def gamekeeper_qrcode(request):
     if request.method == 'POST':
         series_id = request.POST.get('series_id')
@@ -37,6 +41,7 @@ def gamekeeper_qrcode(request):
         # If it is not a POST request, the form or error message is displayed
         return render(request, 'get_qrcode.html')
 
+@login_required
 def change_status(request):
     message = ''  # Used to display information to the user
     if request.method == 'POST':
