@@ -1,0 +1,48 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Gotham Rounded;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/static/images/Asset 11.png'); /* 设置背景图片 */
+  background-size: cover; /* 覆盖整个页面 */
+  background-position: center; /* 居中显示 */
+  background-color: #fff2d5; /* 背景颜色作为后备 */
+}
+
+.container {
+  width: 800px;
+  max-width: 80%;
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: hsl(200, 100%, 50%);
+  border: 1px solid hsl(200, 100%, 30%);
+  border-radius: 15px;
+  padding: 15px 30px;
+  color: white;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: hsl(210, 100%, 60%); /* 悬浮时的背景颜色 */
+  border-color: black; /* 已经在你的代码中定义了悬浮时边框颜色变黑 */
+}

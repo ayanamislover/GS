@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path("aM/",include("aM.urls")),
-    path("myapp",include("myapp.urls")),
+    path("myapp/",include("myapp.urls")),
     path("answerquestion/",include("answerquestion.urls")),
     path("leaderboard/",include("leaderboard.urls")),
     path("activityboard/",include("activityboard.urls")),
@@ -33,4 +33,5 @@ urlpatterns = [
     path("navi/", include("navi.urls")),
     path("announce/", include("announcement.urls")),
     path("store/", include("rewards.urls")),
+    path("textGame/", include("textGame.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

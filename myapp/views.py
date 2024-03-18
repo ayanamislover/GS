@@ -9,7 +9,6 @@ def home(request,nickname):
     player_information = get_object_or_404(PlayerProfile, nickname=nickname)
     return render(request, "home.html", {"player_information": player_information})
 
-
 def user_leaderboard(request):
     return redirect(reverse('user_leaderboard'))
 
