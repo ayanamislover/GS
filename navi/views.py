@@ -95,7 +95,7 @@ def check_location(request, nickname, tag):
         # If the request does not contain the required data, return a failure message
         return JsonResponse({'status': 'failure', 'message': 'Incomplete data provided.'})
 
-
+@csrf_exempt
 def cal_carbon(request, nickname):
     data = json.loads(request.body.decode('utf-8'))
     # collect the user's location and the target location from the request
