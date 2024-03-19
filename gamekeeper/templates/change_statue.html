@@ -2,14 +2,69 @@
 <html>
 <head>
     <title>Game Keeper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #666;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* Ensures padding does not affect total width */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #d6e9c6;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Update Activity Status by Title</h1>
-    {% if message %}
-    <p>{{ message }}</p>
-    {% endif %}
     <form method="post">
         {% csrf_token %}
+        <h1>Update Activity Status by Title</h1>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
         <label for="title">Activity Title:</label>
         <input type="text" name="title" id="title" required>
         <label for="status">Select Status:</label>

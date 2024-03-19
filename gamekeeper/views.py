@@ -7,7 +7,8 @@ from activityboard.views import generate_qrcode
 from gamekeeper.forms import LoginForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-
+from pictures.models import Photo
+from usersinformation.models import PlayerProfile
 # Create your views here.
 
 def user_login(request):
@@ -57,3 +58,23 @@ def change_status(request):
         except Exception as e:
             message = str(e)
     return render(request, 'change_statue.html', {'message': message})
+
+@login_required
+def review_photos(request):
+    if request.method == 'POST':
+        action = request.POST.get('action', '')
+        photo_id = action.split('_')[-1]
+
+        if 'approve' in action:
+            photo = Photo.objects.get(id=photo_id)
+            player = PlayerProfile.objects.get(nickname=photo.nickname)
+            player.score += 1  # 加分
+            player.save()
+        
+        # 无论是否加分，都删除图片
+        Photo.objects.get(id=photo_id).delete()
+
+        return redirect('review_photos')  # 重新加载页面以更新待审核的图片列表
+
+    photos = Photo.objects.all()  # 获取所有待审核的图片
+    return render(request, 'review_photos.html', {'photos': photos})

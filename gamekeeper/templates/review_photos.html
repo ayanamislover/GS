@@ -1,0 +1,25 @@
+<!-- review_photos.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Photos</title>
+</head>
+<body>
+    <h1>Photo Review</h1>
+    {% if photos %}
+        {% for photo in photos %}
+            <div>
+                <img src="{{ photo.image.url }}" width="300" />
+                <p>Nickname: {{ photo.nickname }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="approve_{{ photo.id }}">Approve and Score</button>
+                    <button type="submit" name="action" value="reject_{{ photo.id }}">Reject</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No more photos to review.</p>
+    {% endif %}
+</body>
+</html>

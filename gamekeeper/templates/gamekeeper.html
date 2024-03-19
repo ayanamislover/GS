@@ -4,11 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Button Page</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-left: 20px; /* 在整个页面左侧添加一些内边距 */
+        }
+        .container {
+            margin-top: 50px; /* 页面顶部留出一些空间 */
+        }
+        .btn {
+            display: block; /* 使链接显示为块级元素，使其各自占据一行 */
+            margin: 10px 0; /* 在按钮之间以及按钮与页面顶部添加一些空间 */
+            text-decoration: none; /* 去除链接下划线 */
+            padding: 10px 15px; /* 增加填充使链接看起来像按钮 */
+            background-color: #007bff; /* Bootstrap 蓝色 */
+            color: white; /* 文本颜色白色 */
+            border-radius: 5px; /* 圆角边框 */
+            transition: background-color 0.3s ease; /* 平滑过渡效果 */
+        }
+        .btn:hover, .btn:focus {
+            background-color: #0056b3; /* 鼠标悬停时的背景色 */
+            color: white; /* 鼠标悬停时的文本颜色 */
+            text-decoration: none; /* 鼠标悬停时去除下划线 */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'generateqrcodebyid' %}" class="btn">generate the qrcode</a>
-        <a href="{% url 'changestatue' %}" class="btn">change activity statue</a>
+        <a href="{% url 'generateqrcodebyid' %}" class="btn">Generate the QR Code</a>
+        <a href="{% url 'changestatue' %}" class="btn">Change Activity Status</a>
+        <a href="{% url 'review_photos' %}" class="btn">Review pictures</a>
     </div>
+
+    <!-- 引入 Bootstrap JS 及其依赖 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
