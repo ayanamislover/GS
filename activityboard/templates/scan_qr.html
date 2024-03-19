@@ -33,10 +33,10 @@ const imageCanvasElement = document.getElementById('image-canvas');
 const imageCanvas = imageCanvasElement.getContext('2d');
 
 // the location of exeter
-const targetLocation = {
-    latitude: 50.7184, // The latitude of Exeter
-    longitude: -3.5339, // the longitude of exeter
-    radius: 5000 // 用户需要在这个半径范围内（单位：米）
+var targetLocation = {
+    latitude: {{ location.latitude|default:"0" }}, // 使用Django模板标签传递纬度
+    longitude: {{ location.longitude|default:"0" }}, // 传递经度
+    radius: {{ location.radius|default:"0" }} // 现在也从后端传递半径
 };
 
 // 检查用户位置是否在目标位置的指定半径内
