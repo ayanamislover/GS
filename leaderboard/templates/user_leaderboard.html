@@ -44,7 +44,7 @@
                 {% for player in score_leaderboard %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ player.username }}</td>
+                    <td>{{ player.nickname }}</td>
                     <td>Score: {{ player.score }}</td>
                 </tr>
                 {% endfor %}
@@ -64,7 +64,7 @@
                 {% for player in achievements_leaderboard %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ player.username }}</td>
+                    <td>{{ player.nickname }}</td>
                     <td>Achievements: {{ player.achievements }}</td>
                 </tr>
                 {% endfor %}

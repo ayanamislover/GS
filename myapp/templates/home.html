@@ -22,8 +22,8 @@
 
             <div class="sidebar">
                  <div class="item" id="active">
-                    <i class="fa-solid fa-gauge"></i>
-                    <a href="#">Dashboard</a>
+                     <i class="fa-solid fa-chess"></i>
+                    <a href="{% url 'checkers_game' nickname=player_information.nickname %}">Exeter Checkers</a>
                 </div>
                  <div class="item" >
                     <i class="fa-solid fa-award"></i>
@@ -40,10 +40,6 @@
                 <div class="item">
                     <i class="fa-solid fa-qrcode"></i>
                     <a href="{% url 'activity_join' %}">Activity Time!</a>
-                </div>
-                <div class="item">
-                    <i class="fa-solid fa-chess"></i>
-                    <a href="{% url 'checkers_game' nickname=player_information.nickname %}">Exeter Checkers</a>
                 </div>
                 <div class="item">
                     <i class="fa-solid fa-chart-simple"></i>

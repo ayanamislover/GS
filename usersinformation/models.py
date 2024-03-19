@@ -23,6 +23,7 @@ class PlayerProfile(models.Model):
 
     # User's achievement counts
     achievement_count = models.IntegerField(default=0)
+
     #User's achievement
     achievements = models.ManyToManyField(Achievement, blank=True, related_name='user')  # 添加多对多关系
 
@@ -54,3 +55,13 @@ class PlayerProfile(models.Model):
 
     def __str__(self):
         return f"{self.avatar} {self.nickname} {self.email} {self.achievement_count} {self.bio} {self.login_days}"
+
+
+# 达成成就的表格
+class AchievementAndUser(models.Model):
+    user = models.ForeignKey(PlayerProfile, on_delete=models.CASCADE)
+    achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} {self.achievement} {self.created_at}"

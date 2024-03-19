@@ -7,9 +7,11 @@ from urllib.parse import urlencode
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-
-
+from achievement.models import Achievement
+from usersinformation.models import AchievementAndUser
 # Define an unlogged interface without a primary key
+from django.db.models import Q
+
 def index_none(request):
     # render the response using the Render function, specifying the template file and context data (if any)
     return render(request, 'usersinformation/player_profile_none.html')
@@ -38,6 +40,7 @@ def index(request, nickname):
 
 #lcoal
 def series_detail(request, series_id, nickname):
+    print("进入这个url了么")
     series = get_object_or_404(Series, pk=series_id)
     questions = series.questions.all()
     player_profile = get_object_or_404(PlayerProfile, nickname=nickname)  # Gets the user instance based on the incoming user pk
@@ -50,9 +53,24 @@ def series_detail(request, series_id, nickname):
             total_score = calculate_score(form.cleaned_data, questions)
              #Update the score in the user's PlayerProfile
             try:
+               #  这里给用户加分了，于此同时判断一下是否达成了新成就，如果达成新成就要添加一条新记录
                player_profile = PlayerProfile.objects.get(nickname=nickname)
+
+               oldscore = player_profile.score
                player_profile.score += total_score  # Increase score
+               newscore = player_profile.score
                player_profile.save()
+               print("现在开始判断该用户的积分足够达到新成就了么：", oldscore, newscore)
+               # 大于旧分数，小于等于新分数的成就
+               achievement_detail = Achievement.objects.filter(Q(unlock_score__gt=oldscore) & Q(unlock_score__lte=newscore))
+               for achievement in achievement_detail:
+                   print("找到了新成就：", achievement.name)
+                   # 添加一条新的成就记录
+                   achievement_and_user = AchievementAndUser()
+                   achievement_and_user.user = player_profile
+                   achievement_and_user.achievement = achievement
+                   achievement_and_user.save()
+
             except PlayerProfile.DoesNotExist:
             # Handle situations where the user does not have a PlayerProfile
              pass
@@ -107,7 +125,7 @@ def calculate_score(cleaned_data, questions):
         correct_answer = question.choices.get(is_correct=True).id
         given_answer = int(cleaned_data.get('question_%s' % question.id))
         if correct_answer == given_answer:
-            total_score += 1 # Assume 1 point for each question 
+            total_score += 1 # Assume 1 point for each question
     return total_score
 
 

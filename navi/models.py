@@ -12,9 +12,10 @@ class Checker(models.Model):
     # tag, using CharField to store a string with a maximum length of 255 characters
     tag = models.CharField(max_length=255, default='question')
     # picture, using ImageField to store an image file
-    picture = models.TextField(default='navi/static/images/Journey-amico.png')
+    picture = models.TextField(default='/static/images/Journey-amico.png')
     # overview, using TextField to store a large text field
     overview = models.TextField(default='Beautiful spot')
+
 
 class player_profile(models.Model):
     last_game_start = models.DateTimeField(null=True, blank=True)

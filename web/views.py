@@ -24,10 +24,13 @@ class UserForm(forms.Form):
 
 from django.contrib.auth.hashers import make_password
 
+# 用户注册
 def regist(request):
     if request.method == 'POST':
         userform = UserForm(request.POST)
+
         if userform.is_valid():
+            print("开始用户注册咯:")
             # 从表单中获取数据
             username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
@@ -42,15 +45,21 @@ def regist(request):
             # 哈希密码
             hashed_password = make_password(password)
 
-            # 创建新用户
-            user = User.objects.create(username=username, password=hashed_password, email=email)
+            # 修改了创建的顺序
+            pp = PlayerProfile.objects.create(email=email, nickname=username)
+            print("创建好了用户详情：", pp)
+            user = User.objects.create(username=username, password=hashed_password, email=email, player_profile=pp)
+            print("创建好了用户：", user)
 
+            # 创建新用户
+            # user = User.objects.create(username=username, password=hashed_password, email=email)
             # 创建与新用户关联的PlayerProfile实例
-            PlayerProfile.objects.create(user=user, email=email, nickname=username)
+            # PlayerProfile.objects.create(user=user, email=email, nickname=username)
 
             # 注册成功后，重定向到登录界面
             return redirect(reverse('login'))
         else:
+            print("表单无效")
             # 如果表单无效，用已填充的信息重新渲染注册页面
             return render(request, 'regist.html', {'userform': userform})
     else:
@@ -66,6 +75,7 @@ from django.contrib.auth import authenticate, login
 # from.forms import UserForm # Make sure you have imported UserForm correctly
 
 
+# 用户登录
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -74,7 +84,7 @@ def login(request):
             user = User.objects.get(username=username)
             if check_password(password, user.password):
              # User authentication successful
-# Set the user ID in the session to track the login status
+            # Set the user ID in the session to track the login status
                 request.session['user_username'] = user.username
                # Redirects to user information page, has been successfully directed.
                 return redirect(reverse('home', kwargs={'nickname': user.username}))
@@ -83,7 +93,7 @@ def login(request):
                 return HttpResponse("password Invalid login")
         except User.DoesNotExist:
             # Username does not exist
-            return HttpResponse("username Invalid login")
+            return HttpResponse("username Invalid login用户不存在")
     else:
        # Display the login form
         userform = UserForm()

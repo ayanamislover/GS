@@ -8,6 +8,35 @@
     {% load static %}
 </head>
 <style>
+    /*** 未完成 ***/
+    .image-container {
+        float: left;
+      position: relative;
+      display: inline-block; /* 或者其他的布局方式 */
+    }
+    .disable{
+        display: block;
+        border: 2px solid rgba(128, 128, 128, 1);
+        {#border: 2px solid #82ff63;#}
+    }
+    .disabled-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(128, 128, 128, 0.8); /* 灰色半透明 */
+    }
+
+    .unlock{
+        float: left;
+        margin-left: 20px;
+    }
+    /*** 完成 ***/
+    .able{
+        display: block;
+        border: 2px solid #63d6a7;
+    }
     .custom-header {
         background-color: #ffbb54; /* Bootstrap primary color */
         color: white;
@@ -39,6 +68,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Unlock Score</th>
+                <th scope="col">Completion time</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +77,15 @@
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>
                         {% if achievement.icon %}
-                            <img src="{{ achievement.icon.url }}" alt="{{ achievement.name }}" style="width: 60px; height: auto;">
+                            {% if achievement.state %}
+                                <img class="able" src="{{ achievement.icon.url }}" alt="{{ achievement.name }}" style="width: 60px; height: auto;">
+                            {% else %}
+                            <div class="image-container">
+                                <img class="disable" src="{{ achievement.icon.url }}" alt="{{ achievement.name }}" style="width: 60px; height: auto;">
+                                <div class="disabled-overlay"></div>
+                            </div>
+                                <div class="unlock">unlock</div>
+                            {% endif %}
                         {% else %}
                             <img src="{% static 'achievement/images/default.jpg' %}" alt="Default Icon" style="width: 60px; height: auto;">
                         {% endif %}
@@ -55,6 +93,14 @@
                     <td>{{ achievement.name }}</td>
                     <td>{{ achievement.description }}</td>
                     <td>{{ achievement.unlock_score }}</td>
+                    <td>
+
+                        {% if achievement.state %}
+                            {{ achievement.create_time }}
+                        {% else %}
+                            --------
+                        {% endif %}
+                    </td>
                 </tr>
             {% empty %}
                 <tr>

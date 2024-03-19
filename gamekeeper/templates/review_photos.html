@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Photos</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .photo-info {
+            margin-bottom: 15px;
+        }
+        .btn {
+            margin-right: 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Photo Review</h1>
+        {% if photos %}
+            {% for photo in photos %}
+                <div class="photo-info">
+                    <img src="{{ photo.image.url }}" alt="Photo to review"/>
+                    <p>Nickname: {{ photo.nickname }}</p>
+                    <form method="post" class="mb-5">
+                        {% csrf_token %}
+                        <button type="submit" name="action" value="approve_{{ photo.id }}" class="btn btn-success">Approve and Score</button>
+                        <button type="submit" name="action" value="reject_{{ photo.id }}" class="btn btn-danger">Reject</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="footer">No more photos to review.</p>
+        {% endif %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

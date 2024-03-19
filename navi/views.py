@@ -1,21 +1,22 @@
 import json
 from django.shortcuts import render
 from .models import Checker, player_profile
+from usersinformation.models import PlayerProfile
 import random
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-from .location_utils import is_within_distance
+from .location_utils import is_within_distance, calculate_distance
 import datetime
 from django.utils import timezone
 from django.urls import reverse
+
 include = ('answerquestion.views', 'answerquestion', 'answerquestion.urls')
 from answerquestion.views import series_detail
 # from usersinformation.models import PlayerProfile
 from django.http import HttpResponseRedirect
+from pictures.views import upload_view
 from textGame.views import SceneSelect
-
-
 # from answerquestion.views import series_detail2,results_page2
 
 def checkersgame(request, nickname):
@@ -57,7 +58,7 @@ def checkersgame(request, nickname):
 
 @csrf_exempt
 @require_http_methods(["POST"])
-def check_location(request, nickname):
+def check_location(request, nickname, tag):
     print('Request received:', request.body)
     data = json.loads(request.body.decode('utf-8'))
     # collect the user's location and the target location from the request
@@ -74,8 +75,12 @@ def check_location(request, nickname):
             request.session.save()
             print('Random index:', request.session['target_id'])
             # update the user's verified locations count
-            redirect_url = reverse('textGame:SceneSelect', kwargs={'loc_id': 1, 'nickname': nickname})
-            # redirect to the answerquestion app page
+            if tag == 'question':
+                redirect_url = reverse('ans:series_detail', kwargs={'series_id': 1, 'nickname': nickname})
+            elif tag == 'Medowad':
+                redirect_url = reverse('textGame:SceneSelect', kwargs={'loc_id': 1, 'nickname': nickname})
+            elif tag == 'photo':
+                redirect_url = reverse('pictures:upload_view', kwargs={'nickname': nickname})
             print('Check-in successful, redirecting to:', redirect_url)
             response_data = {
                 'status': 'success',
@@ -88,6 +93,22 @@ def check_location(request, nickname):
     except KeyError:
         # If the request does not contain the required data, return a failure message
         return JsonResponse({'status': 'failure', 'message': 'Incomplete data provided.'})
+
+
+def cal_carbon(request, nickname):
+    data = json.loads(request.body.decode('utf-8'))
+    # collect the user's location and the target location from the request
+    user_lat = data['user_latitude']
+    user_lon = data['user_longitude']
+    target_lat = data['target_latitude']
+    target_lon = data['target_longitude']
+    try:
+        player_profile = PlayerProfile.objects.get(nickname=nickname)
+        player_profile.carbon += calculate_distance(user_lat, user_lon, target_lat,
+                                                    target_lon) * 300  # Increase the carbon footprint
+        player_profile.save()
+    except PlayerProfile.DoesNotExist:
+        pass
 
 
 def get_new_random_target(exclude_id):

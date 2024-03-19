@@ -17,3 +17,4 @@ class Activity(models.Model):
     organizer = models.CharField(max_length=120)  # 组织者，字符串类型
     category = models.CharField(max_length=50)  # 类别，字符串类型
     tags = models.CharField(max_length=255, blank=True, null=True)  # 标签，字符串类型，可以为空
+    series_id = models.CharField(max_length=100, unique=True)

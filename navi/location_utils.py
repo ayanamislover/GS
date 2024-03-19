@@ -1,5 +1,5 @@
 import math
-
+from usersinformation.models import PlayerProfile
 def calculate_distance(lat1, lon1, lat2, lon2):
     # Calculate the distance between two coordinate points
     R = 6371  

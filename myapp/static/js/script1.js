@@ -32,3 +32,18 @@ sidebarItems.forEach(element => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // 初始设置iframe加载第一个项目的内容
+    if (sidebarItems.length > 0) {
+        const firstItemLink = sidebarItems[0].querySelector('a'); // 获取第一个项目中的链接
+        if (firstItemLink) {
+            mainContentIframe.src = firstItemLink.getAttribute('href');
+            // 确保第一个项目被标记为激活状态
+            sidebarItems[0].setAttribute('id', 'active');
+            activeItem = sidebarItems[0]; // 更新当前激活的项目变量
+        }
+    }
+
+    // 现有的事件监听器和其他代码...
+});

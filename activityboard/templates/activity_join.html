@@ -46,9 +46,26 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Attend the Competition</h1>
-        <a href="{% url 'scan_qr' %}" class="btn">Start the Game</a>
-    </div>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Join an Activity</title>
+</head>
+<body>
+    <h1>Available Activities</h1>
+    <ul>
+        {% for activity in activities %}
+            <li>
+                <a href="{% url 'scan_qr' series_id=activity.series_id %}">{{ activity.title }}</a>
+                - {{ activity.description }}
+                (Start: {{ activity.start_date }} - End: {{ activity.end_date }})
+            </li>
+        {% empty %}
+            <li>No activities available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
 </body>
 </html>
