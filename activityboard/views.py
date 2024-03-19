@@ -12,6 +12,8 @@ from aM.models import Activity
 from usersinformation.models import PlayerProfile
 from answerquestion.models import Series
 from math import radians, cos, sin, asin, sqrt
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 
@@ -44,6 +46,7 @@ def generate_qrcode(request,series_id):
     # Return the image to the client
     return HttpResponse(buffer.getvalue(), content_type="image/png")
 
+@csrf_exempt
 def enternickname(request,series_id):
     series = get_object_or_404(Series, pk=series_id)
     if request.method == "POST":
