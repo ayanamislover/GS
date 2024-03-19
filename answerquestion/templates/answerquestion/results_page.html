@@ -10,6 +10,7 @@
     <!-- Two different button to different view page -->
     <a href="{% url 'ans:index' nickname=nickname %}">Back to series list</a>
    <a href="{% url 'quiz_leaderboard' nickname=nickname additional_score=additional_score series_id=series_id%}">check leaderboard</a>
+    <button onclick="window.close();">Close this window</button>
 {% endblock %}
 
 
