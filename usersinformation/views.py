@@ -5,7 +5,8 @@ from .forms import PlayerProfileForm, DisplayedAchievementsForm
 from django.contrib import messages  # import messages modlule
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def player_profile_none(request):
     # Render the response using the render function, specifying the template file and context data
     return render(request, 'usersinformation/player_profile_none.html')
@@ -30,7 +31,7 @@ def detailnickname(request, nickname):
     # Transmit the information to html model
     return render(request, "usersinformation/player_profile.html", {"player_information": player_information})
 
-
+@csrf_exempt
 def player_profile(request, nickname):
     try:
         # Getting a PlayerProfile instance by nickname
@@ -55,7 +56,7 @@ def player_profile(request, nickname):
         context = {'error': 'Player profile not found.'}
         return render(request, 'usersinformation/error.html', context)
 
-
+@csrf_exempt
 #Defining the Edit Page View
 def edit_player_profile(request, nickname):
     player_profile = get_object_or_404(PlayerProfile, nickname=nickname)

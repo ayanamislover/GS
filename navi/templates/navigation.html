@@ -272,7 +272,15 @@ function showModal() {
                     target_longitude: parseFloat('{{ target_longitude }}')
                 }),
                  })
-                    flag =1;
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        flag = 1;
+                    } else {
+                        alert('You account did not login yet.');
+
+                    }
+                })
                 }
 
                 // Add marker for user's current location

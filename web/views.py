@@ -11,7 +11,8 @@ from .models import User
 from usersinformation.models import PlayerProfile
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate, login  # Import authenticate and login functions
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 # Define user forms
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名', max_length=50)
@@ -25,6 +26,7 @@ class UserForm(forms.Form):
 from django.contrib.auth.hashers import make_password
 
 # 用户注册
+@csrf_exempt
 def regist(request):
     if request.method == 'POST':
         userform = UserForm(request.POST)
@@ -75,7 +77,8 @@ from django.contrib.auth import authenticate, login
 # from.forms import UserForm # Make sure you have imported UserForm correctly
 
 
-# 用户登录
+# user login
+@csrf_exempt
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')

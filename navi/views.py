@@ -13,10 +13,11 @@ from django.urls import reverse
 
 include = ('answerquestion.views', 'answerquestion', 'answerquestion.urls')
 from answerquestion.views import series_detail
-# from usersinformation.models import PlayerProfile
 from django.http import HttpResponseRedirect
 from pictures.views import upload_view
 from textGame.views import SceneSelect
+
+
 # from answerquestion.views import series_detail2,results_page2
 
 def checkersgame(request, nickname):
@@ -104,11 +105,13 @@ def cal_carbon(request, nickname):
     target_lon = data['target_longitude']
     try:
         player_profile = PlayerProfile.objects.get(nickname=nickname)
-        player_profile.carbon += calculate_distance(user_lat, user_lon, target_lat,
-                                                    target_lon) * 300  # Increase the carbon footprint
+        # Increase the carbon footprint of the user by the distance between the user and the target location
+        player_profile.carbon += calculate_distance(user_lat, user_lon, target_lat, target_lon) * 300
         player_profile.save()
+        return JsonResponse({'status': success})
     except PlayerProfile.DoesNotExist:
         pass
+
 
 
 def get_new_random_target(exclude_id):
