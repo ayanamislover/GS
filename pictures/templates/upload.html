@@ -58,7 +58,7 @@
                 formData.append('image', blob, Date.now() + "snapshot.jpg");
                 formData.append('nickname', nickname); // 将昵称添加到表单数据中
 
-                await fetch("/api/upload", {
+                await fetch("/pictures/api/upload", {
                     method: "POST",
                     body: formData,
                 }).then(response => response.json()).then(responseData => console.log(responseData))
