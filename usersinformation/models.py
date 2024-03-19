@@ -36,6 +36,8 @@ class PlayerProfile(models.Model):
     # Login_days
     login_days = models.IntegerField(default=0)
 
+    carbon = models.IntegerField(default=0)
+
     #lcy
     last_game_start = models.DateTimeField(null=True, blank=True)
     verified_locations_count = models.IntegerField(default=0)

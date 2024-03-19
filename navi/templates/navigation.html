@@ -162,7 +162,18 @@
   max-width: 500px;
   border-radius: 10px;
 }
+#modalPicture {
+  max-width: 100%; /* This makes the image's maximum width 100% of the parent */
+  max-height: 100%; /* This makes the image's maximum height 100% of the parent */
+  display: block; /* This removes the default inline behavior, which might be causing extra space issues */
+  margin: auto; /* This will center the image if it is smaller than the parent */
+}
 
+/* If your modal has a specific size and you want the image to cover all of it, use this instead */
+#modalPicture {
+  width: 100%; /* This makes the image stretch to cover the width */
+  height: auto; /* This keeps the image's height proportional to its width */
+}
 #okBtn {
   width: 100%;
   padding: 10px;
@@ -171,6 +182,10 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+#modalLocation,
+#modalOverview {
+  padding: 0 10px; /* Example padding, adjust as needed */
 }
 </style>
 
@@ -272,15 +287,7 @@ function showModal() {
                     target_longitude: parseFloat('{{ target_longitude }}')
                 }),
                  })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        flag = 1;
-                    } else {
-                        alert('You account did not login yet.');
-
-                    }
-                })
+                    flag =1;
                 }
 
                 // Add marker for user's current location
