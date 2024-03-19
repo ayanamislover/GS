@@ -12,7 +12,6 @@ from usersinformation.models import PlayerProfile
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate, login  # Import authenticate and login functions
 from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
 # Define user forms
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名', max_length=50)
