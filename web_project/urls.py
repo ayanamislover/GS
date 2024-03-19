@@ -32,6 +32,6 @@ urlpatterns = [
     path("", include("web.urls")),
     path("navi/", include("navi.urls")),
     path("announce/", include("announcement.urls")),
-    path("store/", include("rewards.urls")),
+
     path("textGame/", include("textGame.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

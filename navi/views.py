@@ -13,6 +13,7 @@ include = ('answerquestion.views', 'answerquestion', 'answerquestion.urls')
 from answerquestion.views import series_detail
 # from usersinformation.models import PlayerProfile
 from django.http import HttpResponseRedirect
+from textGame.views import SceneSelect
 
 
 # from answerquestion.views import series_detail2,results_page2
@@ -73,7 +74,7 @@ def check_location(request, nickname):
             request.session.save()
             print('Random index:', request.session['target_id'])
             # update the user's verified locations count
-            redirect_url = reverse('ans:series_detail', kwargs={'series_id': 1, 'nickname': nickname})
+            redirect_url = reverse('textGame:SceneSelect', kwargs={'loc_id': 1, 'nickname': nickname})
             # redirect to the answerquestion app page
             print('Check-in successful, redirecting to:', redirect_url)
             response_data = {

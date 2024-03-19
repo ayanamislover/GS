@@ -1,10 +1,8 @@
-#coding=utf-8
-
 from django.http import HttpResponse
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import UserForm
+
 from django.urls import reverse
 
 
@@ -15,7 +13,10 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate, login  # Import authenticate and login functions
 
 # Define user forms
-
+class UserForm(forms.Form):
+    username = forms.CharField(label='用户名', max_length=50)
+    password = forms.CharField(label='密码', widget=forms.PasswordInput())
+    email = forms.EmailField(label='邮箱')
 
 
 
@@ -27,24 +28,33 @@ def regist(request):
     if request.method == 'POST':
         userform = UserForm(request.POST)
         if userform.is_valid():
-            # Get form data
+            # 从表单中获取数据
             username = userform.cleaned_data['username']
-            password = make_password(userform.cleaned_data['password'])  # Hash password
+            password = userform.cleaned_data['password']
             email = userform.cleaned_data['email']
 
-            # Create a new user
-            user = User.objects.create(username=username, password=password, email=email)
+            # 检查用户名是否唯一
+            if User.objects.filter(username=username).exists():
+                # 如果用户名已存在，向表单添加错误
+                userform.add_error('username', 'The username is already taken. Please choose another one.')
+                return render(request, 'regist.html', {'userform': userform})
 
-            # Create a PlayerProfile instance associated with the new user
-            #PlayerProfile.objects.create(user=user, email= email, nickname=username)
+            # 哈希密码
+            hashed_password = make_password(password)
 
-            # After successful registration, go to the login interface
+            # 创建新用户
+            user = User.objects.create(username=username, password=hashed_password, email=email)
+
+            # 创建与新用户关联的PlayerProfile实例
+            PlayerProfile.objects.create(user=user, email=email, nickname=username)
+
+            # 注册成功后，重定向到登录界面
             return redirect(reverse('login'))
         else:
-           # If the form is invalid, re-render the registration page with the information of the form already filled out
+            # 如果表单无效，用已填充的信息重新渲染注册页面
             return render(request, 'regist.html', {'userform': userform})
     else:
-       # GET request or other non-POST request, showing an empty registration form
+        # 对于GET请求或其他非POST请求，显示一个空的注册表单
         userform = UserForm()
         return render(request, 'regist.html', {'userform': userform})
 
@@ -77,7 +87,7 @@ def login(request):
     else:
        # Display the login form
         userform = UserForm()
-        return render(request, 'login.html',{'userform': userform})  # Suppose you have a template called 'login.html'
+        return render(request, 'login.html', {'userform': userform})  # Suppose you have a template called 'login2.html'
 
 def index(request):
    # Return the index.html template, or whatever you want to display

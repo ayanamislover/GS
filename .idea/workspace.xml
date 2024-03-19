@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e61b1b3d-4052-4619-a4b6-8dea29bdbdeb" name="更改" comment="Usersinformation,Quize,Achievement First Spring">
-      <change beforePath="$PROJECT_DIR$/achievement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/announcement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html" afterDir="false" />
+    <list default="true" id="e61b1b3d-4052-4619-a4b6-8dea29bdbdeb" name="更改" comment="1">
+      <change afterPath="$PROJECT_DIR$/web/templates/login2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36ef1d3c-f1a5-4af4-b9b7-d95e2d22c1bb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36ef1d3c-f1a5-4af4-b9b7-d95e2d22c1bb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navi/templates/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/navi/templates/navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navi/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/navi/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +28,15 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="printScope" value="4" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../../../Users/YS/Desktop" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -53,22 +67,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/PyCharm/PycharmProjects/djangoProject/GS/mysite/web_project/settings.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.django.DjangoModulesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/YS/Desktop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.django.DjangoModulesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite" />
@@ -121,6 +136,10 @@
       <workItem from="1709165797155" duration="708000" />
       <workItem from="1710686908503" duration="950000" />
       <workItem from="1710687879264" duration="4574000" />
+      <workItem from="1710784226081" duration="3998000" />
+      <workItem from="1710791155849" duration="6341000" />
+      <workItem from="1710800296431" duration="3809000" />
+      <workItem from="1710805449772" duration="2175000" />
     </task>
     <task id="LOCAL-00001" summary="Change comment">
       <created>1709157396218</created>

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'aM',
     "navi",
     "announcement",
-    "rewards",
+
     "textGame"
 ]
 

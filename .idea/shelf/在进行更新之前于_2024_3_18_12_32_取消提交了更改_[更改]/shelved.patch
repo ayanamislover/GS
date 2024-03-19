@@ -1,0 +1,163 @@
+Index: myapp/templates/home.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n      <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>\r\n    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v6.5.1/css/all.css\">\r\n    <link rel=\"stylesheet\" href=\"/static/css/style2.css\">\r\n    <title>Dashboard</title>\r\n</head>\r\n <body>\r\n\r\n    <div class=\"container\">\r\n\r\n        <aside class=\"left-section\">\r\n            <div class=\"logo\">\r\n                <button class=\"menu-btn\" id=\"menu-close\">\r\n                    <i class=\"fa-solid fa-arrow-left\"></i>\r\n                </button>\r\n                <a href=\"#\">The Game</a>\r\n            </div>\r\n\r\n            <div class=\"sidebar\">\r\n                 <div class=\"item\" id=\"active\">\r\n                    <i class=\"fa-solid fa-gauge\"></i>\r\n                    <a href=\"#\">Dashboard</a>\r\n                </div>\r\n                 <div class=\"item\" >\r\n                    <i class=\"fa-solid fa-award\"></i>\r\n                    <a href=\"{% url 'ahchievement_detail' %}\">Achievements</a>\r\n                </div>\r\n                <div class=\"item\">\r\n                    <i class=\"fa-solid fa-user\"></i>\r\n                    <a href=\"{% url 'player_profile' nickname=player_information.nickname %}\">Profile</a>\r\n                </div>\r\n                <div class=\"item\" >\r\n                    <i class=\"fa-solid fa-bullhorn\"></i>\r\n                    <a href=\"{% url 'list' %}\">Bulletin Board</a>\r\n                </div>\r\n                <div class=\"item\">\r\n                    <i class=\"fa-solid fa-qrcode\"></i>\r\n                    <a href=\"{% url 'activity_join' %}\">Activity Time!</a>\r\n                </div>\r\n                <div class=\"item\">\r\n                    <i class=\"fa-solid fa-chess\"></i>\r\n                    <a href=\"{% url 'checkers_game' nickname=player_information.nickname %}\">Exeter Checkers</a>\r\n                </div>\r\n                <div class=\"item\">\r\n                    <i class=\"fa-solid fa-chart-simple\"></i>\r\n                    <a href=\"{% url 'user_leaderboard' %}\">Charts</a>\r\n                </div>\r\n                 <div class=\"item\">\r\n                    <i class=\"fa-solid fa-list\"></i>\r\n                    <a href=\"{% url 'activity' %}\">Activity List</a>\r\n                </div>\r\n                 <div class=\"item\">\r\n                    <i class=\"fa-solid fa-store\"></i>\r\n                    <a href=\"{% url 'gift_list' %}\">Store</a>\r\n                </div>\r\n\r\n\r\n\r\n            </div>\r\n\r\n            <div class=\"pic\">\r\n                <img src=\"/static/images/DrawKit Vector Illustration Ecology & Environment (10).png\">\r\n            </div>\r\n\r\n            <div class=\"upgrade\">\r\n                <h5>Have any thoughts?</h5>\r\n                <div class=\"link\">\r\n                    <a href=\"#\">Click for <b>HELP</b></a>\r\n                    <i class='bx bxs-chevron-right'></i>\r\n                </div>\r\n            </div>\r\n      </aside>\r\n        <!-- End of Sidebar Section -->\r\n\r\n           <main>\r\n            <header>\r\n                <button class=\"menu-btn\" id=\"menu-open\">\r\n                    <i class='bx bx-menu'></i>\r\n                </button>\r\n            </header>\r\n               <!-- 添加iframe用于展示内容 -->\r\n        <iframe id=\"main-content\" src=\"about:blank\" style=\"width:100%; height:100%; border:none;\"></iframe>\r\n           </main>\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <script src=\"/static/js/script1.js\"></script>\r\n        </div>\r\n </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/myapp/templates/home.html b/myapp/templates/home.html
+--- a/myapp/templates/home.html	(revision 3d533e17992dd1befd744922557c3323fcb60675)
++++ b/myapp/templates/home.html	(date 1710765009121)
+@@ -94,4 +94,4 @@
+     <script src="/static/js/script1.js"></script>
+         </div>
+  </body>
+-</html>
++</html>
+\ No newline at end of file
+Index: achievement/templates/achievement/achievement_detail.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Achievements</title>\r\n    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\r\n    {% load static %}\r\n</head>\r\n<style>\r\n    .custom-header {\r\n        background-color: #ffbb54; /* Bootstrap primary color */\r\n        color: white;\r\n        border-radius: 20px;\r\n    }\r\n    .custom-row {\r\n        background-color: #f8f9fa; /* Bootstrap light color */\r\n        border-radius: 20px;\r\n    }\r\n    body {\r\n        background: linear-gradient(to right,#D1913C,#FFD194);\r\n    }\r\n    .container {\r\n            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the container */\r\n            border-radius: 10px; /* Rounded corners for the container */\r\n            padding: 20px; /* Some padding inside the container */\r\n            margin-top: 20px; /* Some margin at the top */\r\n        }\r\n</style>\r\n\r\n<body>\r\n   <div class=\"container mt-4\">\r\n    <h1 class=\"text-center mb-4\">Achievements</h1>\r\n    <table class=\"table\">\r\n        <thead class=\"custom-header\">\r\n            <tr>\r\n                <th scope=\"col\">#</th>\r\n                <th scope=\"col\">Icon</th>\r\n                <th scope=\"col\">Name</th>\r\n                <th scope=\"col\">Description</th>\r\n                <th scope=\"col\">Unlock Score</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            {% for achievement in achievement_detail %}\r\n                <tr class=\"{{ forloop.counter|divisibleby:2|yesno:\"custom-row,\" }}\">\r\n                    <th scope=\"row\">{{ forloop.counter }}</th>\r\n                    <td>\r\n                        {% if achievement.icon %}\r\n                            <img src=\"{{ achievement.icon.url }}\" alt=\"{{ achievement.name }}\" style=\"width: 60px; height: auto;\">\r\n                        {% else %}\r\n                            <img src=\"{% static 'achievement/images/default.jpg' %}\" alt=\"Default Icon\" style=\"width: 60px; height: auto;\">\r\n                        {% endif %}\r\n                    </td>\r\n                    <td>{{ achievement.name }}</td>\r\n                    <td>{{ achievement.description }}</td>\r\n                    <td>{{ achievement.unlock_score }}</td>\r\n                </tr>\r\n            {% empty %}\r\n                <tr>\r\n                    <td colspan=\"5\">No achievements found.</td>\r\n                </tr>\r\n            {% endfor %}\r\n        </tbody>\r\n    </table>\r\n</div>\r\n\r\n\r\n    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\"></script>\r\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\r\n    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\r\n</body>\r\n\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/achievement/templates/achievement/achievement_detail.html b/achievement/templates/achievement/achievement_detail.html
+--- a/achievement/templates/achievement/achievement_detail.html	(revision 3d533e17992dd1befd744922557c3323fcb60675)
++++ b/achievement/templates/achievement/achievement_detail.html	(date 1710764873478)
+@@ -9,27 +9,45 @@
+ </head>
+ <style>
+     .custom-header {
+-        background-color: #ffbb54; /* Bootstrap primary color */
++        background-color: #ffbb54;
+         color: white;
+         border-radius: 20px;
+     }
+     .custom-row {
+-        background-color: #f8f9fa; /* Bootstrap light color */
++        background-color: #f8f9fa;
+         border-radius: 20px;
+     }
+     body {
+         background: linear-gradient(to right,#D1913C,#FFD194);
+     }
+     .container {
+-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the container */
+-            border-radius: 10px; /* Rounded corners for the container */
+-            padding: 20px; /* Some padding inside the container */
+-            margin-top: 20px; /* Some margin at the top */
+-        }
++        background-color: rgba(255, 255, 255, 0.8);
++        border-radius: 10px;
++        padding: 20px;
++        margin-top: 20px;
++    }
++    .wrapper {
++        display: flex;
++        min-height: 100vh;
++        width: 100%;
++    }
++    .left-section {
++        flex: 0 0 250px; /* Adjust the width of the sidebar */
++        min-height: 100vh; /* Optional: Make the sidebar full height */
++    }
++    .container {
++        flex-grow: 1; /* Allow the main content to grow and fill the available space */
++        margin-top: 0; /* Adjust margin top if necessary */
++        padding: 20px; /* Adjust padding as needed */
++        background-color: rgba(255, 255, 255, 0.8); /* Optional: Style for the main content background */
++    }
++
+ </style>
+ 
+ <body>
+-   <div class="container mt-4">
++
++
++   <div class="container mt-4 flex-grow-1">
+     <h1 class="text-center mb-4">Achievements</h1>
+     <table class="table">
+         <thead class="custom-header">
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e61b1b3d-4052-4619-a4b6-8dea29bdbdeb\" name=\"更改\" comment=\"Usersinformation,Quize,Achievement First Spring\">\r\n      <change beforePath=\"$PROJECT_DIR$/achievement/models.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/achievement/models.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/announcement/models.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/announcement/models.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/db.sqlite3\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/db.sqlite3\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/web_project/urls.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/web_project/urls.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DjangoConsoleOptions\" custom-start-script=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\">\r\n    <option name=\"myCustomStartScript\" value=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"FlaskConsoleOptions\" custom-start-script=\"import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\\nApp: %s [%s]\\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))\">\r\n    <envs>\r\n      <env key=\"FLASK_APP\" value=\"app\" />\r\n    </envs>\r\n    <option name=\"myCustomStartScript\" value=\"import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\\nApp: %s [%s]\\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))\" />\r\n    <option name=\"myEnvs\">\r\n      <map>\r\n        <entry key=\"FLASK_APP\" value=\"app\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"shuonanyang\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2d0p6gi4BftUBuBCx1GpMqqtmmt\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"last_opened_file_path\": \"D:/PyCharm/PycharmProjects/djangoProject/GS/mysite/web_project/settings.py\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"settings.editor.selected.configurable\": \"com.jetbrains.django.DjangoModulesConfigurable\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PyCharm\\PycharmProjects\\djangoProject\\GS\\mysite\" />\r\n      <recent name=\"D:\\PyCharm\\PycharmProjects\\djangoProject\\GS\\mysite\\answerquestion\\templates\\answerquestion\" />\r\n      <recent name=\"D:\\PyCharm\\PycharmProjects\\djangoProject\\GS\\mysite\\navi\\templates\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\PyCharm\\PycharmProjects\\djangoProject\\GS\\mysite\" />\r\n      <recent name=\"D:\\PyCharm\\PycharmProjects\\djangoProject\\GS\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"GS\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\r\n      <module name=\"GS\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n        <env name=\"DJANGO_SETTINGS_MODULE\" value=\"web_project.settings\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\r\n      <option name=\"port\" value=\"8000\" />\r\n      <option name=\"host\" value=\"\" />\r\n      <option name=\"additionalOptions\" value=\"\" />\r\n      <option name=\"browserUrl\" value=\"\" />\r\n      <option name=\"runTestServer\" value=\"false\" />\r\n      <option name=\"runNoReload\" value=\"false\" />\r\n      <option name=\"useCustomRunCommand\" value=\"false\" />\r\n      <option name=\"customRunCommand\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"e61b1b3d-4052-4619-a4b6-8dea29bdbdeb\" name=\"更改\" comment=\"\" />\r\n      <created>1709154679277</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1709154679277</updated>\r\n      <workItem from=\"1709154683125\" duration=\"101000\" />\r\n      <workItem from=\"1709154802259\" duration=\"2614000\" />\r\n      <workItem from=\"1709163811132\" duration=\"238000\" />\r\n      <workItem from=\"1709164099119\" duration=\"1269000\" />\r\n      <workItem from=\"1709165797155\" duration=\"708000\" />\r\n      <workItem from=\"1710686908503\" duration=\"950000\" />\r\n      <workItem from=\"1710687879264\" duration=\"4574000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Change comment\">\r\n      <created>1709157396218</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709157396218</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Usrsinformation, Quzie, Achievement First Spring\">\r\n      <created>1709164379088</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709164379088</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Delete mysite/db.sqlite3\">\r\n      <created>1709164781195</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709164781195</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Usersinformation,Quize,Achievement First Spring\">\r\n      <created>1709164831354</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709164831354</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Usersinformation,Quize,Achievement First Spring\">\r\n      <created>1709164947970</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1709164947970</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Change comment\" />\r\n    <MESSAGE value=\"Usrsinformation, Quzie, Achievement First Spring\" />\r\n    <MESSAGE value=\"Delete mysite/db.sqlite3\" />\r\n    <MESSAGE value=\"Usersinformation, Q\" />\r\n    <MESSAGE value=\"Usersinformation,Quize,Achievement First Spring\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Usersinformation,Quize,Achievement First Spring\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/GS$manage.coverage\" NAME=\"manage 覆盖结果\" MODIFIED=\"1708038486807\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/usersinformation\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3d533e17992dd1befd744922557c3323fcb60675)
++++ b/.idea/workspace.xml	(date 1710764873490)
+@@ -4,12 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e61b1b3d-4052-4619-a4b6-8dea29bdbdeb" name="更改" comment="Usersinformation,Quize,Achievement First Spring">
+-      <change beforePath="$PROJECT_DIR$/achievement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/models.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/announcement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/models.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html" afterDir="false" />
++    <list default="true" id="e61b1b3d-4052-4619-a4b6-8dea29bdbdeb" name="更改" comment="1">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/achievement/templates/achievement/achievement_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/templates/achievement/achievement_detail.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/web_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/urls.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -60,17 +58,18 @@
+     "WebServerToolWindowFactoryState": "false",
+     "git-widget-placeholder": "main",
+     "ignore.virus.scanning.warn.message": "true",
+-    "last_opened_file_path": "D:/PyCharm/PycharmProjects/djangoProject/GS/mysite/web_project/settings.py",
++    "last_opened_file_path": "D:/PyCharm/PycharmProjects/djangoProject/GS/usersinformation/static",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+-    "settings.editor.selected.configurable": "com.jetbrains.django.DjangoModulesConfigurable",
++    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\usersinformation\static" />
+       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite" />
+       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite\answerquestion\templates\answerquestion" />
+       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite\navi\templates" />
+@@ -120,7 +119,7 @@
+       <workItem from="1709164099119" duration="1269000" />
+       <workItem from="1709165797155" duration="708000" />
+       <workItem from="1710686908503" duration="950000" />
+-      <workItem from="1710687879264" duration="4574000" />
++      <workItem from="1710687879264" duration="15500000" />
+     </task>
+     <task id="LOCAL-00001" summary="Change comment">
+       <created>1709157396218</created>
+@@ -157,7 +156,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1709164947970</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="1">
++      <created>1710692698627</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1710692698627</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -180,7 +186,8 @@
+     <MESSAGE value="Delete mysite/db.sqlite3" />
+     <MESSAGE value="Usersinformation, Q" />
+     <MESSAGE value="Usersinformation,Quize,Achievement First Spring" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Usersinformation,Quize,Achievement First Spring" />
++    <MESSAGE value="1" />
++    <option name="LAST_COMMIT_MESSAGE" value="1" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/GS$manage.coverage" NAME="manage 覆盖结果" MODIFIED="1708038486807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/usersinformation" />
