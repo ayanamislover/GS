@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "announcement",
     "pictures",
     "textGame",
+    "pointshop",
     "gamekeeper"
 ]
 
