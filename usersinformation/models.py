@@ -59,7 +59,7 @@ class PlayerProfile(models.Model):
         return f"{self.avatar} {self.nickname} {self.email} {self.achievement_count} {self.bio} {self.login_days}"
 
 
-# 达成成就的表格
+# the record for achievement
 class AchievementAndUser(models.Model):
     user = models.ForeignKey(PlayerProfile, on_delete=models.CASCADE)
     achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
