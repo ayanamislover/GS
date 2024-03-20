@@ -3,18 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Take and Upload Photo</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <style>
+            
+        .main{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+            #takenPhoto{
+                border-radius: 10px;
+                border:1px solid darkgrey;
+            }
+    </style>
 </head>
 <body>
+    <div class="main">
     <h1>Take and Upload Photo</h1>
     <video id="cameraStream" autoplay></video>
     <img id="takenPhoto" src="" alt="Your photo" style="display:none;"/>
-    <button id="snap">Take Photo</button>
-    <button id="uploadPhoto" style="display:none;">Upload Photo</button>
+    <button id="snap" class="btn btn-primary">Take Photo</button>
+    <button id="uploadPhoto" class="btn btn-info" style="display:none;">Upload Photo</button>
     <p id="uploadStatus"></p>
 
     <!-- 不可见的元素用于存储 nickname -->
     <input type="hidden" id="nickname" value="{{ nickname }}" />
-
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const video = document.querySelector('#cameraStream');
