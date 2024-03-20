@@ -35,6 +35,7 @@ urlpatterns = [
      path("pictures/", include("pictures.urls")),
     path("textGame/", include("textGame.urls")),
     path("gamekeeper/", include("gamekeeper.urls")),
+    path("pointshop/",include("pointshop.urls"))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
