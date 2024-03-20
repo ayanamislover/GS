@@ -259,6 +259,28 @@
             background-color: #1a946f; /* Background color on click */
             transform: translateY(3px) /* Move the button down slightly */
         }
+        #okBtn2 {
+            display: inline-block; /* Display the button as an inline-block */
+            padding: 10px 20px; /* Padding inside the button */
+            font-size: 1em; /* Text size */
+            cursor: pointer; /* Display pointer on hover */
+            background-color: rgba(26, 149, 111, 0.85); /* Background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Simple shadow effect */
+            transition: background-color 0.3s ease; /* Transition effect for color change on click */
+        }
+
+        /* Button styles */
+        #okBtn2:hover {
+            background-color: #1a946f; /* Background color on hover */
+        }
+
+        #okBtn2:active {
+            background-color: #1a946f; /* Background color on click */
+            transform: translateY(3px) /* Move the button down slightly */
+        }
 
     </style>
 </head>
@@ -279,6 +301,7 @@
         <p>For more information, please contact us.</p>
     </div>
     <button id="okBtn1">I accept this policy and continue the game</button>
+    <button id="okBtn2" onclick="window.history.back();">I reject and quit</button>
 </div>
 <div class="header-bar">
     <span class="header-bar-title">Welcome to the UOE Checkers Game</span>
@@ -307,6 +330,7 @@
         <p>Congratulations! You have reached the target location! You can start your adventure now!</p>
         <p id="modalOverview"></p>
         <button id="okBtn">OK</button>
+
     </div>
 </div>
 <script>
