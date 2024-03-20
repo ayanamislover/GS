@@ -105,8 +105,8 @@ def cal_carbon(request, nickname):
     target_lon = data['target_longitude']
     try:
         player_profile = PlayerProfile.objects.get(nickname=nickname)
-        player_profile.carbon += calculate_distance(user_lat, user_lon, target_lat,
-                                                    target_lon) * 300  # Increase the carbon footprint
+        # Increase the carbon footprint of the user based on the distance between the user and the target
+        player_profile.carbon += calculate_distance(user_lat, user_lon, target_lat,target_lon) * 300
         player_profile.save()
         return JsonResponse({'status': 'success'})
     except PlayerProfile.DoesNotExist:
