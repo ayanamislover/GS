@@ -1,0 +1,79 @@
+/* style.css */
+body {
+    font-family: 'Arial', sans-serif;
+
+    margin-top: 20px;
+    background-color: #f8f9fa; /* 轻微的背景色 */
+}
+
+.card {
+    /* 卡片阴影和圆角 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.card-title {
+    color: #007bff; /* 标题颜色 */
+}
+
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    background-color: #f8f9fa;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.question {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.choice {
+    margin: 10px 0;
+}
+
+#timer {
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#scoreDisplay {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-style: italic;
+}

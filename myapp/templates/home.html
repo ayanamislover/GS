@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="stylesheet" href="/static/css/style1.css">
+    <title>Dashboard</title>
+</head>
+ <body>
+
+    <div class="container">
+
+        <aside class="left-section">
+            <div class="logo">
+                <button class="menu-btn" id="menu-close">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <a href="#">Exeter Checkers</a>
+            </div>
+
+            <div class="sidebar">
+                 <div class="item" id="active">
+                     <i class="fa-solid fa-chess"></i>
+                    <a href="{% url 'checkers_game' nickname=player_information.nickname %}">Exeter Checkers</a>
+                </div>
+                 <div class="item" >
+                    <i class="fa-solid fa-award"></i>
+                    <a href="{% url 'ahchievement_detail' %}">Achievements</a>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="{% url 'player_profile' nickname=player_information.nickname %}">Profile</a>
+                </div>
+                <div class="item" >
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <a href="{% url 'list' %}">Bulletin Board</a>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <a href="{% url 'activity_join' %}">Activity Time!</a>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <a href="{% url 'user_leaderboard' %}">Charts</a>
+                </div>
+                 <div class="item">
+                    <i class="fa-solid fa-list"></i>
+                    <a href="{% url 'activity' %}">Activity List</a>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-store"></i>
+                    <a href="#">Store</a>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="pic">
+                <img src="/static/images/DrawKit Vector Illustration Ecology & Environment (10).png">
+            </div>
+
+            <div class="upgrade">
+                <h5>Have any thoughts?</h5>
+                <div class="link">
+                    <a href="#">Click for <b>HELP</b></a>
+                    <i class='bx bxs-chevron-right'></i>
+                </div>
+            </div>
+      </aside>
+        <!-- End of Sidebar Section -->
+
+           <main>
+            <header>
+                <button class="menu-btn" id="menu-open">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </header>
+               <!-- 添加iframe用于展示内容 -->
+        <iframe id="main-content" src="about:blank" style="width:100%; height:100%; border:none;"></iframe>
+           </main>
+
+
+
+
+
+
+    <script src="/static/js/script1.js"></script>
+        </div>
+ </body>
+</html>

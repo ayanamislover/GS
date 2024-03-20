@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path("aM/",include("aM.urls")),
-    path("myapp",include("myapp.urls")),
+    path("myapp/",include("myapp.urls")),
     path("answerquestion/",include("answerquestion.urls")),
     path("leaderboard/",include("leaderboard.urls")),
     path("activityboard/",include("activityboard.urls")),
@@ -28,7 +30,11 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("achievement/", include("achievement.urls")),
     path("", include("web.urls")),
-    path("checkers/", include("navi.urls")),
+    path("navi/", include("navi.urls")),
     path("announce/", include("announcement.urls")),
-    path("store/", include("rewards.urls")),
+     path("pictures/", include("pictures.urls")),
+    path("textGame/", include("textGame.urls")),
+    path("gamekeeper/", include("gamekeeper.urls")),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

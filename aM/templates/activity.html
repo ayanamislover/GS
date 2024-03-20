@@ -117,11 +117,11 @@
                     <th>Organizer</th>
                     <th>Category</th>
                     <th>Tags</th>
-                    <th>Actions</th> <!-- Add a new header for actions -->
                 </tr>
             </thead>
             <tbody>
-                {% for activity in activities %}
+                {% for activity in activity %}
+
                     <tr>
                         <td>{{ activity.title }}</td>
                         <td>{{ activity.content }}</td>
@@ -134,7 +134,6 @@
                         <td>{{ activity.organizer }}</td>
                         <td>{{ activity.category }}</td>
                         <td>{{ activity.tags }}</td>
-                        <td><button class="btn btn-dark">Join</button></td> <!-- Add a button for "Join In" action -->
                     </tr>
                 {% endfor %}
             </tbody>
@@ -144,6 +143,4 @@
 
 </body>
 </html>
-
-
 

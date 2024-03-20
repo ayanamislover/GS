@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join an Activity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #EDE574, #E1F5C4);
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .activities-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .activity-label {
+            text-align: left;
+            margin-left: 20px; /* Adjusted margin to align with activity names */
+            font-weight: bold;
+            padding-top: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            padding: 10px 20px; /* Adjust padding to align text */
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .activity-name {
+            font-weight: bold;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-left: 20px; /* Space from the text */
+            vertical-align: top;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Available Activities</h1>
+    </div>
+    <div class="activities-container">
+        <div class="activity-label">Activity Name</div>
+        <ul>
+            {% for activity in activities %}
+                <li>
+                    <span class="activity-name">{{ activity.title }}</span> - {{ activity.description }}
+                    (Start: {{ activity.start_date }} - End: {{ activity.end_date }})
+                    <a href="{% url 'scan_qr' series_id=activity.series_id %}" class="btn">Join</a>
+                </li>
+            {% empty %}
+                <li>No activities available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/fonts/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,400italic,700|" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* 允许页面滚动 */
+        }
+    body {
+    background-image: linear-gradient(to bottom, #f6f1e6 30%, #e8e5d1 50%, #cdd799 70%);
+    text-align: center;
+}
+
+        .content-container {
+            position: relative;
+            z-index: 23;
+            padding-top: 20px; /* 为标题和描述留出空间 */
+        }
+        .content-container h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5rem; /* 适当调整字号以适应屏幕 */
+            font-weight: bold;
+            background: #b3c58c;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 auto; /* 居中显示 */
+            padding-top: 60px; /* 调整标题位置 */
+        }
+       .content-description {
+        font-size: 1.2rem;
+        color: #274046;
+        margin: 20px 0;
+          }
+
+       .link-container {
+    margin: 20px 0;
+    text-align: center; /* 居中显示按钮 */
+}
+
+.link-container a {
+    display: inline-block;
+    color: #ffffff;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    border-radius: 40px; /* 圆角 */
+    transition: background-color 0.3s, transform 0.3s;
+    margin-right: 10px; /* 在按钮之间添加一些间隔 */
+}
+
+.link-container a:last-child {
+    margin-right: 0;
+}
+
+/* 特定按钮的颜色 */
+.btn-signup {
+    background-color: #b3c58c;
+}
+
+.btn-signin {
+    background-color: #b3c58c; /* Sign In按钮的颜色 */
+}
+
+.link-container a:hover {
+    transform: scale(1.05);
+}
+
+/* 修改悬停颜色 */
+.btn-signup:hover {
+    background-color: #f2dc9a;
+}
+
+.btn-signin:hover {
+    background-color: #f2dc9a;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(16, 53, 45, 0.5); padding-left: 200px;">
+    <a class="navbar-brand" href="#" style="color: #ffffff;">Exeter Checkers</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Privacy</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+    <div class="content-container">
+        <h1>The Exeter Checkers.</h1>
+        <p class="content-description">Explore and enjoy our interactive challenges.</p>
+       <div class="link-container">
+           <a href="login" class="btn btn-signin">Start!</a>
+
+       </div>
+    </div>
+    <div style="position: fixed; bottom: 9%; left: 0; width: 80%; height: 60%; background-image: url('static/images/strelitzia plant-rafiki.png'); background-size: contain; background-repeat: no-repeat; background-position: center center; z-index: 2; pointer-events: none; opacity: 1;"></div>
+    <div style="position: fixed; bottom: 0%; left: 0; width: 80%; height: 75%; background-image: url('static/images/indoor plants-cuate (1).png'); background-size: contain; background-repeat: no-repeat; background-position: -8% center; z-index: 2; pointer-events: none; opacity: 1;"></div>
+    <div style="position: fixed; top: 20%; left: 0; width: 80%; height: 70%; background-image: url('static/images/indoor plants-bro.png'); background-size: contain; background-repeat: no-repeat; background-position: -15% center; z-index: 1; pointer-events: none; opacity: 1;"></div>
+    <div style="position: fixed; bottom: 5%; right: 0; width: 40%; height: 65%; background-image: url('static/images/potted plants-rafiki.png'); background-size: contain; background-repeat: no-repeat; background-position: center center; z-index: 2; pointer-events: none; opacity: 1;"></div>
+    <div style="position: fixed; bottom: 0%; left: 0; width: 40%; height: 60%; background-image: url('static/images/Online Review-cuate.png'); background-size: contain; background-repeat: no-repeat; background-position: center center; z-index: 4; pointer-events: none; opacity: 1;"></div>
+    <div style="position: fixed; bottom: -5%; right: 10%; width: 50%; height: 60%; background-image: url('static/images/Visual data-rafiki (2).png'); background-size: contain; background-repeat: no-repeat; background-position: center center; z-index: 4; pointer-events: none; opacity: 1;"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
