@@ -104,3 +104,6 @@ def login(request):
 def index(request):
    # Return the index.html template, or whatever you want to display
     return render(request, 'index.html')
+def gdpr(request):
+   # Return the index.html template, or whatever you want to display
+    return render(request, 'gdpr.html')
