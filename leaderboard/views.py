@@ -2,7 +2,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 from usersinformation.models import PlayerProfile
-
+from decorate import login_requiredforuser
+@login_requiredforuser
 def user_leaderboard(request):
     # Gets a list of PlayerProfile objects in descending order of credits
     score_leaderboard = PlayerProfile.objects.order_by('-score')[:10]  # Get the top 10

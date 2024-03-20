@@ -107,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+CSRF_TRUSTED_ORIGINS = ['https://*.nami.ltd']
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -127,6 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'navi', 'static'),
+    os.path.join(BASE_DIR, 'pictures', 'static'),
 ]
 
 MEDIA_URL = '/media/'

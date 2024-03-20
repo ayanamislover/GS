@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from decorate import login_requiredforuser
 from django.urls import reverse
 
 
@@ -24,47 +24,42 @@ class UserForm(forms.Form):
 
 from django.contrib.auth.hashers import make_password
 
-# 用户注册
+# User regist
 @csrf_exempt
 def regist(request):
     if request.method == 'POST':
         userform = UserForm(request.POST)
 
         if userform.is_valid():
-            print("开始用户注册咯:")
-            # 从表单中获取数据
+            print("Begin regist:")
+            # Get data from form
             username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
             email = userform.cleaned_data['email']
 
-            # 检查用户名是否唯一
+            # Check uniqueness
             if User.objects.filter(username=username).exists():
-                # 如果用户名已存在，向表单添加错误
+                # If already exist, send a error message
                 userform.add_error('username', 'The username is already taken. Please choose another one.')
                 return render(request, 'regist.html', {'userform': userform})
 
-            # 哈希密码
+            # hash password
             hashed_password = make_password(password)
 
-            # 修改了创建的顺序
+            
             pp = PlayerProfile.objects.create(email=email, nickname=username)
-            print("创建好了用户详情：", pp)
+            print("regist successfully：", pp)
             user = User.objects.create(username=username, password=hashed_password, email=email, player_profile=pp)
-            print("创建好了用户：", user)
+            print("regist successfully：", user)
 
-            # 创建新用户
-            # user = User.objects.create(username=username, password=hashed_password, email=email)
-            # 创建与新用户关联的PlayerProfile实例
-            # PlayerProfile.objects.create(user=user, email=email, nickname=username)
-
-            # 注册成功后，重定向到登录界面
+            # return to login page
             return redirect(reverse('login'))
         else:
-            print("表单无效")
-            # 如果表单无效，用已填充的信息重新渲染注册页面
+            print("form error")
+            
             return render(request, 'regist.html', {'userform': userform})
     else:
-        # 对于GET请求或其他非POST请求，显示一个空的注册表单
+        # For Get request or other not Post, show a empty form
         userform = UserForm()
         return render(request, 'regist.html', {'userform': userform})
 
@@ -85,6 +80,7 @@ def login(request):
         try:
             user = User.objects.get(username=username)
             if check_password(password, user.password):
+                request.session['is_logged_in'] = True  # set the login state to true
              # User authentication successful
             # Set the user ID in the session to track the login status
                 request.session['user_username'] = user.username
@@ -92,15 +88,25 @@ def login(request):
                 return redirect(reverse('home', kwargs={'nickname': user.username}))
             else:
                # Password does not match
-                return HttpResponse("password Invalid login")
+                return HttpResponse("Password incorrectly!")
         except User.DoesNotExist:
             # Username does not exist
-            return HttpResponse("username Invalid login用户不存在")
+            return HttpResponse("User is not exist!")
     else:
        # Display the login form
         userform = UserForm()
-        return render(request, 'login.html', {'userform': userform})  # Suppose you have a template called 'login2.html'
+        return render(request, 'login.html', {'userform': userform})  # Suppose you have a template called 'login.html'
+@login_requiredforuser
+def logout_view(request):
+    # clean the session in the login state
+    request.session.pop('is_logged_in', None)
+    # redirect to the login page
+    return redirect(reverse('login'))
 
 def index(request):
    # Return the index.html template, or whatever you want to display
     return render(request, 'index.html')
+
+def gdpr(request):
+   # Return the index.html template, or whatever you want to display
+    return render(request, 'gdpr.html')

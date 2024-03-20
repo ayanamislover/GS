@@ -1,7 +1,8 @@
 from django.shortcuts import render,reverse,redirect
 from django.db.models import F
 from usersinformation.models import PlayerProfile
-
+from decorate import login_requiredforuser
+@login_requiredforuser
 def SceneSelect(request, loc_id,nickname):
     # First, update the score
     PlayerProfile.objects.filter(nickname=nickname).update(score=F('score') + 2)
@@ -20,7 +21,7 @@ def SceneSelect(request, loc_id,nickname):
     }
     return render(request, "MeadowAd.html", context=context)
 
-
+@login_requiredforuser
 def MeadowAd(request, nickname):
     # First, update the score
     PlayerProfile.objects.filter(nickname=nickname).update(score=F('score') + 2)

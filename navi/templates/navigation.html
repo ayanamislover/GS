@@ -35,42 +35,46 @@
     </style>
     <style>
         .instructions {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 8px;
-    width: 330px;
-    opacity: 0.9;
-    z-index: 1000; /* Ensure it sits on top of other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle shadow for better readability */
-  }
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            width: 330px;
+            opacity: 0.9;
+            z-index: 1000; /* Ensure it sits on top of other elements */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Optional: Adds a subtle shadow for better readability */
+        }
 
-  /* Style for the map container (assuming you have one) */
-  #map-container {
-    position: relative;
-    height: 500px; /* Set to the desired height */
-    /* other styling as needed */
-  }
+        /* Style for the map container (assuming you have one) */
+        #map-container {
+            position: relative;
+            height: 500px; /* Set to the desired height */
+            /* other styling as needed */
+        }
 
-  /* Additional styles for the content */
-  h2 {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-  }
-  ol {
-      color: #333333;
-    padding-left: 20px;
-  }
-  li {
-      color: #555555;
-    margin-bottom: 5px;
-  }
-.privacy {
-  font-size: 13px; /* Smaller font size */
-}
+        /* Additional styles for the content */
+        h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        ol {
+            color: #333333;
+            padding-left: 20px;
+        }
+
+        li {
+            color: #555555;
+            margin-bottom: 5px;
+        }
+
+        .privacy {
+            font-size: 13px; /* Smaller font size */
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-family: 'Roboto', sans-serif;
@@ -140,57 +144,165 @@
         }
     </style>
     <style>
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 10px;
-}
-#modalPicture {
-  max-width: 100%; /* This makes the image's maximum width 100% of the parent */
-  max-height: 100%; /* This makes the image's maximum height 100% of the parent */
-  display: block; /* This removes the default inline behavior, which might be causing extra space issues */
-  margin: auto; /* This will center the image if it is smaller than the parent */
-}
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
 
-/* If your modal has a specific size and you want the image to cover all of it, use this instead */
-#modalPicture {
-  width: 100%; /* This makes the image stretch to cover the width */
-  height: auto; /* This keeps the image's height proportional to its width */
-}
-#okBtn {
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-#modalLocation,
-#modalOverview {
-  padding: 0 10px; /* Example padding, adjust as needed */
-}
-</style>
+        #modalPicture {
+            max-width: 100%; /* This makes the image's maximum width 100% of the parent */
+            max-height: 100%; /* This makes the image's maximum height 100% of the parent */
+            display: block; /* This removes the default inline behavior, which might be causing extra space issues */
+            margin: auto; /* This will center the image if it is smaller than the parent */
+        }
 
+        /* If your modal has a specific size and you want the image to cover all of it, use this instead */
+        #modalPicture {
+            width: 100%; /* This makes the image stretch to cover the width */
+            height: auto; /* This keeps the image's height proportional to its width */
+        }
+
+        #okBtn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #modalLocation,
+        #modalOverview {
+            padding: 0 10px; /* Example padding, adjust as needed */
+        }
+    </style>
+    <style>
+        #privacyPopup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1001; /* Above other content */
+            font-family: 'Roboto', sans-serif; /* Use the imported Google Font */
+        }
+
+        .popup-title {
+            font-size: 22px; /* Title font size */
+            font-weight: 700; /* Bold font weight */
+            margin-bottom: 20px; /* Space below the title */
+            text-align: center; /* Center the title text */
+        }
+
+        /* Overlay styles */
+        #overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000; /* Below the popup, above other content */
+        }
+
+        /* Content styles */
+        .privacy p {
+            font-size: 18px; /* Larger font size */
+            margin-bottom: 15px; /* Space between paragraphs */
+        }
+
+        #okBtn1 {
+            display: inline-block; /* Display the button as an inline-block */
+            padding: 10px 20px; /* Padding inside the button */
+            font-size: 1em; /* Text size */
+            cursor: pointer; /* Display pointer on hover */
+            background-color: rgba(26, 149, 111, 0.85); /* Background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Simple shadow effect */
+            transition: background-color 0.3s ease; /* Transition effect for color change on click */
+        }
+
+        /* Button styles */
+        #okBtn1:hover {
+            background-color: #1a946f; /* Background color on hover */
+        }
+
+        #okBtn1:active {
+            background-color: #1a946f; /* Background color on click */
+            transform: translateY(3px) /* Move the button down slightly */
+        }
+        #okBtn2 {
+            display: inline-block; /* Display the button as an inline-block */
+            padding: 10px 20px; /* Padding inside the button */
+            font-size: 1em; /* Text size */
+            cursor: pointer; /* Display pointer on hover */
+            background-color: rgba(26, 149, 111, 0.85); /* Background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Simple shadow effect */
+            transition: background-color 0.3s ease; /* Transition effect for color change on click */
+        }
+
+        /* Button styles */
+        #okBtn2:hover {
+            background-color: #1a946f; /* Background color on hover */
+        }
+
+        #okBtn2:active {
+            background-color: #1a946f; /* Background color on click */
+            transform: translateY(3px) /* Move the button down slightly */
+        }
+
+    </style>
 </head>
 <body>
+<div id="overlay"></div>
+<div id="privacyPopup">
+    <h2 class="popup-title">Privacy Notice</h2>
+    <div class="privacy">
+        <p>Our system does not retain any personally identifiable location data. All such data is anonymized and
+            processed accordingly.</p>
+        <p>The collection of carbon footprint metrics and any photographs uploaded by you are essential for the
+            operation of the game.</p>
+        <p>Your uploaded images will be reviewed for game-related purposes and subsequently deleted from our
+            servers.</p>
+        <p>By electing to continue, you are giving explicit consent for the collection of your carbon footprint
+            information, geolocation data, and any uploaded images, which will be handled in strict compliance with our
+            privacy policy.</p>
+        <p>For more information, please contact us.</p>
+    </div>
+    <button id="okBtn1">I accept this policy and continue the game</button>
+    <button id="okBtn2" onclick="window.history.back();">I reject</button>
+</div>
 <div class="header-bar">
     <span class="header-bar-title">Welcome to the UOE Checkers Game</span>
     <div id="map" style="position: relative;"></div>
@@ -198,30 +310,28 @@
     <button id="Start-adventure" style="display: none;" onclick="buttonClicked()">Start Your adventure !</button>
 
     <div class="instructions">
-    <h2>Game Instructions</h2>
-    <ol>
-      <li>Navigate to the target point B.</li>
-      <li>Click the <strong>"I've arrived!"</strong> button.</li>
-      <li>We'll tell what you need to do next<next></next>.</li>
-      <li>Click <strong>"Start Your adventure"</strong></li>
-      <li>Earn points for every activity!</li>
-      <li><strong>Continue your adventure!</strong></li>
-        <p class="privacy">
-    We do not store any of your location information; all your location information will be used anonymously.
-  </p>
-    </ol>
-  </div>
+        <h2>Game Instructions</h2>
+        <ol>
+            <li>Navigate to the target point B.</li>
+            <li>Click the <strong>"I've arrived!"</strong> button.</li>
+            <li>We'll tell what you need to do next</li>
+            <li>Click <strong>"Start Your adventure"</strong></li>
+            <li>Earn points for every activity!</li>
+            <li><strong>Continue your adventure!</strong></li>
+        </ol>
+    </div>
 
 </div>
 <div id="myModal" class="modal">
-<div class="modal-content">
+    <div class="modal-content">
 
-  <img id="modalPicture" src="{{ picture }}" alt="Picture">
-    <p id="modalLocation"></p>
-    <p>Congratulations! You have reached the target location! You can start your adventure now!</p>
-    <p id="modalOverview"></p>
-  <button id="okBtn">OK</button>
-</div>
+        <img id="modalPicture" src="{{ picture }}" alt="Picture">
+        <p id="modalLocation"></p>
+        <p>Congratulations! You have reached the target location! You can start your adventure now!</p>
+        <p id="modalOverview"></p>
+        <button id="okBtn">OK</button>
+
+    </div>
 </div>
 <script>
     let savedRedirectUrl = null
@@ -229,27 +339,28 @@
     var overview = "{{ overview }}";
     var tag = "{{ tag }}";
     var loc = "{{ loc }}";
-    let flag = 0;
 
     // After the page is loaded, check the data and decide whether to display the button
     function buttonClicked() {
+        window.location.reload();
         // Button click
         window.open(savedRedirectUrl, '_blank');
         // Hide button
         document.getElementById('Start-adventure').style.display = 'none';
-        window.location.reload();
-    }
-    document.getElementById("okBtn").onclick = function() {
-  document.getElementById("myModal").style.display = "none";
-};
 
-// use to show the modal
-function showModal() {
-  document.getElementById("modalLocation").src = loc;
-  document.getElementById("modalPicture").src = picture;
-  document.getElementById("modalOverview").textContent = overview;
-  document.getElementById("myModal").style.display = "block";
-}
+    }
+
+    document.getElementById("okBtn").onclick = function () {
+        document.getElementById("myModal").style.display = "none";
+    };
+
+    // use to show the modal
+    function showModal() {
+        document.getElementById("modalLocation").src = loc;
+        document.getElementById("modalPicture").src = picture;
+        document.getElementById("modalOverview").textContent = overview;
+        document.getElementById("myModal").style.display = "block";
+    }
 
     function initMap() {
         if (navigator.geolocation) {
@@ -270,24 +381,23 @@ function showModal() {
                     lng: parseFloat('{{ target_longitude }}')
                 };
 
-                if (flag === 0)
-                {
+                if (localStorage.getItem('calcarbon') !== 'true') {
                     let nickname = '{{ nickname }}';
-                fetch(`/navi/cal_carbon/${encodeURIComponent(nickname)}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken'),
-                },
-                body: JSON.stringify({
-                    user_latitude: userLocation.lat,
-                    user_longitude: userLocation.lng,
-                    nickname: nickname,
-                    target_latitude: parseFloat('{{ target_latitude }}'),
-                    target_longitude: parseFloat('{{ target_longitude }}')
-                }),
-                 })
-                    flag =1;
+                    fetch(`/navi/cal_carbon/${encodeURIComponent(nickname)}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken'),
+                        },
+                        body: JSON.stringify({
+                            user_latitude: userLocation.lat,
+                            user_longitude: userLocation.lng,
+                            nickname: nickname,
+                            target_latitude: parseFloat('{{ target_latitude }}'),
+                            target_longitude: parseFloat('{{ target_longitude }}')
+                        }),
+                    })
+                    localStorage.setItem('calcarbon', 'true');
                 }
 
                 // Add marker for user's current location
@@ -362,7 +472,7 @@ function showModal() {
                         showModal();
                         document.getElementById('Start-adventure').style.display = 'inline-block';
                         savedRedirectUrl = data.redirect_url;
-                        flag = 0;
+                        localStorage.setItem('calcarbon', 'false');
                     } else {
                         alert('You have not reached the target location yet.');
 
@@ -390,6 +500,34 @@ function showModal() {
         return cookieValue;
     }
 
+</script>
+<script>
+    // Get the modal
+    var privacyPopup = document.getElementById('privacyPopup');
+    var overlay = document.getElementById('overlay');
+
+    // Get the button that opens the modal
+    var okBtn1 = document.getElementById("okBtn1");
+
+    // Function to open the modal if it hasn't been acknowledged in the session
+    function openModalIfNotAcknowledged() {
+        // Check if 'privacyNoticeAcknowledged' is stored in sessionStorage
+        if (sessionStorage.getItem('privacyNoticeAcknowledged') !== 'true') {
+            privacyPopup.style.display = "block";
+            overlay.style.display = "block";
+        }
+    }
+
+    // Show the modal when the page loads, if not acknowledged in the session
+    window.onload = openModalIfNotAcknowledged;
+
+    // When the user clicks on OK, close the modal and store the acknowledgment in the session
+    okBtn1.onclick = function () {
+        privacyPopup.style.display = "none";
+        overlay.style.display = "none";
+        // Store the acknowledgment in sessionStorage
+        sessionStorage.setItem('privacyNoticeAcknowledged', 'true');
+    }
 </script>
 </body>
 

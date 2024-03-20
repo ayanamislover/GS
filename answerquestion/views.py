@@ -9,13 +9,14 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from achievement.models import Achievement
 from usersinformation.models import AchievementAndUser
+from decorate import login_requiredforuser
 # Define an unlogged interface without a primary key
 from django.db.models import Q
-
+@login_requiredforuser
 def index_none(request):
     # render the response using the Render function, specifying the template file and context data (if any)
     return render(request, 'usersinformation/player_profile_none.html')
-
+@login_requiredforuser
 # Answer main page
 def index(request, nickname):
     series_list = Series.objects.all()
@@ -37,14 +38,15 @@ def index(request, nickname):
         'user_nickname': user_profile.nickname,
 
     })
-
-#lcoal
+@login_requiredforuser
+@csrf_exempt
+#local
 def series_detail(request, series_id, nickname):
-    print("进入这个url了么")
+    print("if into this url")
     series = get_object_or_404(Series, pk=series_id)
     questions = series.questions.all()
     player_profile = get_object_or_404(PlayerProfile, nickname=nickname)  # Gets the user instance based on the incoming user pk
-    # 获取用户昵称
+    # Get username
     user_nickname = player_profile.nickname  # Assume that the PlayerProfile model has a nickname field
 
     if request.method == 'POST':
@@ -53,19 +55,21 @@ def series_detail(request, series_id, nickname):
             total_score = calculate_score(form.cleaned_data, questions)
              #Update the score in the user's PlayerProfile
             try:
-               #  这里给用户加分了，于此同时判断一下是否达成了新成就，如果达成新成就要添加一条新记录
+    
+               # Add socre, and judge if catch the new achievement, if does, then add a record 
                player_profile = PlayerProfile.objects.get(nickname=nickname)
 
                oldscore = player_profile.score
                player_profile.score += total_score  # Increase score
                newscore = player_profile.score
                player_profile.save()
-               print("现在开始判断该用户的积分足够达到新成就了么：", oldscore, newscore)
-               # 大于旧分数，小于等于新分数的成就
+               print("now begin judge socre：", oldscore, newscore)
+               
+               # large than old score, small than new socre 
                achievement_detail = Achievement.objects.filter(Q(unlock_score__gt=oldscore) & Q(unlock_score__lte=newscore))
                for achievement in achievement_detail:
-                   print("找到了新成就：", achievement.name)
-                   # 添加一条新的成就记录
+                   print("find a new achievement：", achievement.name)
+                   # add a new achievement record
                    achievement_and_user = AchievementAndUser()
                    achievement_and_user.user = player_profile
                    achievement_and_user.achievement = achievement
@@ -82,8 +86,8 @@ def series_detail(request, series_id, nickname):
         form = QuizForm(questions=questions)
 
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
-
-
+@login_requiredforuser
+#@csrf_exempt
 def results_page(request, nickname,series_id):
     # Get the score from the query string
     additional_score = int(request.GET.get('score', 0))
@@ -109,12 +113,16 @@ def results_page(request, nickname,series_id):
        'series_completed': series_completed,  # Indicates whether the column is complete
 
      }
-    if series_id==1:
-        return render(request, 'answerquestion/results_page.html',
-                  {'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score})
-    else :
-        return render(request, 'answerquestion/results_page1.html',
-                      {'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score})
+    if series_id % 2 == 1:
+    # If series_id is odd, use results_page.html
+        return render(request, 'answerquestion/results_page.html', {
+        'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
+    })
+    else:
+    # If series_id is even, use results_page1.html
+        return render(request, 'answerquestion/results_page1.html', {
+        'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
+    })
 
 
 
@@ -128,7 +136,7 @@ def calculate_score(cleaned_data, questions):
             total_score += 1 # Assume 1 point for each question
     return total_score
 
-
+@login_requiredforuser
 #@csrf_exempt # You can temporarily disable CSRF protection if you do not process CSRF tokens
 def submit_answers(request):
     if request.method == 'POST':
