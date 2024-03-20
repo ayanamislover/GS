@@ -129,7 +129,7 @@ def calculate_score(cleaned_data, questions):
     return total_score
 
 
-#@csrf_exempt # You can temporarily disable CSRF protection if you do not process CSRF tokens
+@csrf_exempt # You can temporarily disable CSRF protection if you do not process CSRF tokens
 def submit_answers(request):
     if request.method == 'POST':
         total_score = 0
