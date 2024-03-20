@@ -14,7 +14,7 @@ from answerquestion.models import Series
 from math import radians, cos, sin, asin, sqrt
 from django.views.decorators.csrf import csrf_exempt
 from decorate import login_requiredforuser
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -23,7 +23,7 @@ def activity_join(request):
     activities = Activity.objects.all()  # 获取所有活动
     return render(request, 'activity_join.html', {'activities': activities})
 
-@login_requiredforuser
+@login_required
 def generate_qrcode(request,series_id):
     if series_id is None:
         # Handle situations where there is no series_id 
