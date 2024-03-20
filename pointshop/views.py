@@ -14,8 +14,8 @@ from .models import Product
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from usersinformation.models import PlayerProfile
-
-
+from decorate import login_requiredforuser
+@login_requiredforuser
 def shop(request, nickname):
     # Pass the nickname and score to the template
     context = {
@@ -24,7 +24,7 @@ def shop(request, nickname):
     }
     return render(request, 'index1.html', context=context)
 
-
+@login_requiredforuser
 def search_results(request):
     query = request.GET.get('q', '')  # 获取搜索词
     if query:
@@ -37,12 +37,12 @@ def search_results(request):
 
 # Create your views here.
 
-
+@login_requiredforuser
 def lottery_draw(request):
     # 如果是GET请求，显示抽奖页面
     return render(request, 'lottery.html')
 
-
+@login_requiredforuser
 def buy_product(request, name, nickname):
     # 获取请求的商品
     product = Product.objects.get(name=name)
@@ -73,23 +73,8 @@ def buy_product(request, name, nickname):
         return JsonResponse({'status':'fail'})
 
 
-
+@login_requiredforuser
 def product_detail(request, name, nickname):
     product = Product.objects.get(name=name)
     return render(request, 'product_detail.html', {'product': product, 'nickname':nickname })
-
-# @login_required
-# def buy_product(request, name):
-#     product = get_object_or_404(Product, pk=name)
-#     user_profile = request.user.playerprofile
-#
-#     if user_profile.points >= product.points:
-#         user_profile.points -= product.points
-#         user_profile.save()
-#         # Optional: Update product sales or inventory
-#         messages.success(request, 'Purchase successful!')
-#     else:
-#         messages.error(request, 'Not enough points.')
-#
-#     return redirect('product_detail', name=name, nickname )
 
