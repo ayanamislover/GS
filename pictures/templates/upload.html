@@ -16,7 +16,76 @@
             #takenPhoto{
                 border-radius: 10px;
                 border:1px solid darkgrey;
+                text-align: center;
             }
+             #okBtn1 {
+            display: inline-block; /* Display the button as an inline-block */
+            padding: 10px 20px; /* Padding inside the button */
+            font-size: 1em; /* Text size */
+            cursor: pointer; /* Display pointer on hover */
+            background-color: rgba(26, 149, 111, 0.85); /* Background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Simple shadow effect */
+            transition: background-color 0.3s ease; /* Transition effect for color change on click */
+        }
+
+        /* Button styles */
+        #okBtn1:hover {
+            background-color: #1a946f; /* Background color on hover */
+        }
+
+        #okBtn1:active {
+            background-color: #1a946f; /* Background color on click */
+            transform: translateY(3px) /* Move the button down slightly */
+        }
+        #snap {
+            display: inline-block; /* Display the button as an inline-block */
+            padding: 10px 20px; /* Padding inside the button */
+            font-size: 1em; /* Text size */
+            cursor: pointer; /* Display pointer on hover */
+            background-color: rgba(26, 149, 111, 0.85); /* Background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Simple shadow effect */
+            transition: background-color 0.3s ease; /* Transition effect for color change on click */
+        }
+
+        /* Button styles */
+        #snap:hover {
+            background-color: #1a946f; /* Background color on hover */
+        }
+
+        #snap:active {
+            background-color: #1a946f; /* Background color on click */
+            transform: translateY(3px) /* Move the button down slightly */
+        }
+         #uploadPhoto {
+            display: inline-block; /* Display the button as an inline-block */
+            padding: 10px 20px; /* Padding inside the button */
+            font-size: 1em; /* Text size */
+            cursor: pointer; /* Display pointer on hover */
+            background-color: rgba(26, 149, 111, 0.85); /* Background color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Simple shadow effect */
+            transition: background-color 0.3s ease; /* Transition effect for color change on click */
+             text-align: center;
+        }
+
+        /* Button styles */
+        #uploadPhoto:hover {
+            background-color: #1a946f; /* Background color on hover */
+        }
+
+        #uploadPhoto:active {
+            background-color: #1a946f; /* Background color on click */
+            transform: translateY(3px) /* Move the button down slightly */
+        }
+
     </style>
 </head>
 <body>
@@ -24,13 +93,16 @@
     <h1>Take and Upload Photo</h1>
     <video id="cameraStream" autoplay></video>
     <img id="takenPhoto" src="" alt="Your photo" style="display:none;"/>
+        <br>
     <button id="snap" class="btn btn-primary">Take Photo</button>
     <button id="uploadPhoto" class="btn btn-info" style="display:none;">Upload Photo</button>
     <p id="uploadStatus"></p>
-
-    <!-- 不可见的元素用于存储 nickname -->
+    <!-- store  nickname -->
     <input type="hidden" id="nickname" value="{{ nickname }}" />
+
+    <button id="okBtn1" onclick="window.close();">Back to the game</button>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const video = document.querySelector('#cameraStream');
@@ -42,7 +114,7 @@
             // 从 HTML 中获取昵称
             const nickname = document.getElementById('nickname').value;
 
-            navigator.mediaDevices.getUserMedia({ video: true })
+            navigator.mediaDevices.getUserMedia({video: true})
                 .then(stream => {
                     video.srcObject = stream;
                 })
@@ -57,14 +129,14 @@
                 const photoData = canvas.toDataURL('image/png');
                 takenPhoto.src = photoData;
                 takenPhoto.style.display = 'block';
-                uploadButton.style.display = 'block';
+                uploadButton.style.display = 'inline-block';
             });
 
             uploadButton.addEventListener('click', async () => {
                 let dataUrl = canvas.toDataURL('image/jpeg', 0.9);
                 let binary = atob(dataUrl.split(',')[1]);
                 let data = [];
-                for(let i = 0 ; i < binary.length; i++) {
+                for (let i = 0; i < binary.length; i++) {
                     data.push(binary.charCodeAt(i));
                 }
 
@@ -75,12 +147,23 @@
                 formData.append('nickname', nickname); // 将昵称添加到表单数据中
 
                 await fetch("/pictures/api/upload", {
-                    method: "POST",
+                    method: "post",
                     body: formData,
-                }).then(response => response.json()).then(responseData => console.log(responseData))
-                    .catch(err => console.log(err));
-            });
+                })
+                    .then(response => response.json())
+                    .then(responseData => {
+                        console.log(responseData);
+                        alert("upload success");
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        alert("upload fail");
+                    });
+                });
+
         });
+
+
     </script>
 </body>
 </html>
