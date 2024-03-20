@@ -12,7 +12,7 @@
     <script>
 function buyProduct(productName, nickname) {
     // 构建URL，这里需要确保URL的构造与Django路由匹配
-    alert('Success! You bought this item!')
+    alert('Sorry,this item is not available yet.')
 
     fetch(`/pointshop/buy/${productName}/${nickname}/`, {
         method: 'POST', // 或者根据后端要求使用 'GET'
