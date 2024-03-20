@@ -9,13 +9,14 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from achievement.models import Achievement
 from usersinformation.models import AchievementAndUser
+from decorate import login_requiredforuser
 # Define an unlogged interface without a primary key
 from django.db.models import Q
-
+@login_requiredforuser
 def index_none(request):
     # render the response using the Render function, specifying the template file and context data (if any)
     return render(request, 'usersinformation/player_profile_none.html')
-
+@login_requiredforuser
 # Answer main page
 def index(request, nickname):
     series_list = Series.objects.all()
@@ -37,8 +38,9 @@ def index(request, nickname):
         'user_nickname': user_profile.nickname,
 
     })
-
-#lcoal
+@login_requiredforuser
+@csrf_exempt
+#local
 def series_detail(request, series_id, nickname):
     print("if into this url")
     series = get_object_or_404(Series, pk=series_id)
@@ -84,7 +86,7 @@ def series_detail(request, series_id, nickname):
         form = QuizForm(questions=questions)
 
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
-
+@login_requiredforuser
 #@csrf_exempt
 def results_page(request, nickname,series_id):
     # Get the score from the query string
@@ -124,7 +126,6 @@ def results_page(request, nickname,series_id):
 
 
 
-
 def calculate_score(cleaned_data, questions):
    # Calculate the total score based on cleaned data and correct answers
     total_score = 0
@@ -135,7 +136,7 @@ def calculate_score(cleaned_data, questions):
             total_score += 1 # Assume 1 point for each question
     return total_score
 
-
+@login_requiredforuser
 #@csrf_exempt # You can temporarily disable CSRF protection if you do not process CSRF tokens
 def submit_answers(request):
     if request.method == 'POST':

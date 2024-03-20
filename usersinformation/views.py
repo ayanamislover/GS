@@ -4,13 +4,13 @@ from .models import PlayerProfile
 from .forms import PlayerProfileForm, DisplayedAchievementsForm
 from django.contrib import messages  # import messages modlule
 from django.contrib.auth.decorators import login_required
-# Create your views here.
 from django.views.decorators.csrf import csrf_exempt
-
+from decorate import login_requiredforuser
+@login_requiredforuser
 def player_profile_none(request):
     # Render the response using the render function, specifying the template file and context data
     return render(request, 'usersinformation/player_profile_none.html')
-
+@login_requiredforuser
 # Ensure that the login view stores the user ID in the session
 def player_profile2(request,pk):
     # Get the ID of the currently logged in user from session
@@ -23,7 +23,7 @@ def player_profile2(request,pk):
         context = {'error': 'Player profile not found.'}
         return render(request, 'usersinformation/error.html', context)
 
-
+@login_requiredforuser
 #Test, grab corresponding nicknames, display user interface
 def detailnickname(request, nickname):
 
@@ -31,7 +31,7 @@ def detailnickname(request, nickname):
     # Transmit the information to html model
     return render(request, "usersinformation/player_profile.html", {"player_information": player_information})
 
-
+@login_requiredforuser
 def player_profile(request, nickname):
     try:
         # Getting a PlayerProfile instance by nickname
@@ -55,7 +55,7 @@ def player_profile(request, nickname):
         # If the associated PlayerProfile is not found, you can render an error page or do something else with it
         context = {'error': 'Player profile not found.'}
         return render(request, 'usersinformation/error.html', context)
-
+@login_requiredforuser
 @csrf_exempt
 #Defining the Edit Page View
 def edit_player_profile(request, nickname):

@@ -6,16 +6,18 @@ from usersinformation.models import AchievementAndUser, PlayerProfile
 from web.models import User
 from django.forms.models import model_to_dict
 from django.contrib import messages
+from decorate import login_requiredforuser
 
 # Create your views here.
 #Achievement system detail screen view
+@login_requiredforuser
 def detail(request, pk):
     # Getting an Achievement instance by nickname
     achievement_detail = get_object_or_404(Achievement, pk=pk)
     # Pass the fetched user information to the template
     return render(request, "achievement/achievement_detail.html", {"achievement_detail": achievement_detail})
 
-
+@login_requiredforuser
 def achievement_detail(request):
     # Get all achievements
     username = request.session.get("user_username")

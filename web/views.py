@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from decorate import login_requiredforuser
 from django.urls import reverse
 
 
@@ -80,6 +80,7 @@ def login(request):
         try:
             user = User.objects.get(username=username)
             if check_password(password, user.password):
+                request.session['is_logged_in'] = True  # set the login state to true
              # User authentication successful
             # Set the user ID in the session to track the login status
                 request.session['user_username'] = user.username
@@ -94,11 +95,18 @@ def login(request):
     else:
        # Display the login form
         userform = UserForm()
-        return render(request, 'login.html', {'userform': userform})  # Suppose you have a template called 'login2.html'
+        return render(request, 'login.html', {'userform': userform})  # Suppose you have a template called 'login.html'
+@login_requiredforuser
+def logout_view(request):
+    # clean the session in the login state
+    request.session.pop('is_logged_in', None)
+    # redirect to the login page
+    return redirect(reverse('login'))
 
 def index(request):
    # Return the index.html template, or whatever you want to display
     return render(request, 'index.html')
+
 def gdpr(request):
    # Return the index.html template, or whatever you want to display
     return render(request, 'gdpr.html')

@@ -10,6 +10,7 @@ from .location_utils import is_within_distance, calculate_distance
 import datetime
 from django.utils import timezone
 from django.urls import reverse
+from decorate import login_requiredforuser
 
 include = ('answerquestion.views', 'answerquestion', 'answerquestion.urls')
 from answerquestion.views import series_detail
@@ -19,7 +20,7 @@ from pictures.views import upload_view
 
 
 # from answerquestion.views import series_detail2,results_page2
-
+@login_requiredforuser
 def checkersgame(request, nickname):
     if 'target_id' not in request.session:
         # if not request.session.get('target_id'):
@@ -56,7 +57,7 @@ def checkersgame(request, nickname):
     # return the navigation page with the target location and the user's nickname.
     return render(request, 'navigation.html', context)
 
-
+@login_requiredforuser
 @csrf_exempt
 @require_http_methods(["POST"])
 def check_location(request, nickname, tag):
@@ -94,7 +95,7 @@ def check_location(request, nickname, tag):
     except KeyError:
         # If the request does not contain the required data, return a failure message
         return JsonResponse({'status': 'failure', 'message': 'Incomplete data provided.'})
-
+@login_requiredforuser
 @csrf_exempt
 def cal_carbon(request, nickname):
     data = json.loads(request.body.decode('utf-8'))
