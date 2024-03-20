@@ -77,7 +77,7 @@ def check_location(request, nickname, tag):
             print('Random index:', request.session['target_id'])
             # update the user's verified locations count
             if tag == 'question':
-                redirect_url = reverse('ans:series_detail', kwargs={'series_id': 1, 'nickname': nickname})
+                redirect_url = reverse('ans:series_detail', kwargs={'series_id': 2, 'nickname': nickname})
             elif tag == 'meadow':
                 redirect_url = reverse('textGame:SceneSelect', kwargs={'loc_id': 1, 'nickname': nickname})
             elif tag == 'photo':
