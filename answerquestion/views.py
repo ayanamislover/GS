@@ -83,7 +83,7 @@ def series_detail(request, series_id, nickname):
 
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
 
-
+#@csrf_exempt
 def results_page(request, nickname,series_id):
     # Get the score from the query string
     additional_score = int(request.GET.get('score', 0))
@@ -109,12 +109,17 @@ def results_page(request, nickname,series_id):
        'series_completed': series_completed,  # Indicates whether the column is complete
 
      }
-    if series_id==1:
-        return render(request, 'answerquestion/results_page.html',
-                  {'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score})
-    else :
-        return render(request, 'answerquestion/results_page1.html',
-                      {'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score})
+    if series_id % 2 == 1:
+    # If series_id is odd, use results_page.html
+        return render(request, 'answerquestion/results_page.html', {
+        'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
+    })
+    else:
+    # If series_id is even, use results_page1.html
+        return render(request, 'answerquestion/results_page1.html', {
+        'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
+    })
+
 
 
 

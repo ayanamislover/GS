@@ -107,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+CSRF_TRUSTED_ORIGINS = ['https://*.nami.ltd']
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
