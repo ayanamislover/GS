@@ -40,11 +40,11 @@ def index(request, nickname):
 
 #lcoal
 def series_detail(request, series_id, nickname):
-    print("进入这个url了么")
+    print("if into this url")
     series = get_object_or_404(Series, pk=series_id)
     questions = series.questions.all()
     player_profile = get_object_or_404(PlayerProfile, nickname=nickname)  # Gets the user instance based on the incoming user pk
-    # 获取用户昵称
+    # Get username
     user_nickname = player_profile.nickname  # Assume that the PlayerProfile model has a nickname field
 
     if request.method == 'POST':
@@ -53,19 +53,21 @@ def series_detail(request, series_id, nickname):
             total_score = calculate_score(form.cleaned_data, questions)
              #Update the score in the user's PlayerProfile
             try:
-               #  这里给用户加分了，于此同时判断一下是否达成了新成就，如果达成新成就要添加一条新记录
+    
+               # Add socre, and judge if catch the new achievement, if does, then add a record 
                player_profile = PlayerProfile.objects.get(nickname=nickname)
 
                oldscore = player_profile.score
                player_profile.score += total_score  # Increase score
                newscore = player_profile.score
                player_profile.save()
-               print("现在开始判断该用户的积分足够达到新成就了么：", oldscore, newscore)
-               # 大于旧分数，小于等于新分数的成就
+               print("now begin judge socre：", oldscore, newscore)
+               
+               # large than old score, small than new socre 
                achievement_detail = Achievement.objects.filter(Q(unlock_score__gt=oldscore) & Q(unlock_score__lte=newscore))
                for achievement in achievement_detail:
-                   print("找到了新成就：", achievement.name)
-                   # 添加一条新的成就记录
+                   print("find a new achievement：", achievement.name)
+                   # add a new achievement record
                    achievement_and_user = AchievementAndUser()
                    achievement_and_user.user = player_profile
                    achievement_and_user.achievement = achievement
