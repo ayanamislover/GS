@@ -224,6 +224,28 @@ body{
     transform: translateX(200%);
 }
 
+.form-group {
+    display: block; /* Use block to ensure the group takes full width */
+    margin-bottom: 15px; /* Space below the form group */
+}
+
+.form-group input[type="checkbox"] {
+    vertical-align: middle; /* Vertically align the checkbox to the middle of the text */
+    margin-right: 5px; /* Space between checkbox and label text */
+}
+
+.form-group label {
+    vertical-align: middle; /* Vertically align the label text to match checkbox alignment */
+    display: inline; /* Ensure label is in line with the checkbox */
+}
+
+.privacy-policy-link {
+    color: #9daa6c !important; /* Green color */
+    text-decoration: underline !important; /* Adds underline */
+}
+
+
+
 
 
 

@@ -11,10 +11,10 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('/static/images/Asset 11.png'); /* 设置背景图片 */
-  background-size: cover; /* 覆盖整个页面 */
-  background-position: center; /* 居中显示 */
-  background-color: #fff2d5; /* 背景颜色作为后备 */
+  background-image: url('/static/images/Asset 11.png');
+  background-size: cover;
+  background-position: center;
+  background-color: #fff2d5;
 }
 
 .container {
@@ -43,6 +43,6 @@ body {
 }
 
 .btn:hover {
-  background-color: hsl(210, 100%, 60%); /* 悬浮时的背景颜色 */
-  border-color: black; /* 已经在你的代码中定义了悬浮时边框颜色变黑 */
+  background-color: hsl(210, 100%, 60%);
+  border-color: black;
 }

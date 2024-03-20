@@ -14,6 +14,7 @@ class Location(models.Model):
         return self.name
 
 
+
 class QuizSession(models.Model):
     series_id = models.CharField(max_length=255,null=True)
     player = models.CharField(max_length=155)

@@ -78,11 +78,11 @@ def check_location(request, nickname, tag):
             # update the user's verified locations count
             if tag == 'question':
                 redirect_url = reverse('ans:series_detail', kwargs={'series_id': 1, 'nickname': nickname})
-            elif tag == 'Medowad':
+            elif tag == 'meadow':
                 redirect_url = reverse('textGame:SceneSelect', kwargs={'loc_id': 1, 'nickname': nickname})
             elif tag == 'photo':
                 redirect_url = reverse('pictures:upload_view', kwargs={'nickname': nickname})
-            print('Check-in successful, redirecting to:', redirect_url)
+            #print('Check-in successful, redirecting to:', redirect_url)
             response_data = {
                 'status': 'success',
                 'redirect_url': redirect_url

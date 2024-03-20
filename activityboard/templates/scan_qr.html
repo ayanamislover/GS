@@ -4,23 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Scanner and Uploader with Location Check</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body { text-align: center; }
-        #qr-canvas, #image-canvas { margin: auto; display: none; }
-        #btn-scan-qr, #image-input { margin: 20px; }
+        body {
+            padding-top: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .control-group {
+            margin: 20px 0;
+        }
+        button, .custom-file-upload {
+            width: 90%;
+            margin: 10px auto;
+            display: block;
+        }
+        #qr-canvas, #image-canvas {
+            margin: auto;
+            display: none;
+            border: 1px solid #000;
+            margin-bottom: 20px;
+        }
+        .custom-file-upload {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            padding: .375rem .75rem;
+            border-radius: .25rem;
+            border: 1px solid #007bff;
+            text-align: center;
+        }
+        .custom-file-upload:hover {
+            background-color: #0056b3;
+        }
+        input[type="file"] {
+            display: none;
+        }
     </style>
 </head>
 <body>
+<div class="container">
+    <h2>Scan QR Code with Camera</h2>
+    <button id="btn-scan-qr" class="btn btn-primary">Scan QR Code</button>
+    
+    <h2>Or Upload QR Code Image</h2>
+    <label for="image-input" class="custom-file-upload">Upload QR Code Image</label>
+    <input type="file" id="image-input" accept="image/*">
+    
+    <canvas id="qr-canvas" width="400" height="300"></canvas>
+    <video id="qr-video" style="display: none;"></video>
+    <canvas id="image-canvas" width="400" height="300"></canvas>
+</div>
 
-<h2>Scan QR Code with Camera</h2>
-<button id="btn-scan-qr">Scan QR Code</button>
-<canvas id="qr-canvas" width="400" height="300"></canvas>
-<video id="qr-video" style="display:none;"></video>
-
-<h2>Or Upload QR Code Image</h2>
-<input type="file" id="image-input" accept="image/*">
-
-<canvas id="image-canvas" width="400" height="300"></canvas>
 
 <script src="https://unpkg.com/jsqr"></script>
 <script>

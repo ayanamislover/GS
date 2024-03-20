@@ -5,20 +5,209 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e61b1b3d-4052-4619-a4b6-8dea29bdbdeb" name="更改" comment="1">
-      <change afterPath="$PROJECT_DIR$/web/templates/login2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36ef1d3c-f1a5-4af4-b9b7-d95e2d22c1bb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36ef1d3c-f1a5-4af4-b9b7-d95e2d22c1bb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GS.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_2_28_21_12____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2024_2_28_21_12____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_3_18_12_27____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2024_3_18_12_27____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_3_18_12_32____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2024_3_18_12_32____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/migrations/0002_activity_series_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/aM/migrations/0002_activity_series_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aM/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-grid.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/bootstrap.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/bootstrap.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/ie/PIE.htc" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/ie/PIE.htc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/ie/html5shiv.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/ie/html5shiv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/css/skel.css" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/css/skel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/bootstrap.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/bootstrap.esm.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/bootstrap.esm.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/static/js/skel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/aM/static/js/skel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/templates/activity.html" beforeDir="false" afterPath="$PROJECT_DIR$/aM/templates/activity.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aM/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aM/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/migrations/0002_achievement_icon_alter_achievement_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/migrations/0002_achievement_icon_alter_achievement_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/migrations/0003_achievement_unlock_score_alter_achievement_icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/migrations/0003_achievement_unlock_score_alter_achievement_icon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/migrations/0004_alter_achievement_icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/migrations/0004_alter_achievement_icon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/migrations/0005_alter_achievement_icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/migrations/0005_alter_achievement_icon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/migrations/0006_alter_achievement_icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/migrations/0006_alter_achievement_icon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/templates/achievement/achievement_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/templates/achievement/achievement_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/activityboard/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/activityboard/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/activityboard/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/activityboard/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/activityboard/templates/activity_join.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activityboard/templates/enternickname.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activityboard/templates/quiz.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/activityboard/templates/scan_qr.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/migrations/0002_announcement_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/migrations/0002_announcement_image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/migrations/0003_alter_announcement_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/templates/announcement/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/templates/announcement/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/templates/announcement/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/templates/announcement/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/migrations/0002_series_useranswer.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/migrations/0002_series_useranswer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/migrations/0003_remove_question_pub_date_question_series_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/migrations/0003_remove_question_pub_date_question_series_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/migrations/0004_question_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/migrations/0004_question_score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/static/answerquestion/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/static/answerquestion/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/templates/answerquestion/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/templates/answerquestion/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/templates/answerquestion/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/templates/answerquestion/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/templates/answerquestion/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/templates/answerquestion/results_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/templates/answerquestion/results_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answerquestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamekeeper/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/migrations/0002_delete_leaderboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/migrations/0002_delete_leaderboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/templates/user_leaderboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/migrations/0002_delete_leaderboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/migrations/0002_delete_leaderboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/migrations/0003_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/migrations/0003_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/migrations/0004_delete_leaderboard1.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/migrations/0004_delete_leaderboard1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/templates/admin_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/admin_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/templates/developer_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/developer_dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navi/templates/navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/navi/templates/navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/templates/user_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/user_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/templates/user_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/user_management.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/templates/user_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/user_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/navi/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/navi/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/static/css/styleAD1.css" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/static/css/styleAD1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/static/js/game1.js" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/static/js/game1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/templates/MeadowAd.html" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/templates/MeadowAd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textGame/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0002_playerprofile_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0002_playerprofile_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0003_playerprofile_avatar.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0003_playerprofile_avatar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0004_remove_playerprofile_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0004_remove_playerprofile_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0005_playerprofile_achievements_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0005_playerprofile_achievements_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0006_alter_playerprofile_achievements.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0006_alter_playerprofile_achievements.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0007_playerprofile_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0007_playerprofile_score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0008_playerprofile_completed_series.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0008_playerprofile_completed_series.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0009_alter_playerprofile_completed_series.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0009_alter_playerprofile_completed_series.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0010_alter_playerprofile_completed_series.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0010_alter_playerprofile_completed_series.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0011_playerprofile_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0011_playerprofile_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0012_alter_playerprofile_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0012_alter_playerprofile_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0013_remove_playerprofile_user_and_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0013_remove_playerprofile_user_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/migrations/0014_achievementanduser.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/migrations/0014_achievementanduser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/static/images/主页背景2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/templates/usersinformation/edit_player_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/templates/usersinformation/edit_player_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/templates/usersinformation/edit_player_profile2.html" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/templates/usersinformation/edit_player_profile2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/templates/usersinformation/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/templates/usersinformation/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/templates/usersinformation/player_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/templates/usersinformation/player_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/templates/usersinformation/player_profile_none.html" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/templates/usersinformation/player_profile_none.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usersinformation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/migrations/0002_user_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0002_user_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/migrations/0003_user_player_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0003_user_player_profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/migrations/0004_alter_user_username.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0004_alter_user_username.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/migrations/0006_user_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0006_user_email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-grid.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-grid.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-grid.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-grid.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap.rtl.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/bootstrap.rtl.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/ie/PIE.htc" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/ie/PIE.htc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/ie/html5shiv.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/ie/html5shiv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/skel.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/skel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/bootstrap.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap.esm.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/bootstrap.esm.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/skel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/js/skel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/login2.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/login2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/regist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_project/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/asgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_project/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_project/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +248,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/activityboard/templates/activity_join.html" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2d0p6gi4BftUBuBCx1GpMqqtmmt" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -67,23 +262,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Users/YS/Desktop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.django.DjangoModulesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/GS-main/GS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.django.DjangoModulesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite" />
@@ -91,6 +286,9 @@
       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite\navi\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GS-main\GS\leaderboard" />
+      <recent name="D:\GS-main\GS\leaderboard\templates" />
+      <recent name="D:\GS-main\GS\activityboard\templates" />
       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite" />
       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS" />
     </key>
@@ -120,6 +318,13 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
