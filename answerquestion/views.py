@@ -83,7 +83,7 @@ def series_detail(request, series_id, nickname):
 
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
 
-
+@csrf_exempt
 def results_page(request, nickname,series_id):
     # Get the score from the query string
     additional_score = int(request.GET.get('score', 0))
