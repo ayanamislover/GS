@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="product-detail">
+{#    <img src="{{ product.image.url }}" alt="{{ product.name }}"style="width: 150px; height: 150px;">#}
+    <h5>{{ product.name }}</h5>
+{#    <p>Points: {{ product.points }}</p>#}
+{#    <p>Sales: {{ product.sales }}</p>#}
+    <p>Description: {{ product.description }}</p>
+    <button onclick="buyProduct('{{ product.name }}', '{{ nickname }}')" class="btn btn-primary">Buy</button>
+</div>
+    <script>
+function buyProduct(productName, nickname) {
+    // 构建URL，这里需要确保URL的构造与Django路由匹配
+    alert('Success! You bought this item!')
+
+    fetch(`/pointshop/buy/${productName}/${nickname}/`, {
+        method: 'POST', // 或者根据后端要求使用 'GET'
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'), // Django需要CSRF token，如果是POST请求
+            'Content-Type': 'application/json',
+        },
+        // 如果需要发送数据到后端，可以在这里添加body
+        // body: JSON.stringify({ yourData })
+    })
+    .then(response => {
+        if(response.ok) {
+            return response.json(); // 解析JSON格式的响应
+        }
+        throw new Error('Network response was not ok.'); // 处理网络错误
+    })
+    .then(data => {
+        if (data.status === 'success') { // 确保后端返回的是数值200，而不是字符串'200'
+            alert('You have buy this item successfully.');
+        } else {
+            alert('You have not enough points yet.');
+        }
+    })
+    .catch(error => console.error('Error:', error)); // 处理fetch过程中的错误
+}
+{#function getCookie(name) {#}
+{#    let cookieValue = null;#}
+{#    if (document.cookie && document.cookie !== '') {#}
+{#        const cookies = document.cookie.split(';');#}
+{#        for (let i = 0; i < cookies.length; i++) {#}
+{#            const cookie = cookies[i].trim();#}
+{#            if (cookie.substring(0, name.length + 1) === (name + '=')) {#}
+{#                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));#}
+{#                break;#}
+{#            }#}
+{#        }#}
+{#    }#}
+{#    return cookieValue;#}
+</script>
+{% endblock %}
