@@ -83,7 +83,7 @@ def series_detail(request, series_id, nickname):
 
     return render(request, 'answerquestion/detail.html', {'form': form, 'series': series, 'user_nickname': user_nickname})
 
-@csrf_exempt
+#@csrf_exempt
 def results_page(request, nickname,series_id):
     # Get the score from the query string
     additional_score = int(request.GET.get('score', 0))
@@ -129,7 +129,7 @@ def calculate_score(cleaned_data, questions):
     return total_score
 
 
-@csrf_exempt # You can temporarily disable CSRF protection if you do not process CSRF tokens
+#@csrf_exempt # You can temporarily disable CSRF protection if you do not process CSRF tokens
 def submit_answers(request):
     if request.method == 'POST':
         total_score = 0
