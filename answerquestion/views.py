@@ -109,16 +109,17 @@ def results_page(request, nickname,series_id):
        'series_completed': series_completed,  # Indicates whether the column is complete
 
      }
-        if series_id > 10085:
-        # If series_id is greater than 0, use results_page.html
+    if series_id % 2 == 1:
+    # If series_id is odd, use results_page.html
         return render(request, 'answerquestion/results_page.html', {
-            'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
-        })
+        'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
+    })
     else:
-        # If series_id is less than or equal to 0, use a different template, for example, 'error_page.html' or any specific page you want to redirect to
-        return render(request, 'answerquestion/results_page1.html.html', {
-            'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
-        })
+    # If series_id is even, use results_page1.html
+        return render(request, 'answerquestion/results_page1.html', {
+        'series_id': series_id, 'nickname': nickname, 'additional_score': additional_score
+    })
+
 
 
 
