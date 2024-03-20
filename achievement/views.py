@@ -19,25 +19,25 @@ def detail(request, pk):
 def achievement_detail(request):
     # Get all achievements
     username = request.session.get("user_username")
-    # 获取用户
+    # Get user
     # user = User.objects.get(username=username)
-    # print("对应的用户信息：", model_to_dict(user))
-    # print("对应的用户信息：", user.player_profile)
-    # 获取用户
+    # print("User's information：", model_to_dict(user))
+    # print("User's profile：", user.player_profile)
+    
     player_profile = PlayerProfile.objects.get(nickname=username)
     result = []
     achievement_detail = Achievement.objects.all()
     for achievement in achievement_detail:
         achievement_dict = model_to_dict(achievement)
         print(achievement)
-        # 查找关联的成就记录
+        # Find the relevant achievement
         record = AchievementAndUser.objects.filter(achievement=achievement, user=player_profile).first()
         if record:
-            print("找到了相关的成就记录：",  record.created_at)
+            print("Find!：",  record.created_at)
             achievement_dict["create_time"] = record.created_at
             achievement_dict["state"] = True
         else:
-            print("没有找到相关的成就记录")
+            print("Not find!!!!")
             achievement_dict["create_time"] = ''
             achievement_dict["state"] = False
         result.append(achievement_dict)
