@@ -99,7 +99,18 @@ def login(request):
 @login_requiredforuser
 def logout_view(request):
     # clean the session in the login state
-    request.session.pop('is_logged_in', None)
+print("Session before pop:", dict(request.session))
+
+removed_value = request.session.pop('is_logged_in', None)
+
+if removed_value is None:
+    print("is_logged_in was not set in the session.")
+else:
+    print("is_logged_in was set to", removed_value, "and has been removed from the session.")
+
+print("Session after pop:", dict(request.session))
+request.session.save()
+
     # redirect to the login page
     return redirect(reverse('login'))
 
