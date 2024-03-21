@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logoutLink').addEventListener('click', function(event) {
         event.preventDefault();
-        console.log('登出链接被点击');
+        event.stopPropagation();
+        console.log('click');
         window.top.location.href = '/logout/';
     });
 });
