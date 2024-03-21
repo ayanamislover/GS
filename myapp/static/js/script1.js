@@ -50,5 +50,5 @@ document.getElementById('logoutLink').addEventListener('click', function(event) 
         event.preventDefault();
         event.stopPropagation();
         console.log('click');
-        window.location.href = '/logout/';
+        window.top.location.href = '/logout/';
 });
