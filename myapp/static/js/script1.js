@@ -46,11 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('logoutLink').addEventListener('click', function(event) {
+document.getElementById('logoutLink').addEventListener('click', function(event) {
         event.preventDefault();
         event.stopPropagation();
         console.log('click');
-        window.top.location.href = '/logout/';
-    });
+        window.location.href = '/logout/';
 });
