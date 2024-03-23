@@ -26,11 +26,11 @@ def shop(request, nickname):
 
 @login_requiredforuser
 def search_results(request):
-    query = request.GET.get('q', '')  # 获取搜索词
+    query = request.GET.get('q', '')  # Get search terms
     if query:
-        products = Product.objects.filter(name__icontains=query)  # 过滤物品名称
+        products = Product.objects.filter(name__icontains=query)  # filter item name
     else:
-        products = Product.objects.none()  # 无搜索词时返回空查询
+        products = Product.objects.none()  # Returns an empty query when there are no search terms
 
     return render(request, 'search_results.html', {'products': products})
 
@@ -39,37 +39,37 @@ def search_results(request):
 
 @login_requiredforuser
 def lottery_draw(request):
-    # 如果是GET请求，显示抽奖页面
+    # If it is a GET request, the sweepstakes page is displayed
     return render(request, 'lottery.html')
 
 @login_requiredforuser
 def buy_product(request, name, nickname):
-    # 获取请求的商品
+    # get the required items
     product = Product.objects.get(name=name)
 
-    # 获取用户的积分情况
+    # get the points situation from users
     user_profile = PlayerProfile.objects.get(nickname=nickname)
 
-    # 检查用户是否有足够的积分购买商品
+    # check whether the user has the 
     if user_profile.score >= product.price:
-        # 减去相应的积分
+        # decrease the points
         user_profile.score -= product.price
         user_profile.save()
 
-        # 增加商品销量，如果你跟踪的话
+        # increase the number of products
         # product.sales += 1
         # product.save()
 
-        # 记录购买...
+        # record the purchased items
 
-        # 显示购买成功消息
+        # appear the purchase information
         #messages.success(request, "Purchase successful!")
-        # 或者返回JSON响应
+        # back to JSON response
         return JsonResponse({'status':'success'})
     else:
-        # 积分不足
+        # inadequate points
         #messages.error(request, "You do not have enough points.")
-        # 或者返回JSON响应
+        # or back to the JASONRESPONSE
         return JsonResponse({'status':'fail'})
 
 
