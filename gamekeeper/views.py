@@ -11,8 +11,10 @@ from pictures.models import Photo
 from usersinformation.models import PlayerProfile
 from django.views.decorators.csrf import csrf_exempt
 
+
 # Create your views here.
 @csrf_exempt
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -35,8 +37,8 @@ def user_login(request):
 def gamekeeper(request):
     return render(request, 'gamekeeper.html')
 
-@login_required
 @csrf_exempt
+@login_required
 def gamekeeper_qrcode(request):
     if request.method == 'POST':
         series_id = request.POST.get('series_id')
@@ -45,8 +47,9 @@ def gamekeeper_qrcode(request):
         # If it is not a POST request, the form or error message is displayed
         return render(request, 'get_qrcode.html')
 
-@login_required
+
 @csrf_exempt
+@login_required
 def change_status(request):
     message = ''  # Used to display information to the user
     if request.method == 'POST':
@@ -63,8 +66,9 @@ def change_status(request):
             message = str(e)
     return render(request, 'change_statue.html', {'message': message})
 
-@login_required
+
 @csrf_exempt
+@login_required
 def review_photos(request):
     if request.method == 'POST':
         action = request.POST.get('action', '')
