@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='product_images/')
-    price = models.IntegerField()  # 价格用积分表示
+    price = models.IntegerField()  
     description = models.TextField()
     sales = models.IntegerField(default=0)
 
