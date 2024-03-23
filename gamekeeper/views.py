@@ -23,8 +23,8 @@ def user_login(request):
             user = authenticate(request, username=cd['username'], password=cd['password'])
             if user is not None:
                 if user.is_active:
-                    login(request, user)  # 确保这里传入了user
-                    return redirect('gamekeeper')  # 假设你有一个名为'gamekeeper'的URL
+                    login(request, user)  # Make sure user is passed in here
+                    return redirect('gamekeeper')  # redirect to the 'gamekeeper' URL
                 else:
                     return render(request, 'gamekeeperlogin.html', {'form': form, 'error': 'Account unavailable'})
             else:
@@ -80,10 +80,10 @@ def review_photos(request):
             player.score += 1  # 加分
             player.save()
         
-        # 无论是否加分，都删除图片
+        # Regardless of bonus points or not, delete the picture
         Photo.objects.get(id=photo_id).delete()
 
-        return redirect('review_photos')  # 重新加载页面以更新待审核的图片列表
+        return redirect('review_photos')  # Reload the page to update the list of images to be reviewed
 
-    photos = Photo.objects.all()  # 获取所有待审核的图片
+    photos = Photo.objects.all()  # Get all images pending review
     return render(request, 'review_photos.html', {'photos': photos})
