@@ -7,19 +7,15 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from .location_utils import is_within_distance, calculate_distance
-import datetime
-from django.utils import timezone
 from django.urls import reverse
 from decorate import login_requiredforuser
-
+import os
 include = ('answerquestion.views', 'answerquestion', 'answerquestion.urls')
 from answerquestion.views import series_detail
-# from usersinformation.models import PlayerProfile
 from django.http import HttpResponseRedirect
 from pictures.views import upload_view
 
 
-# from answerquestion.views import series_detail2,results_page2
 @login_requiredforuser
 def checkersgame(request, nickname):
     if 'target_id' not in request.session:
@@ -45,6 +41,7 @@ def checkersgame(request, nickname):
     picture = target.picture
     overview = target.overview
     location_name = target.location_name
+    GMAK = os.environ.get('GMAK')
     context = {
         'nickname': nickname,
         'target_latitude': target_latitude,
@@ -52,9 +49,10 @@ def checkersgame(request, nickname):
         'tag': tag,
         'picture': picture,
         'overview': overview,
+        'GMAK': GMAK,
         'loc': location_name
     }
-    # return the navigation page with the target location and the user's nickname.
+    # return the navigation page with the target location and the user's nickname in the context
     return render(request, 'navigation.html', context)
 
 @login_requiredforuser
@@ -76,14 +74,13 @@ def check_location(request, nickname, tag):
             request.session['target_id'] = new_target.id
             request.session.save()
             print('Random index:', request.session['target_id'])
-            # update the user's verified locations count
+            # select the scenario based on the tag
             if tag == 'question':
                 redirect_url = reverse('ans:series_detail', kwargs={'series_id': 2, 'nickname': nickname})
             elif tag == 'meadow':
                 redirect_url = reverse('textGame:SceneSelect', kwargs={'loc_id': 1, 'nickname': nickname})
             elif tag == 'photo':
                 redirect_url = reverse('pictures:upload_view', kwargs={'nickname': nickname})
-            #print('Check-in successful, redirecting to:', redirect_url)
             response_data = {
                 'status': 'success',
                 'redirect_url': redirect_url

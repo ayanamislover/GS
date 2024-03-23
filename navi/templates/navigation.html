@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>Checkers Game</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0Gem4tNlFS1mpCCLr2LrTe5i0GtKKM8U&callback=initMap&libraries=&v=weekly"
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ GMAK }}&callback=initMap&libraries=&v=weekly"
             async></script>
+<!--    CSS for the header bar-->
     <style>
         .header-bar {
             background-color: rgba(26, 149, 111, 0.85);
@@ -21,10 +22,10 @@
 
         @keyframes slideDown {
             from {
-                top: -50px;
+                top: -50px; /*set the top position from -50px*/
             }
             to {
-                top: 0;
+                top: 0; /*set set the top position to 0*/
             }
         }
 
@@ -33,6 +34,7 @@
             margin-left: 20px;
         }
     </style>
+<!--    css for the instructions-->
     <style>
         .instructions {
             position: absolute;
@@ -143,6 +145,7 @@
             transform: translateY(1px)
         }
     </style>
+<!--    css for the modal-->
     <style>
         .modal {
             display: none;
@@ -168,16 +171,16 @@
         }
 
         #modalPicture {
-            max-width: 100%; /* This makes the image's maximum width 100% of the parent */
-            max-height: 100%; /* This makes the image's maximum height 100% of the parent */
-            display: block; /* This removes the default inline behavior, which might be causing extra space issues */
-            margin: auto; /* This will center the image if it is smaller than the parent */
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: auto;
         }
 
-        /* If your modal has a specific size and you want the image to cover all of it, use this instead */
+
         #modalPicture {
-            width: 100%; /* This makes the image stretch to cover the width */
-            height: auto; /* This keeps the image's height proportional to its width */
+            width: 100%;
+            height: auto;
         }
 
         #okBtn {
@@ -192,9 +195,10 @@
 
         #modalLocation,
         #modalOverview {
-            padding: 0 10px; /* Example padding, adjust as needed */
+            padding: 0 10px; /* Add padding to the text */
         }
     </style>
+<!--    css for the privacy popup-->
     <style>
         #privacyPopup {
             display: none; /* Hidden by default */
@@ -333,6 +337,7 @@
 
     </div>
 </div>
+<!--script of the map-->
 <script>
     let savedRedirectUrl = null
     var picture = "{{ picture }}";
@@ -501,6 +506,7 @@
     }
 
 </script>
+<!--script for the privacy popup-->
 <script>
     // Get the modal
     var privacyPopup = document.getElementById('privacyPopup');
