@@ -20,7 +20,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_requiredforuser
 def activity_join(request):
-    activities = Activity.objects.all()  # 获取所有活动
+    activities = Activity.objects.all()  # Get all activities
     return render(request, 'activity_join.html', {'activities': activities})
 
 @login_required
