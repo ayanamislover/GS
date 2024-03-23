@@ -13,16 +13,17 @@ from usersinformation.models import PlayerProfile
 from answerquestion.models import Series
 from math import radians, cos, sin, asin, sqrt
 from django.views.decorators.csrf import csrf_exempt
-
+from decorate import login_requiredforuser
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-
+@login_requiredforuser
 def activity_join(request):
     activities = Activity.objects.all()  # 获取所有活动
     return render(request, 'activity_join.html', {'activities': activities})
 
-
+@login_required
 def generate_qrcode(request,series_id):
     if series_id is None:
         # Handle situations where there is no series_id 
@@ -45,7 +46,7 @@ def generate_qrcode(request,series_id):
     img.save(buffer)
     # Return the image to the client
     return HttpResponse(buffer.getvalue(), content_type="image/png")
-
+@login_requiredforuser
 @csrf_exempt
 def enternickname(request,series_id):
     series = get_object_or_404(Series, pk=series_id)
@@ -63,7 +64,7 @@ def enternickname(request,series_id):
         return render(request,'enternickname.html')
 
 
-
+@login_requiredforuser
 def scan_qr(request,series_id):
     location1=Activity.objects.get(series_id=series_id).location
     print(location1)
@@ -75,7 +76,9 @@ def scan_qr(request,series_id):
         'location': location
     }
     return render(request, 'scan_qr.html', context)
-    
+
+
+@login_requiredforuser
 def quiz_leaderboard(request,nickname,additional_score,series_id):
     user_nickname = PlayerProfile.nickname
     
