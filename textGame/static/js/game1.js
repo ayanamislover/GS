@@ -26,14 +26,25 @@ function showTextNode(textNodeIndex) {
 
 function selectOption(option) {
   const nextTextNodeId = option.nextText;
+  // Update the game state with the selected option's state changes
   state = Object.assign(state, option.setState);
 
-  if (nextTextNodeId === 5) { // Assuming the 5th node is for reflection/ending
-    checkCompletion(); // Check if all types were selected before showing the ending
+  // If there is no next text node (nextTextNodeId is null), try to close the window
+  if (nextTextNodeId === null) {
+    window.close();
+    return; // Stop the function execution here
+  }
+
+  // Special case: If the next node is node 5, check if the ecosystem is complete
+  // before showing the ending
+  if (nextTextNodeId === 5) {
+    checkCompletion(); // Check if the ecosystem completion conditions are met
   } else {
+    // For all other cases, proceed to show the next text node as per the player's choice
     showTextNode(nextTextNodeId);
   }
 }
+
 function checkCompletion() {
   if (state.insects && state.amphibians && state.mammals && state.plants) {
     showTextNode(6); // Success node
@@ -43,18 +54,6 @@ function checkCompletion() {
   }
 }
 
-function selectOption(option) {
-  const nextTextNodeId = option.nextText;
-
-  if (nextTextNodeId === null) {
-    window.close();
-    return;
-  }
-
-  state = Object.assign(state, option.setState);
-
-  showTextNode(nextTextNodeId);
-}
 
 const textNodes = [
   {
