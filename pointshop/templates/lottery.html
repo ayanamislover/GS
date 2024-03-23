@@ -6,7 +6,7 @@
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-12">
             <div id="lottery" class="row gx-2 gy-2">
-                <!-- 第一行的商品图片 -->
+                <!-- The first line of products -->
                 <div class="col-4 grid-item winner">
                     <img src="{% static 'coupon.jpg' %}" alt="Coupon" class="img-fluid">
                 </div>
@@ -16,11 +16,11 @@
                 <div class="col-4 grid-item">
                     <img src="{% static 'disaposable.jpg' %}" alt="Disposable" class="img-fluid">
                 </div>
-                <!-- 第二行的商品图片和中间的抽奖按钮 -->
+                <!-- The second line with the products and the button which is at the centre -->
                 <div class="col-4 grid-item">
                     <img src="{% static 'medal.png' %}" alt="Medal" class="img-fluid">
                 </div>
-                <!-- 这里是抽奖按钮 -->
+                <!-- lottery button -->
                 <div class="col-4 grid-item center-item text-center">
                     <button id="spin-btn" class="btn btn-primary btn-lg" type="button">Spin!</button>
                     <p>Cost: 50 points</p>
@@ -28,7 +28,7 @@
                 <div class="col-4 grid-item">
                     <img src="{% static 'pencil.jpeg' %}" alt="Pencil" class="img-fluid">
                 </div>
-                <!-- 第三行的商品图片 -->
+                <!-- the product pictures in the third line -->
                 <div class="col-4 grid-item">
                     <img src="{% static 'sapling.jpg' %}" alt="Sapling" class="img-fluid">
                 </div>
@@ -48,11 +48,11 @@
 
 {% block extra_css %}
 <style>
-    /* 确保高度为视口高度，使内容垂直居中 */
+    /* Make sure the height is viewport height so that the content is centered vertically */
     .container {
         max-width: 100%;
         padding: 0;
-        margin-top: -50px; /* 根据需要调整这个值，以适应页面布局 */
+        margin-top: -50px; 
     }
     .row {
         margin: 0;
@@ -61,8 +61,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 150px; /* 或者您想要的高度，确保所有格子大小一致 */
-    margin: 5px; /* 格子间隔 */
+    min-height: 150px; 
+    margin: 5px; /* lattice interval */
     background: #f7f7f7;
     border: 1px solid #ddd;
 }
@@ -80,49 +80,49 @@
 }
 
     .center-item button {
-        margin: 0 auto; /* 居中按钮 */
+        margin: 0 auto; /* centerize */
         display: block;
     }
     .center-item p {
-        text-align: center; /* 积分文字居中 */
+        text-align: center; /* integral text centered */
     }
 @keyframes blink {
-        50% { background-color: orange; } /* 高亮颜色 */
+        50% { background-color: orange; } /* hignlighted color */
     }
     .grid-item.active img{
-  opacity: 0.8 !important; /* 使图片稍微透明 */
+  opacity: 0.8 !important; /* make the picture transparent */
     transition: opacity 0.5s !important;
 
 }
-/* 添加强调中奖项的样式 */
+/* Add styles that emphasize winning prizes */
 .grid-item.winner {
-    position: relative; /* 为伪元素定位做准备 */
-    z-index: 1; /* 确保中奖项在最上层 */
+    position: relative; /* Prepare for pseudo-element positioning */
+    z-index: 1; /* Make sure the winning prizes are at the top */
 }
 
 .grid-item.winner::after {
     content: "Winner!";
-    position: absolute; /* 绝对定位，覆盖在格子内容之上 */
+    position: absolute; /* Absolute positioning, overlaid on top of the grid content */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 0, 0.7); /* 半透明的黄色覆盖层 */
-    color: black; /* 文字颜色 */
-    font-size: 2em; /* 文字大小 */
+    background-color: rgba(255, 255, 0, 0.7); /* Translucent yellow covering */
+    color: black; /* color of texts */
+    font-size: 2em; /* size of texts */
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    z-index: 2; /* 确保覆盖层在格子内容之上 */
+    justify-content: center; /* center horizontally */
+    align-items: center; /* vertical center */
+    z-index: 2; /* Make sure the overlay is on top of the grid content */
 }
 
 .grid-item.winner img {
-    opacity: 0.3; /* 降低图片透明度，以突出显示覆盖层 */
+    opacity: 0.3; /* Reduce the image transparency to highlight the overlay */
     transition: opacity 0.5s !important;
 }
 
     .grid-item.winner {
-        background-color: yellow; /* 中奖格子的背景颜色 */
+        background-color: yellow; /* The background color of the winning grid */
     }
 
 </style>
@@ -130,7 +130,7 @@
 
 {% block extra_js %}
 <script>
-// 当点击spin按钮时执行此函数
+// Execute this function when the spin button is clicked
 document.getElementById('spin-btn').addEventListener('click', function(event) {
     event.preventDefault();
     const items = document.querySelectorAll('.grid-item:not(.center-item)');
@@ -140,10 +140,10 @@ document.getElementById('spin-btn').addEventListener('click', function(event) {
     const spinDuration = 5000;
     const singleSpinDuration = spinDuration / spins;
 
-    // 移除之前可能的 winner 标记
+    // Removes the previous possible winner flag
     items.forEach(item => item.classList.remove('winner'));
 
-    // 开始旋转动画
+    // Start rotation animation
     const interval = setInterval(function () {
 
         if (previousIndex >= 0) {
@@ -161,11 +161,11 @@ document.getElementById('spin-btn').addEventListener('click', function(event) {
             clearInterval(interval);
             items[previousIndex].classList.remove('active');
 
-            // 模拟中奖过程
-            const winnerIndex = Math.floor(Math.random() * items.length); // 随机选择一个中奖项
-            items[winnerIndex].classList.add('winner'); // 添加 winner 类
+            // Simulate the winning process
+            const winnerIndex = Math.floor(Math.random() * items.length); // Pick a winner at random
+            items[winnerIndex].classList.add('winner'); // add winner class
             console.log('Winner class applied to:', items[winnerIndex]);
-            document.getElementById('result-message').textContent = `恭喜你抽到 ${items[winnerIndex].querySelector('img').alt}！`;
+            document.getElementById('result-message').textContent = `congratulations you get ${items[winnerIndex].querySelector('img').alt}！`;
         }
     }, singleSpinDuration);
 });
