@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.getElementById('logoutLink').addEventListener('click', function(event) {
-    event.preventDefault();
-    // 重定向整个页面到后端定义的退出URL
-    window.top.location.href = '/logout/'; // 确保这个URL与你的Django urls.py中定义的匹配
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('click');
+        window.top.location.href = '/logout/';
 });

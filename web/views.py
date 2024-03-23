@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from decorate import login_requiredforuser
 from django.urls import reverse
-
+from django.views.decorators.cache import never_cache
 
 # Make sure you have imported the User and PlayerProfile models from your model files
 from .models import User
@@ -99,9 +99,22 @@ def login(request):
 @login_requiredforuser
 def logout_view(request):
     # clean the session in the login state
-    request.session.pop('is_logged_in', None)
-    # redirect to the login page
-    return redirect(reverse('login'))
+    print("Session before pop:", dict(request.session))
+
+    removed_value = request.session.pop('is_logged_in', None)
+
+    if removed_value is None:
+        print("is_logged_in was not set in the session.")
+    else:
+        print("is_logged_in was set to", removed_value, "and has been removed from the session.")
+
+    print("Session after pop:", dict(request.session))
+    request.session.save()
+
+    response = redirect(reverse('login'))
+    # Set additional cache-control headers if necessary
+    response['Cache-Control'] = 'no-store'
+    return response
 
 def index(request):
    # Return the index.html template, or whatever you want to display
