@@ -44,28 +44,28 @@
                 {% for player in score_leaderboard %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ player.username }}</td>
+                    <td>{{ player.nickname }}</td>
                     <td>Score: {{ player.score }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <h2>Achievements Leaderboard</h2>
+        <h2>Carbon leaderboard</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Achievements</th>
+                    <th scope="col">Carbon</th>
                 </tr>
             </thead>
             <tbody>
-                {% for player in achievements_leaderboard %}
+                {% for player in carbon_leaderboard %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ player.username }}</td>
-                    <td>Achievements: {{ player.achievements }}</td>
+                    <td>{{ player.nickname }}</td>
+                    <td>Carbon footprint: {{ player.carbon }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
