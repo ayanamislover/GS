@@ -3,23 +3,33 @@ const optionButtonsElement = document.getElementById('option-buttons');
 
 let state = {};
 
+// Initializes the game state and starts the game by showing the first text node.
 function startGame() {
+  // Initializing state with false values for each category.
   state = { insects: false, amphibians: false, mammals: false, plants: false };
+  // Display the first text node to the player.
   showTextNode(1);
 }
 
+// Displays the text node based on the given index.
 function showTextNode(textNodeIndex) {
+  // Finds the text node from the array of text nodes by matching the id.
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
+  // Sets the main text element to display the found text node's text.
   textElement.innerText = textNode.text;
+  // Removes all existing option buttons to prepare for new ones.
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
 
+  // For each option in the current text node, create and display an option button.
   textNode.options.forEach(option => {
-    const button = document.createElement('button');
-    button.innerText = option.text;
-    button.classList.add('btn');
+    const button = document.createElement('button'); // Creates a new button element.
+    button.innerText = option.text; // Sets the button text to the option's text.
+    button.classList.add('btn'); // Adds a class for styling the button.
+    // Adds an event listener to the button that will call selectOption when clicked.
     button.addEventListener('click', () => selectOption(option));
+    // Adds the newly created button to the page.
     optionButtonsElement.appendChild(button);
   });
 }
@@ -108,7 +118,7 @@ const textNodes = [
     id: 6,
     text: 'Congratulations! Your meadow is thriving with a diverse ecosystem.',
     options: [
-    { text: 'Close Window', setState: {}, nextText: null }
+    { text: 'Back to adventure!', setState: {}, nextText: null }
   ]
   },
   {
