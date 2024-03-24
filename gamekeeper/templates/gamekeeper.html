@@ -4,29 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Button Page</title>
-    <!-- 引入 Bootstrap CSS -->
+    <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            padding-left: 20px; /* 在整个页面左侧添加一些内边距 */
+            padding-left: 20px; /* Add some padding on the entire page's left side */
+            background-image: linear-gradient(to right, #78A3CC,#B3CDE4, #EEF7FC); /* Set the background color of the page */
         }
         .container {
-            margin-top: 50px; /* 页面顶部留出一些空间 */
+            margin-top: 275px; /* Leave some space at the top of the page */
+            padding: 20px; /* Add padding inside the container */
+            background: rgba(255, 255, 255, 0.8); /* Set a semi-transparent background */
+            border-radius: 15px; /* Rounded corners for the container */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the container */
         }
         .btn {
-            display: block; /* 使链接显示为块级元素，使其各自占据一行 */
-            margin: 10px 0; /* 在按钮之间以及按钮与页面顶部添加一些空间 */
-            text-decoration: none; /* 去除链接下划线 */
-            padding: 10px 15px; /* 增加填充使链接看起来像按钮 */
-            background-color: #007bff; /* Bootstrap 蓝色 */
-            color: white; /* 文本颜色白色 */
-            border-radius: 5px; /* 圆角边框 */
-            transition: background-color 0.3s ease; /* 平滑过渡效果 */
+            display: block; /* Display links as block elements, making them each occupy a line */
+            margin: 10px 0; /* Add some space between the buttons and between the buttons and the top of the page */
+            text-decoration: none; /* Remove link underlines */
+            padding: 10px 15px; /* Increase padding to make links look more like buttons */
+            background-color: #3c79b4; /* blue */
+            color: white; /* White text color */
+            border-radius: 5px; /* Rounded borders */
+            transition: background-color 0.3s ease; /* Smooth transition for background color change */
         }
         .btn:hover, .btn:focus {
-            background-color: #0056b3; /* 鼠标悬停时的背景色 */
-            color: white; /* 鼠标悬停时的文本颜色 */
-            text-decoration: none; /* 鼠标悬停时去除下划线 */
+            background-color: #014F9C; /* Background color on hover */
+            color: white; /* Text color on hover */
+            text-decoration: none; /* Remove underline on hover */
         }
     </style>
 </head>
@@ -37,7 +42,7 @@
         <a href="{% url 'review_photos' %}" class="btn">Review pictures</a>
     </div>
 
-    <!-- 引入 Bootstrap JS 及其依赖 -->
+    <!-- Include Bootstrap JS and its dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
