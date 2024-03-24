@@ -4,73 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join an Activity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(to right, #EDE574, #E1F5C4);
-        }
-        .header-container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
+            color: #333;
         }
         .activities-container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 30px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            min-height: 700px; 
         }
         .activity-label {
             text-align: left;
-            margin-left: 20px; /* Adjusted margin to align with activity names */
-            font-weight: bold;
+            margin-top: 20px;
+            margin-left: 20px;
+            font-weight: 500;
             padding-top: 10px;
+            color: #555;
         }
         ul {
             list-style-type: none;
             padding-left: 0;
+            margin-top: 20px;
         }
         li {
-            padding: 10px 20px; /* Adjust padding to align text */
-            border-bottom: 1px solid #ccc;
-            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            transition: background-color 0.3s;
         }
-        li:last-child {
-            border-bottom: none;
+        li:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        li:nth-child(even) {
+            background-color: rgba(250, 250, 250, 0.5);
         }
         .activity-name {
             font-weight: bold;
         }
         .btn {
-            background-color: #007bff;
+            background-color: #ADD8E6; /* Light blue */
             color: #fff;
             text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-left: 20px; /* Space from the text */
-            vertical-align: top;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #89CFF0;
         }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <h1>Available Activities</h1>
-    </div>
     <div class="activities-container">
+        <h1>Available Activities</h1>
         <div class="activity-label">Activity Name</div>
         <ul>
+            <!-- 动态内容 -->
             {% for activity in activities %}
                 <li>
                     <span class="activity-name">{{ activity.title }}</span> - {{ activity.description }}

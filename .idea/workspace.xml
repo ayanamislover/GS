@@ -6,24 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e61b1b3d-4052-4619-a4b6-8dea29bdbdeb" name="更改" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aM/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aM/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/achievement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/achievement/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/activityboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/activityboard/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/announcement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcement/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/answerquestion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/answerquestion/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamekeeper/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaderboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/static/js/script1.js" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/static/js/script1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navi/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/navi/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textGame/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/textGame/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usersinformation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/usersinformation/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/gdpr.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/gdpr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamekeeper/templates/change_statue.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/templates/change_statue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamekeeper/templates/gamekeeper.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/templates/gamekeeper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamekeeper/templates/gamekeeperlogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/templates/gamekeeperlogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamekeeper/templates/get_qrcode.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/templates/get_qrcode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamekeeper/templates/review_photos.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamekeeper/templates/review_photos.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,11 +90,11 @@
       <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite\navi\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GS-main\GS\gamekeeper\static\images" />
       <recent name="D:\GS-main\GS" />
       <recent name="D:\GS-main\GS\leaderboard" />
       <recent name="D:\GS-main\GS\leaderboard\templates" />
       <recent name="D:\GS-main\GS\activityboard\templates" />
-      <recent name="D:\PyCharm\PycharmProjects\djangoProject\GS\mysite" />
     </key>
   </component>
   <component name="RunManager">

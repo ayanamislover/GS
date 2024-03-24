@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- Ensures proper rendering and touch zooming on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ensures the browser displays content from the web page that matches the page's intended appearance -->
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Link to the main stylesheet for the game -->
   <link href="/static/css/styleAd1.css" rel="stylesheet">
+  <!-- Link to the JavaScript file that contains game logic, set to defer to ensure it loads after the HTML document is parsed -->
   <script defer src="/static/js/game1.js"></script>
   <title>Text Adventure</title>
 </head>
 <body>
   <div class="container">
+    <!-- The main text area where the story and descriptions show up -->
     <div id="text">Text</div>
+    <!-- The score display, hidden by default and shown under certain conditions -->
     <div id="score" style="display: none;">Your total score now: {{ score }}</div>
+    <!-- The container for option buttons that players can click to make choices -->
     <div id="option-buttons" class="btn-grid">
       <button class="btn">Option 1</button>
       <button class="btn">Option 2</button>

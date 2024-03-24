@@ -65,7 +65,7 @@
         <img src="{{ announcement.image.url }}" alt="{{ announcement.title }}">
         <div class="content">{{ announcement.content }}</div>
         <p class="date">Start Date: {{ announcement.date_start|date:"Y-m-d H:i" }}</p>
-        <p>End Date: {{ announcement.end_date|date:"Y-m-d H:i" }}</p>
+        <p class="date">End Date: {{ announcement.end_data|date:"Y-m-d H:i" }}</p>
     </div>
 </body>
 </html>

@@ -3,37 +3,58 @@ const optionButtonsElement = document.getElementById('option-buttons');
 
 let state = {};
 
+// Initializes the game state and starts the game by showing the first text node.
 function startGame() {
+  // Initializing state with false values for each category.
   state = { insects: false, amphibians: false, mammals: false, plants: false };
+  // Display the first text node to the player.
   showTextNode(1);
 }
 
+// Displays the text node based on the given index.
 function showTextNode(textNodeIndex) {
+  // Finds the text node from the array of text nodes by matching the id.
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
+  // Sets the main text element to display the found text node's text.
   textElement.innerText = textNode.text;
+  // Removes all existing option buttons to prepare for new ones.
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
 
+  // For each option in the current text node, create and display an option button.
   textNode.options.forEach(option => {
-    const button = document.createElement('button');
-    button.innerText = option.text;
-    button.classList.add('btn');
+    const button = document.createElement('button'); // Creates a new button element.
+    button.innerText = option.text; // Sets the button text to the option's text.
+    button.classList.add('btn'); // Adds a class for styling the button.
+    // Adds an event listener to the button that will call selectOption when clicked.
     button.addEventListener('click', () => selectOption(option));
+    // Adds the newly created button to the page.
     optionButtonsElement.appendChild(button);
   });
 }
 
 function selectOption(option) {
   const nextTextNodeId = option.nextText;
+  // Update the game state with the selected option's state changes
   state = Object.assign(state, option.setState);
 
-  if (nextTextNodeId === 5) { // Assuming the 5th node is for reflection/ending
-    checkCompletion(); // Check if all types were selected before showing the ending
+  // If there is no next text node (nextTextNodeId is null), try to close the window
+  if (nextTextNodeId === null) {
+    window.close();
+    return; // Stop the function execution here
+  }
+
+  // Special case: If the next node is node 5, check if the ecosystem is complete
+  // before showing the ending
+  if (nextTextNodeId === 5) {
+    checkCompletion(); // Check if the ecosystem completion conditions are met
   } else {
+    // For all other cases, proceed to show the next text node as per the player's choice
     showTextNode(nextTextNodeId);
   }
 }
+
 function checkCompletion() {
   if (state.insects && state.amphibians && state.mammals && state.plants) {
     showTextNode(6); // Success node
@@ -43,18 +64,6 @@ function checkCompletion() {
   }
 }
 
-function selectOption(option) {
-  const nextTextNodeId = option.nextText;
-
-  if (nextTextNodeId === null) {
-    window.close();
-    return;
-  }
-
-  state = Object.assign(state, option.setState);
-
-  showTextNode(nextTextNodeId);
-}
 
 const textNodes = [
   {
@@ -109,7 +118,7 @@ const textNodes = [
     id: 6,
     text: 'Congratulations! Your meadow is thriving with a diverse ecosystem.',
     options: [
-    { text: 'Close Window', setState: {}, nextText: null }
+    { text: 'Back to adventure!', setState: {}, nextText: null }
   ]
   },
   {
