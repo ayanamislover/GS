@@ -13,19 +13,20 @@ from django.contrib.auth.hashers import make_password
 class User(models.Model):
     username = models.CharField(max_length=50,unique=True)
     password = models.CharField(max_length=50)
+    email = models.EmailField(blank=True, null=True)
     # OneToOneField is associated with PlayerProfile
     player_profile = models.OneToOneField(PlayerProfile, on_delete=models.CASCADE, null=True, related_name='user')
 
-    def save(self, *args, **kwargs):
+    #def save(self, *args, **kwargs):
         # First save the User object
-        super(User, self).save(*args, **kwargs)
+     #   super(User, self).save(*args, **kwargs)
         # Then get or create a PlayerProfile instance
-        player_profile, created = PlayerProfile.objects.get_or_create(user=self)
+      #  player_profile, created = PlayerProfile.objects.get_or_create(user=self)
         # If it is a newly created PlayerProfile, set its additional fields
-        if created:
-            player_profile.nickname = self.username
-            player_profile.email = self.email  # Assume that the PlayerProfile model has an email field
-            player_profile.save()
+      #  if created:
+       #     player_profile.nickname = self.username
+        #    player_profile.email = self.email  # Assume that the PlayerProfile model has an email field
+         #   player_profile.save()
 
 
     #def set_password(self, raw_password):
