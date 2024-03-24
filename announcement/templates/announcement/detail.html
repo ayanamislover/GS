@@ -59,9 +59,11 @@
     </style>
 </head>
 <body>
+    <!-- Back button -->
     <button class="back-button" onclick="history.back()">&#8592; Back to Previous Page</button>
     <div class="announcement-detail">
         <h1 class="title">{{ announcement.title }}</h1>
+        <!-- Announcement detail content -->
         <img src="{{ announcement.image.url }}" alt="{{ announcement.title }}">
         <div class="content">{{ announcement.content }}</div>
         <p class="date">Start Date: {{ announcement.date_start|date:"Y-m-d H:i" }}</p>
