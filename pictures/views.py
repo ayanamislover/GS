@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from . import forms
-@login_requiredforuser
-@csrf_exempt
+@login_requiredforuser  # Applying decorator for user login requirement
+@csrf_exempt  # Applying csrf_exempt to bypass CSRF protection
 def upload_api(request):
     if request.method == "POST":
         form = forms.PhotoForm(request.POST, request.FILES)
@@ -17,7 +17,7 @@ def upload_api(request):
             print(form.errors)
 
     return JsonResponse({"ok": False})
-@login_requiredforuser
+@login_requiredforuser # Applying decorator for user login requirement
 def upload_view(request,nickname):
     if request.method == "GET":
         return render(request, "upload.html", {"nickname":nickname})
